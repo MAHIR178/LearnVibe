@@ -36,7 +36,22 @@ body {
 .nav-links a.active {
     color: #00c4ff;
 }
-
+img {
+    
+    
+   
+     width: 30px;
+    height: auto;
+    border-radius: 60%;
+    margin-left: 20px;
+    margin-top: 5px;
+    
+   
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s;
+    
+}
 /* Hero Section */
 .hero {
     background: linear-gradient(to right, #001f3f, #003366);
