@@ -34,7 +34,11 @@ body {
     background-color: #F2F5FA;
 }
 .nav-links{
-    padding-right: 50px;
+    
+      display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-right: 80px;  
 }
 
 /* offset targets by navbar height so anchored sections are not hidden */
@@ -52,12 +56,66 @@ body {
     font-size: normal;
     transform: translateZ(0) scale(1);
     transition: transform 180ms cubic-bezier(.2,.9,.2,1), color 180ms ease;
+    
 }
 .nav-links a:hover {
     color: #72A9D4;
     text-decoration: underline;
     transform: translateY(-2px) scale(1.06);
 }
+.profile-menu {
+  
+    display: flex;
+    align-items: center;
+        position: absolute;
+    top: 8px;      /* adjust up/down as you like */
+    right: 24px;   /* adjust left/right as you like */
+    padding-bottom: 8px;
+}
+
+/* BIGGER, CENTERED PROFILE ICON */
+.profile-icon {
+    margin-left: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* dropdown box */
+.profile-dropdown {
+    position: absolute;
+    top: 100%;          /* just below the icon */
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #DFDFDF;
+    border-radius: 8px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    min-width: 170px;
+    display: none;
+    z-index: 20;
+}
+
+/* show dropdown on hover */
+.profile-menu:hover .profile-dropdown {
+    display: block;
+}
+
+/* dropdown items */
+.profile-dropdown a {
+    display: block;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+
+.profile-dropdown a:hover {
+    background-color: #F2F5FA;
+    color: #72A9D4;
+}
+
 
 .hero {
     display: flex;
