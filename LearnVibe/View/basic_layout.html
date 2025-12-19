@@ -22,6 +22,7 @@
         <a href="#about_us">About Us</a>
         <a href="#contact">Contact</a>
 
+      <!--
         <div class="profile-menu">
             <img src="assets/profileicon.png" alt="Profile Icon" class="profile-icon">
 
@@ -31,6 +32,8 @@
                 <a href="#">Logout</a>
             </div>
         </div>
+      
+      -->  
     </div>
 </div>
 
@@ -40,7 +43,7 @@
             <h2>Your Digital</h2>
             <h2>Learning Hub</h2>
             <p>Where Students Learn, Instructors Teach, and Knowledge Connects...</p>
-            <button>Join Us</button>
+            <button id="join-btn">Join Us</button>
         </div>
 
         <div class="hero-image">
@@ -240,6 +243,18 @@
             btn.addEventListener('click', function(e){
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+    </script>
+
+    <script>
+        (function(){
+            const join = document.getElementById('join-btn');
+            if(!join) return;
+            join.addEventListener('click', function(e){
+                e.preventDefault();
+                // Open the signup page (relative path)
+                window.location.href = 'Signup.html';
             });
         })();
     </script>
