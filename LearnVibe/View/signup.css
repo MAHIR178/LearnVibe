@@ -281,3 +281,225 @@ body {
         padding: 20px 18px 24px;
     }
 }
+/* ---------- RESET ---------- */
+
+
+/* same blurred homepage background as signup */
+body {
+    min-height: 100vh;
+    background: url("assets/homepage-screenshot.png") center/cover no-repeat fixed;
+}
+
+/* blur overlay */
+.blur-layer {
+    min-height: 100vh;
+    width: 100%;
+    backdrop-filter: blur(8px);
+    background-color: rgba(242, 245, 250, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* logo */
+.logo {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #72A9D4;
+}
+
+.center-logo {
+    margin-bottom: 16px;
+}
+
+/* layout */
+.auth-wrapper {
+    max-width: 420px;
+    width: 100%;
+    padding: 0 16px 24px;
+    display: flex;
+    justify-content: center;
+}
+
+/* login card */
+.login-card {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 24px 26px 26px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+    animation: floatIn 0.6s ease-out;
+}
+
+.login-card h2 {
+    font-size: 22px;
+    margin-bottom: 4px;
+     text-align: center;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+/* animation */
+@keyframes floatIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* form basics */
+.form-row {
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-row label {
+    font-size: 13px;
+    color: #444;
+}
+
+.form-row input {
+    padding: 9px 10px;
+    border-radius: 8px;
+    border: 1px solid #d3d9e4;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: #f9fbff;
+}
+
+.form-row input:focus {
+    border-color: #72A9D4;
+    box-shadow: 0 0 0 2px rgba(114, 169, 212, 0.25);
+}
+
+/* icon + eye button */
+.input-with-icon .field-wrapper {
+    position: relative;
+}
+
+.field-wrapper input {
+    width: 100%;
+    padding: 9px 38px 9px 32px;
+}
+
+.field-icon-left {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px;
+    pointer-events: none;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-password img {
+    width: 18px;
+    height: 18px;
+    opacity: 0.9;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.toggle-password.is-visible img {
+    opacity: 0.7;
+    transform: scale(1.05);
+}
+
+/* remember + forgot */
+.checkbox-row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.checkbox-row input[type="checkbox"] {
+    margin-right: 6px;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.link-small {
+    font-size: 12px;
+    color: #72A9D4;
+    text-decoration: none;
+}
+
+.link-small:hover {
+    text-decoration: underline;
+}
+
+/* button */
+.primary-btn {
+    width: 100%;
+    margin-top: 6px;
+    padding: 10px 0;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    background: #000000;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.primary-btn:hover {
+    background: #1d1d1d;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+}
+
+/* bottom text */
+.login-text {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 13px;
+    color: #555;
+}
+
+.login-text a {
+    color: #72A9D4;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-text a:hover {
+    text-decoration: underline;
+}
+
+/* mobile */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 20px 18px 22px;
+    }
+}
