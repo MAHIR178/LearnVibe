@@ -12,45 +12,59 @@
         <div class="auth-wrapper">
             <div class="signin-card">
                 <div class="signin-layout">
+                    
+                    <!-- Left side image -->
                     <div class="signin-image" aria-hidden="true"></div>
 
+                    <!-- Right side form -->
                     <div class="signin-content">
-                        <div class="forms">
-                            <form class="form signin-form" action="#" method="post">
-                                <h2>Welcome Back</h2>
+                        <form class="form signin-form" action="#" method="post">
+                            <h2>Welcome Back</h2>
 
-                                <div class="form-row">
-                                    <label for="signin_email">Email</label>
-                                    <input id="signin_email" type="email" name="email" required>
+                            <div class="form-row">
+                                <label for="signin_email">Email</label>
+                                <input id="signin_email" type="email" name="email" required>
+                            </div>
+
+                            <div class="form-row input-with-icon">
+                                <label for="signin_password">Password</label>
+                                <div class="field-wrapper">
+                                    <span class="field-icon-left">🔒</span>
+                                    <input
+                                        type="password"
+                                        id="signin_password"
+                                        name="password"
+                                        minlength="8"
+                                        required
+                                    >
+                                    <button
+                                        type="button"
+                                        class="toggle-password"
+                                        data-target="signin_password"
+                                        aria-label="Show or hide password"
+                                    >
+                                        <img src="assets/wired-lineal-69-eye.svg" alt="Toggle password visibility">
+                                    </button>
                                 </div>
+                            </div>
 
-                                <div class="form-row input-with-icon">
-                                    <label for="signin_password">Password</label>
-                                    <div class="field-wrapper">
-                                        <span class="field-icon-left">🔒</span>
-                                        <input type="password" id="signin_password" name="password" required minlength="8">
-                                        <button type="button" class="toggle-password" data-target="signin_password" aria-label="Show or hide password">
-                                            <img src="assets/wired-lineal-69-eye.svg" alt="Toggle password visibility">
-                                        </button>
-                                    </div>
-                                </div>
+                            <div class="form-row checkbox-row space-between">
+                                <label>
+                                    <input type="checkbox" name="remember">
+                                    Remember me
+                                </label>
+                                <a href="#" class="link-small">Forgot password?</a>
+                            </div>
 
-                                <div class="form-row checkbox-row">
-                                    <label>
-                                        <input type="checkbox" name="remember">
-                                        Remember me
-                                    </label>
-                                </div>
+                            <button type="submit" class="primary-btn">Sign In</button>
 
-                                <button type="submit" class="primary-btn">Sign In</button>
-
-                                <p class="login-text" style="margin-top:12px;text-align:center;">
-                                    Don't have an account?
-                                    <a href="Signup.html">Create one</a>
-                                </p>
-                            </form>
-                        </div>
+                            <p class="login-text">
+                                Don't have an account?
+                                <a href="Signup.html">Create one</a>
+                            </p>
+                        </form>
                     </div>
+
                 </div>
             </div>
         </div>
