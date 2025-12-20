@@ -59,6 +59,20 @@ body {
     animation: floatIn 0.6s ease-out;
 }
 
+/* Keep card within viewport and hide its scrollbar visually so toggling tabs
+   (student/instructor) won't show a page scrollbar. Content remains scrollable. */
+.signup-card {
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.signup-card::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+}
+
 @keyframes floatIn {
     from {
         opacity: 0;
@@ -120,6 +134,7 @@ body {
 .form h2 {
     font-size: 20px;
     margin-bottom: 16px;
+    text-align: center;
 }
 
 .form-row {
@@ -143,6 +158,9 @@ body {
     outline: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     background-color: #f9fbff;
+}
+#expertise-text{
+    padding: 9px 52px;
 }
 
 .form-row input:focus,

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnVibe | Sign In</title>
+    <link rel="stylesheet" href="signin.css">
+</head>
+<body>
+
+    <div class="blur-layer">
+        <div class="auth-wrapper">
+            <div class="signin-card">
+                <div class="signin-layout">
+                    <div class="signin-image" aria-hidden="true"></div>
+
+                    <div class="signin-content">
+                        <div class="forms">
+                            <form class="form signin-form" action="#" method="post">
+                                <h2>Welcome Back</h2>
+
+                                <div class="form-row">
+                                    <label for="signin_email">Email</label>
+                                    <input id="signin_email" type="email" name="email" required>
+                                </div>
+
+                                <div class="form-row input-with-icon">
+                                    <label for="signin_password">Password</label>
+                                    <div class="field-wrapper">
+                                        <span class="field-icon-left">🔒</span>
+                                        <input type="password" id="signin_password" name="password" required minlength="8">
+                                        <button type="button" class="toggle-password" data-target="signin_password" aria-label="Show or hide password">
+                                            <img src="assets/wired-lineal-69-eye.svg" alt="Toggle password visibility">
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="form-row checkbox-row">
+                                    <label>
+                                        <input type="checkbox" name="remember">
+                                        Remember me
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="primary-btn">Sign In</button>
+
+                                <p class="login-text" style="margin-top:12px;text-align:center;">
+                                    Don't have an account?
+                                    <a href="Signup.html">Create one</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.toggle-password').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                const input = document.getElementById(this.dataset.target);
+                if (!input) return;
+                const isPassword = input.type === 'password';
+                input.type = isPassword ? 'text' : 'password';
+                this.classList.toggle('is-visible', !isPassword);
+            });
+        });
+    </script>
+
+</body>
+</html>
