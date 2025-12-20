@@ -3,67 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LearnVibe | Login</title>
+    <title>LearnVibe | Sign In</title>
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
 
     <div class="blur-layer">
-       
-
         <div class="auth-wrapper">
-            <div class="login-card">
-                <h2>Welcome back 👋</h2>
-                <p class="subtitle">Log in to continue learning.</p>
+            <div class="signin-card">
+                <div class="signin-layout">
+                    <div class="signin-image" aria-hidden="true"></div>
 
-                <form class="form login-form" action="#" method="post">
-                    <div class="form-row">
-                        <label>Email</label>
-                        <input type="email" name="email" required>
-                    </div>
+                    <div class="signin-content">
+                        <div class="forms">
+                            <form class="form signin-form" action="#" method="post">
+                                <h2>Welcome Back</h2>
 
-                    <div class="form-row input-with-icon">
-                        <label>Password</label>
-                        <div class="field-wrapper">
-                            <span class="field-icon-left">🔒</span>
-                            <input
-                                type="password"
-                                id="login_password"
-                                name="password"
-                                minlength="8"
-                                required
-                            >
-                            <button
-                                type="button"
-                                class="toggle-password"
-                                data-target="login_password"
-                                aria-label="Show or hide password"
-                            >
-                                <img src="assets/wired-lineal-69-eye.svg" alt="Toggle password visibility">
-                            </button>
+                                <div class="form-row">
+                                    <label for="signin_email">Email</label>
+                                    <input id="signin_email" type="email" name="email" required>
+                                </div>
+
+                                <div class="form-row input-with-icon">
+                                    <label for="signin_password">Password</label>
+                                    <div class="field-wrapper">
+                                        <span class="field-icon-left">🔒</span>
+                                        <input type="password" id="signin_password" name="password" required minlength="8">
+                                        <button type="button" class="toggle-password" data-target="signin_password" aria-label="Show or hide password">
+                                            <img src="assets/wired-lineal-69-eye.svg" alt="Toggle password visibility">
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="form-row checkbox-row">
+                                    <label>
+                                        <input type="checkbox" name="remember">
+                                        Remember me
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="primary-btn">Sign In</button>
+
+                                <p class="login-text" style="margin-top:12px;text-align:center;">
+                                    Don't have an account?
+                                    <a href="Signup.html">Create one</a>
+                                </p>
+                            </form>
                         </div>
                     </div>
-
-                    <div class="form-row checkbox-row space-between">
-                        <label>
-                            <input type="checkbox" name="remember">
-                            Remember me
-                        </label>
-                        <a href="#" class="link-small">Forgot password?</a>
-                    </div>
-
-                    <button type="submit" class="primary-btn">Log In</button>
-                </form>
-
-                <p class="login-text">
-                    Don’t have an account?
-                    <a href="Signup.html">Sign up</a>
-                </p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- JS: toggle password visibility -->
     <script>
         document.querySelectorAll('.toggle-password').forEach(function (btn) {
             btn.addEventListener('click', function () {
