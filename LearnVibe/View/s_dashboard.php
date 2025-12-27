@@ -32,7 +32,7 @@ if (empty($_SESSION["isLoggedIn"]) || ($_SESSION["role"] ?? '') !== 'student') {
                 <a href="#">Edit</a>
             </div>
         </div>
-        <a href="#">Logout</a>
+        <a href="Logout.php">Logout</a>
     </div>
 </div>
 
