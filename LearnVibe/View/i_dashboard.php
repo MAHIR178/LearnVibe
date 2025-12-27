@@ -1,5 +1,16 @@
 <?php
+
+session_start();
+
+if (empty($_SESSION["isLoggedIn"]) || ($_SESSION["role"] ?? '') !== 'instructor') {
+    header("Location: Login.php");
+    exit;
+}
+
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +34,7 @@
                 <a href="#">Edit</a>
             </div>
         </div>
-        <a href="#">Logout</a>
+        <a href="Logout.php">Logout</a>
     </div>
 </div>
 

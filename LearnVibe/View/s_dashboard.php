@@ -1,4 +1,15 @@
 <?php
+
+session_start();
+
+if (empty($_SESSION["isLoggedIn"]) || ($_SESSION["role"] ?? '') !== 'student') {
+    header("Location: Login.php");
+    exit;
+}
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

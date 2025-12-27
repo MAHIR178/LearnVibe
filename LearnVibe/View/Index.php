@@ -1,3 +1,6 @@
+<?php
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -254,7 +257,7 @@
             join.addEventListener('click', function(e){
                 e.preventDefault();
                 // Open the signup page (relative path)
-                window.location.href = 'Signup.html';
+                window.location.href = 'Signup.php';
             });
         })();
     </script>
