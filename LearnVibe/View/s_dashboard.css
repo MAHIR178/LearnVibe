@@ -5,8 +5,6 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
-
-/* TOP BAR */
 /* top bar layout */
 .top-bar {
     position: fixed;
@@ -16,35 +14,42 @@
     background-color: rgb(43, 130, 245);
     color: white;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 8px;              /* space between search and upload */
+               /* space between search and upload */
     padding: 12px 20px;
     z-index: 1000;
 }
 
-/* SEARCH input only */
+
 .top-bar input[type="text"] {
+
+    margin: auto;
     padding: 8px 12px;
     border-radius: 6px;
     border: none;
-    width: 500px;          /* nice wide search bar */
+    width: 420px;          /* wide search bar */
     font-size: 16px;
 }
 
-/* UPLOAD button only */
+/* UPLOAD BUTTON (small, next to search) */
 .top-bar input[type="button"] {
+   margin-right: 20px   ;
     padding: 6px 14px;
     border-radius: 6px;
     border: none;
-    font-size: 14px;
+    font-size: 17px;
     cursor: pointer;
-    background-color: #0f5fe0;
-    color: #ffffff;
+    background-color: whitesmoke;
+    color: black;
 }
+
+
 
 .top-bar input[type="button"]:hover {
     background-color: #0a4bb5;
 }
+
 
 
 
@@ -157,3 +162,4 @@
     .grid { grid-template-columns: 1fr; }
     .top-bar { flex-direction: column; align-items: flex-start; gap: 10px; }
 }
+
