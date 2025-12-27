@@ -7,6 +7,7 @@
 }
 
 /* TOP BAR */
+/* top bar layout */
 .top-bar {
     position: fixed;
     top: 0;
@@ -15,19 +16,37 @@
     background-color: rgb(43, 130, 245);
     color: white;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 8px;              /* space between search and upload */
     padding: 12px 20px;
     z-index: 1000;
 }
 
-.top-bar input {
+/* SEARCH input only */
+.top-bar input[type="text"] {
     padding: 8px 12px;
     border-radius: 6px;
     border: none;
-    width: 500px; /* make it wider */
+    width: 500px;          /* nice wide search bar */
     font-size: 16px;
 }
+
+/* UPLOAD button only */
+.top-bar input[type="button"] {
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #0f5fe0;
+    color: #ffffff;
+}
+
+.top-bar input[type="button"]:hover {
+    background-color: #0a4bb5;
+}
+
+
 
 
 .top-links {
