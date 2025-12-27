@@ -48,12 +48,11 @@ body {
     padding-right: 80px;
 }
 
-/* login button in navbar */
-/* bigger, transparent login button */
+
 .login-btn {
     background: transparent;
     border: none;
-    color: #000;
+    color: #72A9D4;
     font-size: 18px;      /* bigger text */
     font-weight: 700;
     padding: 10px 0;      /* vertical space, no horizontal box */
@@ -128,7 +127,6 @@ body {
     height: auto;
     display: block;
     border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
 /* ---------- FOOTER ---------- */
