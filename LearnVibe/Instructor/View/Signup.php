@@ -1,5 +1,7 @@
 <?php
-require_once "../Model/Database.php";
+
+require_once __DIR__ . '/../../Admin/Model/Database.php';
+
 
 $errors = [];
 $success = "";
@@ -95,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LearnVibe | Sign Up</title>
+    <title> Sign Up</title>
     <link rel="stylesheet" href="signup.css">
     <style>
         .field-error {
@@ -110,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="auth-wrapper">
             <div class="signup-card">
 
-                <!-- SERVER-SIDE MESSAGES -->
+            
                 <?php if (!empty($errors)): ?>
                     <div class="error-box">
                         <?php foreach ($errors as $e): ?>
@@ -123,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
                 <?php endif; ?>
 
-                <!-- TABS -->
+               
                 <input type="radio" name="role" id="student-tab" checked>
                 <input type="radio" name="role" id="instructor-tab">
 
@@ -375,7 +377,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </script>
 
     
-    <script src="./Controller/SignupValidation.js"></script>
+    <script src="../Controller/SignValidation.js"></script>
 
 </body>
 </html>
