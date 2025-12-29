@@ -227,7 +227,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <button type="submit" class="primary-btn">Sign Up as Student</button>
                 </form>
 
-                <!-- INSTRUCTOR FORM -->
+               
                 <form class="form instructor-form" action="" method="post">
                     <h2>Create Instructor Account</h2>
 
