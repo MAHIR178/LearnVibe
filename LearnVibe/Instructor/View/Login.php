@@ -7,7 +7,7 @@ require_once ('../../Admin/Model/Database.php');
 $loginErr = "";
 $email    = ""; 
 
-if (!empty($_SESSION["isLoggedIn"])) {
+if (!empty($_SESSION["isLoggedIn"])) { 
     $role = $_SESSION["role"] ?? null;
 
     if ($role === "student") {
