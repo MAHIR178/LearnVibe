@@ -31,7 +31,7 @@ $user_email = $_SESSION['user_email'];
     <a href="profile_edit.php">Edit</a>
 </div>
         </div>
-        <a href="#">Logout</a>
+        <a href="../../Instructor/View/Logout.php">Logout</a>
     </div>
 </div>
 
@@ -167,4 +167,4 @@ document.addEventListener('click', function(e) {
 
 </body>
 </html>
-?>
+
