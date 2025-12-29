@@ -96,13 +96,7 @@
     cursor: pointer;
 }
 
-.save-button:hover {
-    background: rgb(30, 100, 200);
-}
 
-.cancel-button:hover {
-    background: #555;
-}
 
 /* Message styles */
 .message {

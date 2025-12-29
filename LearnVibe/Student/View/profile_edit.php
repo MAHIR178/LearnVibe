@@ -198,10 +198,10 @@ mysqli_close($conn);
                 
                 <!-- Password Change -->
                 <div class="form-group">
-                    <label class="form-label">New Password (Leave empty to keep current)</label>
+                    <label class="form-label">New Password </label>
                     <input type="password" name="password" class="form-input" 
                            placeholder="Enter new password">
-                    <div class="password-note">If you enter a new password, it will replace your current one</div>
+                    
                 </div>
                 
                 <!-- Confirm Password -->
