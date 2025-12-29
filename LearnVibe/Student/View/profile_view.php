@@ -1,16 +1,16 @@
 <?php
 session_start();
 
-// Check if user is logged in - use the same check as dashboard
+
 if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
     header("Location: ../../Instructor/View/Login.php");
     exit;
 }
 
-// Get user email from session (not from GET parameter)
+
 $user_email = $_SESSION['email'];
 
-// Database connection
+
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -22,7 +22,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Fetch user data using session email
+
 $sql = "SELECT role, full_name, email, contact_number, university_name, department, year, expertise 
         FROM users WHERE email = ?";
     

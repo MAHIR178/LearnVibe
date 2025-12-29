@@ -20,7 +20,7 @@ if (!empty($_SESSION["isLoggedIn"])) {
     exit;
 }
 
-// Handle form submit
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email    = trim($_POST["email"] ?? "");
     $password = trim($_POST["password"] ?? "");
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $emailEsc    = $conn->real_escape_string($email);
         $passwordEsc = $conn->real_escape_string($password);
 
-        // Plain-text check to match how you stored passwords in signup
+        
         $sql = "SELECT * FROM users 
                 WHERE email = '$emailEsc' 
                   AND password = '$passwordEsc'
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION["role"]       = $user["role"] ?? null;
             $_SESSION["full_name"]  = $user["full_name"] ?? null;
             $_SESSION["email"]      = $user["email"];
-            // Provide legacy key expected by student dashboard
+            
             $_SESSION["user_email"] = $user["email"];
 
             if ($_SESSION["role"] === "student") {
