@@ -118,11 +118,7 @@ mysqli_close($conn);
                 </div>
                 <?php endif; ?>
                 
-                <div class="info-group">
-                    <div class="info-label">Account Created</div>
-                    <div class="info-value">
-                        
-                    </div>
+                
                 </div>
             </div>
             
