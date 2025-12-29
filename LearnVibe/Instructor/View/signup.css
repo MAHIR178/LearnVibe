@@ -6,45 +6,20 @@
     font-family: "Outfit", sans-serif;
 }
 
+/* -------- PAGE BACKGROUND & CENTERING -------- */
 body {
     min-height: 100vh;
-    background: url("assets/homepage-screenshot.png") center/cover no-repeat fixed;
-    display: flex;
-    flex-direction: column;
+    background: #f5f5f5;           /* simple light background */
+    display: flex;                 /* center the form */
     align-items: center;
     justify-content: center;
-}
-.blur-layer {
-    min-height: 100vh;
-    width: 100%;
-    backdrop-filter: blur(8px);                 /* 🔹 blur homepage behind */
-    background-color: rgba(242, 245, 250, 0.6); /* soft tint */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-
-/* logo at top */
-.logo {
-    font-size: 32px;
-    font-weight: 700;
-}
-
-.logo span {
-    color: #72A9D4;
-}
-
-.center-logo {
-    margin-bottom: 16px;
+    padding: 16px;                 /* some breathing room on small screens */
 }
 
 /* -------- WRAPPER & CARD -------- */
 .auth-wrapper {
-    max-width: 650px;
+    max-width: 600px;
     width: 100%;
-    padding: 0 16px 24px;
     display: flex;
     justify-content: center;
 }
@@ -52,51 +27,46 @@ body {
 .signup-card {
     width: 100%;
     background: #ffffff;
-    border-radius: 18px;
-    padding: 26px 30px 30px;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
-    position: relative;
-    animation: floatIn 0.6s ease-out;
-}
-
-/* Keep card within viewport and hide its scrollbar visually so toggling tabs
-   (student/instructor) won't show a page scrollbar. Content remains scrollable. */
-.signup-card {
-    max-height: calc(100vh - 48px);
+    border-radius: 8px;
+    border: 1px solid #dddddd;
+    padding: 20px 24px 24px;
+    max-height: calc(100vh - 40px);   /* avoid overflowing viewport too much */
     overflow-y: auto;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
 }
 
-.signup-card::-webkit-scrollbar { /* WebKit */
-    width: 0;
-    height: 0;
+/* -------- ERROR / SUCCESS BOXES -------- */
+.error-box {
+    background: #ffe5e5;
+    border: 1px solid #ff9b9b;
+    color: #b30000;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 10px;
 }
 
-@keyframes floatIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.success-box {
+    background: #e8ffe5;
+    border: 1px solid #9bff9f;
+    color: #1c6b1f;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 10px;
 }
 
-/* hide radio buttons */
+/* -------- TABS -------- */
 #student-tab,
 #instructor-tab {
     display: none;
 }
 
-/* tabs */
 .tabs {
     display: flex;
-    background: #f2f5fa;
-    padding: 4px;
+    background: #eeeeee;
+    padding: 2px;
     border-radius: 999px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .tab-label {
@@ -106,18 +76,17 @@ body {
     font-size: 14px;
     cursor: pointer;
     border-radius: 999px;
-    transition: background 0.3s ease, color 0.3s ease;
     color: #555;
 }
 
-/* active tab */
+/* active tab state */
 #student-tab:checked ~ .tabs label[for="student-tab"],
 #instructor-tab:checked ~ .tabs label[for="instructor-tab"] {
     background: #72A9D4;
     color: #ffffff;
 }
 
-/* forms toggle */
+/* show one form at a time */
 .forms form {
     display: none;
 }
@@ -133,40 +102,15 @@ body {
 /* -------- FORM STYLING -------- */
 .form h2 {
     font-size: 20px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     text-align: center;
 }
 
 .form-row {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     display: flex;
     flex-direction: column;
     gap: 4px;
-}
-
-.form-row label {
-    font-size: 13px;
-    color: #444;
-}
-
-.form-row input,
-.form-row select {
-    padding: 9px 10px;
-    border-radius: 8px;
-    border: 1px solid #d3d9e4;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    background-color: #f9fbff;
-}
-#expertise-text{
-    padding: 9px 52px;
-}
-
-.form-row input:focus,
-.form-row select:focus {
-    border-color: #72A9D4;
-    box-shadow: 0 0 0 2px rgba(114, 169, 212, 0.25);
 }
 
 .form-row.inline {
@@ -176,6 +120,26 @@ body {
 
 .form-row.inline > div {
     flex: 1;
+}
+
+.form-row label {
+    font-size: 13px;
+    color: #333;
+}
+
+.form-row input,
+.form-row select {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #cccccc;
+    font-size: 14px;
+    background-color: #ffffff;
+}
+
+.form-row input:focus,
+.form-row select:focus {
+    outline: none;
+    border-color: #72A9D4;
 }
 
 /* checkbox row */
@@ -188,7 +152,7 @@ body {
     margin-right: 6px;
 }
 
-/* -------- ICON INPUTS & PASSWORD HINT -------- */
+/* -------- ICON INPUTS -------- */
 .input-with-icon {
     display: flex;
     flex-direction: column;
@@ -201,53 +165,28 @@ body {
 
 .field-wrapper input {
     width: 100%;
-    padding: 9px 38px 9px 32px; /* left & right room for icons */
-    border-radius: 8px;
-    border: 1px solid #d3d9e4;
+    padding: 8px 10px 8px 28px; /* space for left icon only */
+    border-radius: 6px;
+    border: 1px solid #cccccc;
     font-size: 14px;
-    background-color: #f9fbff;
+    background-color: #ffffff;
 }
 
 .field-wrapper input:focus {
+    outline: none;
     border-color: #72A9D4;
-    box-shadow: 0 0 0 2px rgba(114, 169, 212, 0.25);
 }
 
 .field-icon-left {
     position: absolute;
-    left: 10px;
+    left: 8px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 15px;
+    font-size: 14px;
     pointer-events: none;
 }
 
-.toggle-password {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.toggle-password img {
-    width: 18px;
-    height: 18px;
-    opacity: 0.9;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.toggle-password.is-visible img {
-    opacity: 0.7;
-    transform: scale(1.05);
-}
-
+/* small helper text */
 .password-hint {
     font-size: 11px;
     color: #777;
@@ -256,23 +195,15 @@ body {
 /* -------- BUTTON -------- */
 .primary-btn {
     width: 100%;
-    margin-top: 6px;
+    margin-top: 8px;
     padding: 10px 0;
-    border-radius: 999px;
+    border-radius: 20px;
     border: none;
     cursor: pointer;
     background: #000000;
     color: #ffffff;
     font-weight: 600;
     font-size: 14px;
-    letter-spacing: 0.3px;
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-}
-
-.primary-btn:hover {
-    background: #1d1d1d;
-    transform: translateY(-1px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.18);
 }
 
 /* -------- LOGIN TEXT -------- */
@@ -293,9 +224,19 @@ body {
     text-decoration: underline;
 }
 
+/* -------- FIELD ERROR (for JS validation) -------- */
+.field-error {
+    color: red;
+    font-size: 12px;
+}
+
 /* -------- RESPONSIVE -------- */
 @media (max-width: 600px) {
     .signup-card {
-        padding: 20px 18px 24px;
+        padding: 18px 16px 20px;
+    }
+
+    .form-row.inline {
+        flex-direction: column;
     }
 }

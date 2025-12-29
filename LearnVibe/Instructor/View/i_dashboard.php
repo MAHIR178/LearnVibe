@@ -17,7 +17,7 @@ if (empty($_SESSION["isLoggedIn"]) || ($_SESSION["role"] ?? '') !== 'instructor'
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Project</title>
-    <link rel="stylesheet" href="s_dashboard.css">
+    <link rel="stylesheet" href="../../Student/View/s_dashboard.css">
 </head>
 <body>
 
