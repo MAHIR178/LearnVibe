@@ -5,7 +5,8 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
-/* top bar layout */
+
+/* TOP BAR */
 .top-bar {
     position: fixed;
     top: 0;
@@ -16,42 +17,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-               /* space between search and upload */
     padding: 12px 20px;
     z-index: 1000;
 }
 
-
-.top-bar input[type="text"] {
-
-    margin: auto;
+.top-bar input {
     padding: 8px 12px;
     border-radius: 6px;
     border: none;
-    width: 420px;          /* wide search bar */
+    width: 500px; /* make it wider */
     font-size: 16px;
 }
-
-/* UPLOAD BUTTON (small, next to search) */
-.top-bar input[type="button"] {
-   margin-right: 20px   ;
-    padding: 6px 14px;
-    border-radius: 6px;
-    border: none;
-    font-size: 17px;
-    cursor: pointer;
-    background-color: whitesmoke;
-    color: black;
-}
-
-
-
-.top-bar input[type="button"]:hover {
-    background-color: #0a4bb5;
-}
-
-
-
 
 
 .top-links {
@@ -162,4 +138,3 @@
     .grid { grid-template-columns: 1fr; }
     .top-bar { flex-direction: column; align-items: flex-start; gap: 10px; }
 }
-

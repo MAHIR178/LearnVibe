@@ -1,12 +1,14 @@
 <?php
-
 session_start();
 
-if (empty($_SESSION["isLoggedIn"]) || ($_SESSION["role"] ?? '') !== 'student') {
-    header("Location: ../Instructor/View/Login.php");
+// If using sessions, redirect to login if not logged in
+if (!isset($_SESSION['user_email'])) {
+    header("Location: login.php");
     exit;
 }
 
+// Get user email from session instead of URL
+$user_email = $_SESSION['user_email'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,11 +27,11 @@ if (empty($_SESSION["isLoggedIn"]) || ($_SESSION["role"] ?? '') !== 'student') {
         <div class="profile">
             <a href="#" id="profile-btn">My Profile ▼</a>
             <div class="profile-menu" id="profile-menu">
-                <a href="#">View</a>
-                <a href="#">Edit</a>
-            </div>
+    <a href="profile_view.php?email=233@mmail.com">View</a>
+    <a href="profile_edit.php?email=233@mmail.com">Edit</a>
+</div>
         </div>
-        <a href="../../Instructor/View/Logout.php">Logout</a>
+        <a href="#">Logout</a>
     </div>
 </div>
 
@@ -165,4 +167,4 @@ document.addEventListener('click', function(e) {
 
 </body>
 </html>
-
+?>
