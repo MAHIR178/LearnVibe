@@ -23,7 +23,7 @@ if (!$conn) {
 }
 
 // Fetch user data using session email
-$sql = "SELECT role, full_name, email, contact_number, university_name, department, year, expertise, created_at 
+$sql = "SELECT role, full_name, email, contact_number, university_name, department, year, expertise 
         FROM users WHERE email = ?";
     
 $stmt = mysqli_prepare($conn, $sql);
@@ -118,8 +118,7 @@ mysqli_close($conn);
                 </div>
                 <?php endif; ?>
                 
-                
-                </div>
+               
             </div>
             
             <button onclick="window.location.href='s_dashboard.php'" class="back-button">
