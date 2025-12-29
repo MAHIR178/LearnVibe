@@ -7,9 +7,6 @@ if (empty($_SESSION["isLoggedIn"]) || ($_SESSION["role"] ?? '') !== 'student') {
     exit;
 }
 
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +29,7 @@ if (empty($_SESSION["isLoggedIn"]) || ($_SESSION["role"] ?? '') !== 'student') {
                 <a href="#">Edit</a>
             </div>
         </div>
-        <a href="Logout.php">Logout</a>
+        <a href="../../Instructor/View/Logout.php">Logout</a>
     </div>
 </div>
 
@@ -168,4 +165,4 @@ document.addEventListener('click', function(e) {
 
 </body>
 </html>
-?>
+

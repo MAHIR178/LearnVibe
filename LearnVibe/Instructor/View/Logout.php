@@ -8,6 +8,6 @@ $_SESSION = [];
 session_unset();
 session_destroy();
 
-header("Location: Index.php");
+header("Location: ../../Student/View/Index.php");
 exit;
 ?>

@@ -2,7 +2,7 @@
 session_start();
 
 
-require_once __DIR__ . '/../../Admin/Model/Database.php';
+require_once ('../../Admin/Model/Database.php');
 
 $loginErr = "";
 $email    = ""; 
@@ -11,9 +11,9 @@ if (!empty($_SESSION["isLoggedIn"])) {
     $role = $_SESSION["role"] ?? null;
 
     if ($role === "student") {
-        header("Location: ../../Student/View/s_dashboard.php");
+        header(header: "Location: ../../Student/View/s_dashboard.php");
     } elseif ($role === "instructor") {
-        header("Location: i_dashboard.php");
+        header(header: "Location: i_dashboard.php");
     } else {
         header("Location: dashboard.php"); 
     }

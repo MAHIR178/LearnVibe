@@ -20,10 +20,8 @@
  
     <div class="navbar">
         <h1 class="logo">Learn<span>Vibe</span></h1>
-        <div class="nav-links">
-            <button class="login-btn" onclick="window.location.href='Login.php'">
-                Login
-            </button>
+        <div>
+            <a style="text-decoration: none; color: #72A9D4;" href="../../Admin/View/admin_login.php">Admin Login</a>
         </div>
     </div>
 
@@ -33,7 +31,7 @@
             <h2>Your Digital</h2>
             <h2>Learning Hub</h2>
             <p>Where Students Learn, Instructors Teach, and Knowledge Connects...</p>
-            <button id="join-btn" onclick="window.location.href='Signup.php'">
+            <button id="join-btn" onclick="window.location.href='../../Instructor/View/Signup.php'">
                 Join Us
             </button>
         </div>
@@ -62,12 +60,6 @@
                         <img src="assets/instagram.png" alt="Instagram">
                     </a>
                 </div>
-            </div>
-
-            <div class="footer-col">
-                <h3>Pages</h3>
-                <a href="#home">Home</a>
-                <a href="#contact">Contact</a>
             </div>
 
             <div class="footer-col">
