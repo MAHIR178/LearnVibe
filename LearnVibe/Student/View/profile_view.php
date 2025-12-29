@@ -121,10 +121,7 @@ mysqli_close($conn);
                 <div class="info-group">
                     <div class="info-label">Account Created</div>
                     <div class="info-value">
-                        <?php 
-                        $date = new DateTime($user['created_at']);
-                        echo $date->format('F j, Y, g:i a');
-                        ?>
+                        
                     </div>
                 </div>
             </div>
