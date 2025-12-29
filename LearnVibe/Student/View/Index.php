@@ -21,7 +21,7 @@
     <div class="navbar">
         <h1 class="logo">Learn<span>Vibe</span></h1>
         <div class="nav-links">
-            <button class="login-btn" onclick="window.location.href='Login.php'">
+            <button class="login-btn" onclick="window.location.href='../../Instructor/View/Login.php'">
                 Login
             </button>
         </div>

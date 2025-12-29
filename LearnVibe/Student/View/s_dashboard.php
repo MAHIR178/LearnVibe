@@ -3,7 +3,7 @@
 session_start();
 
 if (empty($_SESSION["isLoggedIn"]) || ($_SESSION["role"] ?? '') !== 'student') {
-    header("Location: Login.php");
+    header("Location: ../Instructor/View/Login.php");
     exit;
 }
 

@@ -8,6 +8,7 @@ $_SESSION = [];
 session_unset();
 session_destroy();
 
-header("Location: ../../Student/View/Index.php");
+header("Location:../../Student/View/Index.php");
 exit;
+
 ?>

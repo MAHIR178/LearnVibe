@@ -34,7 +34,7 @@ if (empty($_SESSION["isLoggedIn"]) || ($_SESSION["role"] ?? '') !== 'instructor'
                 <a href="#">Edit</a>
             </div>
         </div>
-        <a href="../Instructor/View/Logout.php">Logout</a>
+        <a href="Logout.php">Logout</a>
     </div>
 </div>
 
