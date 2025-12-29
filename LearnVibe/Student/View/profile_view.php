@@ -4,7 +4,7 @@ session_start();
 
 // If using sessions, redirect to login if not logged in
 if (!isset($_SESSION['user_email'])) {
-    header("Location: login.php");
+    header("Location: ../../Instructor/View/Login.php");
     exit;
 }
 
