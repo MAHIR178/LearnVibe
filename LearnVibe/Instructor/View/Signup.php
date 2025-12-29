@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../../Admin/Model/Database.php';
+require_once ('../../Admin/Model/Database.php');
 
 $errors = [];
 $success = "";

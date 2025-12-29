@@ -7,9 +7,6 @@ if (empty($_SESSION["isLoggedIn"]) || ($_SESSION["role"] ?? '') !== 'student') {
     exit;
 }
 
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -168,4 +165,4 @@ document.addEventListener('click', function(e) {
 
 </body>
 </html>
-?>
+

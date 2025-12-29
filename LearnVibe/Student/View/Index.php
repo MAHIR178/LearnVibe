@@ -21,7 +21,7 @@
     <div class="navbar">
         <h1 class="logo">Learn<span>Vibe</span></h1>
         <div class="nav-links">
-            <button class="login-btn" onclick="window.location.href='../../Instructor/View/Login.php'">
+            <button class="login-btn" onclick="window.location.href='Login.php'">
                 Login
             </button>
         </div>
@@ -62,12 +62,6 @@
                         <img src="assets/instagram.png" alt="Instagram">
                     </a>
                 </div>
-            </div>
-
-            <div class="footer-col">
-                <h3>Pages</h3>
-                <a href="#home">Home</a>
-                <a href="#contact">Contact</a>
             </div>
 
             <div class="footer-col">

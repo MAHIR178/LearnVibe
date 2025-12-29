@@ -46,6 +46,8 @@ body {
     align-items: center;
     gap: 18px;
     padding-right: 80px;
+    text-decoration: none;
+    color: #72A9D4;
 }
 
 
