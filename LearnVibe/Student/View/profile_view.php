@@ -1,16 +1,14 @@
 <?php
-
 session_start();
 
-// If using sessions, redirect to login if not logged in
+// Check if user is logged in - use the same check as dashboard
 if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
     header("Location: ../../Instructor/View/Login.php");
     exit;
 }
 
-// Get user email from session instead of URL
-$current_user_email = $_SESSION['email'];
-
+// Get user email from session (not from GET parameter)
+$user_email = $_SESSION['email'];
 
 // Database connection
 $host = "localhost";
@@ -24,27 +22,22 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Get email from URL
-$user_email = isset($_GET['email']) ? mysqli_real_escape_string($conn, $_GET['email']) : '';
+// Fetch user data using session email
+$sql = "SELECT role, full_name, email, contact_number, university_name, department, year, expertise, created_at 
+        FROM users WHERE email = ?";
+    
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "s", $user_email);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 
-if (empty($user_email)) {
-    $error = "No user specified.";
+if ($result && mysqli_num_rows($result) > 0) {
+    $user = mysqli_fetch_assoc($result);
+} else {
+    $error = "User not found.";
 }
 
-// Fetch user data
-if (!empty($user_email) && !isset($error)) {
-    $sql = "SELECT role, full_name, email, contact_number, university_name, department, year, expertise, created_at 
-            FROM users WHERE email = '$user_email'";
-    
-    $result = mysqli_query($conn, $sql);
-    
-    if ($result && mysqli_num_rows($result) > 0) {
-        $user = mysqli_fetch_assoc($result);
-    } else {
-        $error = "User not found.";
-    }
-}
-
+mysqli_stmt_close($stmt);
 mysqli_close($conn);
 ?>
 
@@ -56,7 +49,6 @@ mysqli_close($conn);
     <title>Profile View</title>
     <link rel="stylesheet" href="profile_view.css">
     <style>
-        /* Inline basic styles if needed */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -126,7 +118,15 @@ mysqli_close($conn);
                 </div>
                 <?php endif; ?>
                 
-               
+                <div class="info-group">
+                    <div class="info-label">Account Created</div>
+                    <div class="info-value">
+                        <?php 
+                        $date = new DateTime($user['created_at']);
+                        echo $date->format('F j, Y, g:i a');
+                        ?>
+                    </div>
+                </div>
             </div>
             
             <button onclick="window.location.href='s_dashboard.php'" class="back-button">

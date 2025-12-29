@@ -1,15 +1,14 @@
 <?php
 session_start();
 
-// If using sessions, redirect to login if not logged in
-if (!isset($_SESSION['user_email'])) {
-    header("Location: login.php");
+// Check if user is logged in - use the same check as dashboard
+if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
+    header("Location: ../../Instructor/View/Login.php");
     exit;
 }
 
-// Get user email from session instead of URL
-$user_email = $_SESSION['user_email'];
-
+// Get user email from session
+$user_email = $_SESSION['email'];
 
 // Database connection
 $host = "localhost";
@@ -21,16 +20,6 @@ $conn = mysqli_connect($host, $user, $pass, $dbname);
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
-}
-
-// Get email from URL
-$user_email = isset($_GET['email']) ? mysqli_real_escape_string($conn, $_GET['email']) : '';
-
-if (empty($user_email)) {
-    $error = "No user specified.";
-    $show_form = false;
-} else {
-    $show_form = true;
 }
 
 // Handle form submission
@@ -72,24 +61,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_changes'])) {
     if (mysqli_query($conn, $sql)) {
         $message = "Profile updated successfully!";
         $message_type = "success";
+        
+        // Update session full_name if it was changed
+        $_SESSION['full_name'] = $full_name;
     } else {
         $error = "Error updating profile: " . mysqli_error($conn);
     }
 }
 
 // Fetch current user data
-if ($show_form && !isset($error)) {
-    $sql = "SELECT * FROM users WHERE email = '$user_email'";
-    $result = mysqli_query($conn, $sql);
-    
-    if ($result && mysqli_num_rows($result) > 0) {
-        $user = mysqli_fetch_assoc($result);
-    } else {
-        $error = "User not found.";
-        $show_form = false;
-    }
+$sql = "SELECT * FROM users WHERE email = ?";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "s", $user_email);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $user = mysqli_fetch_assoc($result);
+    $show_form = true;
+} else {
+    $error = "User not found.";
+    $show_form = false;
 }
 
+mysqli_stmt_close($stmt);
 mysqli_close($conn);
 ?>
 
@@ -215,9 +210,6 @@ mysqli_close($conn);
                     <input type="password" name="confirm_password" class="form-input" 
                            placeholder="Confirm new password">
                 </div>
-                
-                <!-- Hidden fields -->
-                <input type="hidden" name="email" value="<?php echo htmlspecialchars($user_email); ?>">
                 
                 <!-- Buttons -->
                 <div class="button-container">
