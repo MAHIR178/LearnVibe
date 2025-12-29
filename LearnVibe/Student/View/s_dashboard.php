@@ -3,7 +3,7 @@ session_start();
 
 // If using sessions, redirect to login if not logged in
 if (!isset($_SESSION['user_email'])) {
-    header("Location: login.php");
+    header("Location: ../../Instructor/View/Login.php");
     exit;
 }
 
@@ -27,8 +27,8 @@ $user_email = $_SESSION['user_email'];
         <div class="profile">
             <a href="#" id="profile-btn">My Profile ▼</a>
             <div class="profile-menu" id="profile-menu">
-    <a href="profile_view.php?email=233@mmail.com">View</a>
-    <a href="profile_edit.php?email=233@mmail.com">Edit</a>
+    <a href="profile_view.php">View</a>
+    <a href="profile_edit.php">Edit</a>
 </div>
         </div>
         <a href="#">Logout</a>
