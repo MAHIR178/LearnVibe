@@ -9,7 +9,7 @@ if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
 }
 
 // Get user email from session instead of URL
-$user_email = $_SESSION['user_email'];
+$current_user_email = $_SESSION['email'];
 
 
 // Database connection

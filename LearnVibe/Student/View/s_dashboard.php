@@ -2,13 +2,16 @@
 session_start();
 
 // If using sessions, redirect to login if not logged in
-if (!isset($_SESSION['user_email'])) {
+if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
     header("Location: ../../Instructor/View/Login.php");
     exit;
 }
+$current_user_email = $_SESSION['email'];
+$current_user_name = isset($_SESSION['full_name']) ? $_SESSION['full_name'] : 'User';
+$current_user_role = isset($_SESSION['role']) ? $_SESSION['role'] : 'student';
 
 // Get user email from session instead of URL
-$user_email = $_SESSION['user_email'];
+$current_user_email = $_SESSION['email'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
