@@ -50,9 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION["role"]       = $user["role"] ?? null;
             $_SESSION["full_name"]  = $user["full_name"] ?? null;
             $_SESSION["email"]      = $user["email"];
+            // Provide legacy key expected by student dashboard
+            $_SESSION["user_email"] = $user["email"];
 
             if ($_SESSION["role"] === "student") {
-                header("Location: s_dashboard.php");
+                header("Location: ../../Student/View/s_dashboard.php");
             } elseif ($_SESSION["role"] === "instructor") {
                 header("Location: i_dashboard.php");
             } else {

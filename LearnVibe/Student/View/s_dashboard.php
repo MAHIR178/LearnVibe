@@ -3,7 +3,7 @@ session_start();
 
 // If using sessions, redirect to login if not logged in
 if (!isset($_SESSION['user_email'])) {
-    header("Location: login.php");
+    header("Location: ../../Instructor/View/Login.php");
     exit;
 }
 
@@ -31,7 +31,7 @@ $user_email = $_SESSION['user_email'];
     <a href="profile_edit.php?email=233@mmail.com">Edit</a>
 </div>
         </div>
-        <a href="#">Logout</a>
+        <a href="../../Instructor/View/Logout.php">Logout</a>
     </div>
 </div>
 
@@ -167,4 +167,4 @@ document.addEventListener('click', function(e) {
 
 </body>
 </html>
-?>
+
