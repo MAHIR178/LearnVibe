@@ -21,7 +21,7 @@
     <div class="navbar">
         <h1 class="logo">Learn<span>Vibe</span></h1>
         <div class="nav-links">
-            <button class="login-btn" onclick="window.location.href='Login.php'">
+            <button class="login-btn" onclick="window.location.href='../../Instructor/View/Login.php'">
                 Login
             </button>
         </div>
@@ -33,7 +33,7 @@
             <h2>Your Digital</h2>
             <h2>Learning Hub</h2>
             <p>Where Students Learn, Instructors Teach, and Knowledge Connects...</p>
-            <button id="join-btn" onclick="window.location.href='Signup.php'">
+            <button id="join-btn" onclick="window.location.href='../../Instructor/View/Signup.php'">
                 Join Us
             </button>
         </div>
