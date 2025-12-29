@@ -203,7 +203,12 @@ body {
 .login-text a:hover {
     text-decoration: underline;
 }
-
+ .error-msg {
+            color: #b30000;
+            font-size: 13px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 480px) {
     .signin-card {

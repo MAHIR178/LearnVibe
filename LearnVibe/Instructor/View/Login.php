@@ -11,7 +11,7 @@ if (!empty($_SESSION["isLoggedIn"])) {
     $role = $_SESSION["role"] ?? null;
 
     if ($role === "student") {
-        header("Location: s_dashboard.php");
+        header("Location: ../../Student/View/s_dashboard.php");
     } elseif ($role === "instructor") {
         header("Location: i_dashboard.php");
     } else {
@@ -74,18 +74,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LearnVibe | Sign In</title>
     <link rel="stylesheet" href="login.css">
-    <style>
-        .error-msg {
-            color: #b30000;
-            font-size: 13px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-    </style>
+    
 </head>
 <body>
 
-    <!-- no blur-layer, just a simple centered card -->
+    
     <div class="auth-wrapper">
         <div class="signin-card">
             <div class="signin-layout">
