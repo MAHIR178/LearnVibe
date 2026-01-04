@@ -121,9 +121,9 @@ mysqli_close($conn);
                
             </div>
             
-            <button onclick="window.location.href='s_dashboard.php'" class="back-button">
+            <!-- <button onclick="window.location.href='s_dashboard.php'" class="back-button">
                 Back
-            </button>
+            </button>-->
         </div>
     </div>
 <?php endif; ?>

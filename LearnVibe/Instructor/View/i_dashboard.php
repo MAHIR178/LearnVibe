@@ -28,14 +28,14 @@ if (empty($_SESSION["isLoggedIn"]) || ($_SESSION["role"] ?? '') !== 'instructor'
 <!-- TOP BAR -->
 <div class="top-bar">
     <input type="text" placeholder="Search">
-    <input type="button"class="btn-upload" value="Upload" onclick="window.location.href='Upload.php'">
+    <input type="button" value="Upload" onclick="window.location.href='Upload.php'">
 
     <div class="top-links">
         <div class="profile">
             <a href="#" id="profile-btn">My Profile ▼</a>
             <div class="profile-menu" id="profile-menu">
-                <a href="#">View</a>
-                <a href="#">Edit</a>
+                <a href="../../Student/View/profile_view.php">View</a>
+                <a href="../../Student/View/profile_edit.php">Edit</a>
             </div>
         </div>
         <a href="Logout.php">Logout</a>

@@ -1,9 +1,10 @@
 /* RESET */
-* {
+ 
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: "Outfit", sans-serif;
 }
 
 /* TOP BAR */
@@ -20,14 +21,19 @@
     padding: 12px 20px;
     z-index: 1000;
 }
-.btn-upload{
-    width:50%;
-    height: auto;
+.top-bar input[type="button"]{
+    margin-left: 500px;
+    width: 120px;
     padding: 6px 12px;
-    font-size: 13px;
+    font-size: 18px;
     border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.6);
+    background: white;
+    
     cursor: pointer;
 }
+
+
 
 .top-bar input {
     padding: 8px 12px;

@@ -51,12 +51,13 @@ function fileSrc($p) {
 
  
     <link rel="stylesheet" href="course_files.css"> 
+    <link rel="stylesheet" href="../../Student/View/s_dashboard.css">
 </head>
 <body>
 
 <div class="top-bar">
     <input type="text" placeholder="Search">
-    <input type="button" value="Upload" onclick="window.location.href='Upload.php'">
+    
     <div class="top-links">
         <a href="i_dashboard.php">Back</a>
         <a href="Logout.php">Logout</a>

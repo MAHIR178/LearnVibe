@@ -102,14 +102,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <title>Upload Course File</title>
     
     <link rel="stylesheet" href="Upload.css">
+    <link rel="stylesheet" href="../../Student/View/s_dashboard.css">
+    
 </head>
 <body>
 
 
+  <div class="top-bar">
    
+    
     <div class="top-links">
         <a href="i_dashboard.php">Dashboard</a>
-        <a href="Logout.php">Logout</a>
+       
     </div>
 </div>
 
