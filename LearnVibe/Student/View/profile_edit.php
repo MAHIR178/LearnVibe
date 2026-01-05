@@ -1,91 +1,76 @@
 <?php
 session_start();
+require_once('../../Admin/Model/Database.php');
 
-// Check if user is logged in - use the same check as dashboard
 if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
     header("Location: ../../Instructor/View/Login.php");
     exit;
 }
 
-// Get user email from session
 $user_email = $_SESSION['email'];
 
-// Database connection
-$host = "localhost";
-$user = "root";
-$pass = "";
-$dbname = "learnvibe";
+$db = new DatabaseConnection();
+$conn = $db->openConnection();
 
-$conn = mysqli_connect($host, $user, $pass, $dbname);
-
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+$show_form = false;
 
 // Handle form submission
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_changes'])) {
-    // Get form data
-    $full_name = mysqli_real_escape_string($conn, $_POST['full_name']);
-    $contact_number = mysqli_real_escape_string($conn, $_POST['contact_number']);
-    $university_name = mysqli_real_escape_string($conn, $_POST['university_name']);
-    $department = mysqli_real_escape_string($conn, $_POST['department']);
-    $year = isset($_POST['year']) ? mysqli_real_escape_string($conn, $_POST['year']) : '';
-    $expertise = isset($_POST['expertise']) ? mysqli_real_escape_string($conn, $_POST['expertise']) : '';
-    
-    // Check if password is being changed
-    $password = $_POST['password'];
-    if (!empty($password)) {
-        // Update with new password
-        $hashed_password = mysqli_real_escape_string($conn, $password);
-        $sql = "UPDATE users SET 
-                full_name = '$full_name',
-                contact_number = '$contact_number',
-                university_name = '$university_name',
-                department = '$department',
-                year = '$year',
-                expertise = '$expertise',
-                password = '$hashed_password'
-                WHERE email = '$user_email'";
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_changes'])) {
+
+    $full_name = trim($_POST['full_name'] ?? "");
+    $contact_number = trim($_POST['contact_number'] ?? "");
+    $university_name = trim($_POST['university_name'] ?? "");
+    $department = trim($_POST['department'] ?? "");
+    $year = trim($_POST['year'] ?? "");
+    $expertise = trim($_POST['expertise'] ?? "");
+    $password = trim($_POST['password'] ?? "");
+
+    // Update (with or without password)
+    if ($password !== "") {
+        $ok = $db->updateUserProfileWithPassword(
+            $conn,
+            $user_email,
+            $full_name,
+            $contact_number,
+            $university_name,
+            $department,
+            $year,
+            $expertise,
+            $password
+        );
     } else {
-        // Update without changing password
-        $sql = "UPDATE users SET 
-                full_name = '$full_name',
-                contact_number = '$contact_number',
-                university_name = '$university_name',
-                department = '$department',
-                year = '$year',
-                expertise = '$expertise'
-                WHERE email = '$user_email'";
+        $ok = $db->updateUserProfile(
+            $conn,
+            $user_email,
+            $full_name,
+            $contact_number,
+            $university_name,
+            $department,
+            $year,
+            $expertise
+        );
     }
-    
-    if (mysqli_query($conn, $sql)) {
+
+    if ($ok) {
         $message = "Profile updated successfully!";
         $message_type = "success";
-        
-        // Update session full_name if it was changed
         $_SESSION['full_name'] = $full_name;
     } else {
-        $error = "Error updating profile: " . mysqli_error($conn);
+        $error = "Error updating profile.";
     }
 }
 
-// Fetch current user data
-$sql = "SELECT * FROM users WHERE email = ?";
-$stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, "s", $user_email);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
+// Fetch current user data (for form)
+$user = $db->getUserByEmail($conn, $user_email);
 
-if ($result && mysqli_num_rows($result) > 0) {
-    $user = mysqli_fetch_assoc($result);
+if ($user) {
     $show_form = true;
 } else {
     $error = "User not found.";
     $show_form = false;
 }
 
-mysqli_stmt_close($stmt);
-mysqli_close($conn);
+$db->closeConnection($conn);
 ?>
 
 <!DOCTYPE html>

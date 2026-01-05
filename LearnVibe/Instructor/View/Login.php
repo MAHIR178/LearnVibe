@@ -1,25 +1,22 @@
 <?php
 session_start();
-
-
-require_once ('../../Admin/Model/Database.php');
+require_once('../../Admin/Model/Database.php');
 
 $loginErr = "";
-$email    = ""; 
+$email = "";
 
-if (!empty($_SESSION["isLoggedIn"])) { 
+if (!empty($_SESSION["isLoggedIn"])) {
     $role = $_SESSION["role"] ?? null;
 
     if ($role === "student") {
-        header(header: "Location: ../../Student/View/s_dashboard.php");
+        header("Location: ../../Student/View/s_dashboard.php");
     } elseif ($role === "instructor") {
-        header(header: "Location: i_dashboard.php");
+        header("Location: i_dashboard.php");
     } else {
-        header("Location: dashboard.php"); 
+        header("Location: dashboard.php");
     }
     exit;
 }
-
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email    = trim($_POST["email"] ?? "");
@@ -31,26 +28,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $db   = new DatabaseConnection();
         $conn = $db->openConnection();
 
-        $emailEsc    = $conn->real_escape_string($email);
-        $passwordEsc = $conn->real_escape_string($password);
+        // ✅ no SQL here
+        $user = $db->loginUser($conn, $email, $password);
 
-        
-        $sql = "SELECT * FROM users 
-                WHERE email = '$emailEsc' 
-                  AND password = '$passwordEsc'
-                LIMIT 1";
-
-        $result = $conn->query($sql);
-
-        if ($result && $result->num_rows === 1) {
-            $user = $result->fetch_assoc();
-
+        if ($user) {
             $_SESSION["isLoggedIn"] = true;
             $_SESSION["user_id"]    = $user["id"];
             $_SESSION["role"]       = $user["role"] ?? null;
             $_SESSION["full_name"]  = $user["full_name"] ?? null;
             $_SESSION["email"]      = $user["email"];
-            
             $_SESSION["user_email"] = $user["email"];
 
             if ($_SESSION["role"] === "student") {

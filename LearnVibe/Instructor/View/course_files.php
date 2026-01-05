@@ -16,23 +16,16 @@ if ($courseTitle === "") {
 $db = new DatabaseConnection();
 $con = $db->openConnection();
 
-$sql = "SELECT file_type, original_name, file_path, uploaded_at
-        FROM course_files
-        WHERE course_title = ?
-        ORDER BY id DESC";
-
-$stmt = $con->prepare($sql);
-$stmt->bind_param("s", $courseTitle);
-$stmt->execute();
-$res = $stmt->get_result();
+$res = $db->getCourseFilesByTitle($con, $courseTitle);
 
 $files = [];
-while ($row = $res->fetch_assoc()) {
-    $files[] = $row;
+if ($res) {
+    while ($row = $res->fetch_assoc()) {
+        $files[] = $row;
+    }
 }
 
 $db->closeConnection($con);
-
 function getExt($pathOrName) {
     return strtolower(pathinfo($pathOrName, PATHINFO_EXTENSION));
 }

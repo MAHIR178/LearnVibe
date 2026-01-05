@@ -1,44 +1,25 @@
 <?php
 session_start();
-
+require_once('../../Admin/Model/Database.php');
 
 if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
     header("Location: ../../Instructor/View/Login.php");
     exit;
 }
 
-
 $user_email = $_SESSION['email'];
 
-
-$host = "localhost";
-$user = "root";
-$pass = "";
-$dbname = "learnvibe";
-
-$conn = mysqli_connect($host, $user, $pass, $dbname);
-
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+$db = new DatabaseConnection();
+$conn = $db->openConnection();
 
 
-$sql = "SELECT role, full_name, email, contact_number, university_name, department, year, expertise 
-        FROM users WHERE email = ?";
-    
-$stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, "s", $user_email);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
+$user = $db->getUserProfileByEmail($conn, $user_email);
 
-if ($result && mysqli_num_rows($result) > 0) {
-    $user = mysqli_fetch_assoc($result);
-} else {
+$db->closeConnection($conn);
+
+if (!$user) {
     $error = "User not found.";
 }
-
-mysqli_stmt_close($stmt);
-mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>

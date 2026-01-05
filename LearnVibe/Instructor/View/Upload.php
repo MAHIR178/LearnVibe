@@ -58,12 +58,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 mkdir($uploadDirFS, 0777, true);
             }
 
-            // safe file name
+
             $safeName = preg_replace('/[^a-zA-Z0-9._-]/', '_', $originalName);
             $newName  = time() . "_" . uniqid() . "_" . $safeName;
 
-            $destFS  = $uploadDirFS . "/" . $newName; // filesystem
-            $destWEB = "uploads/" . $newName;         // web path
+            $destFS  = $uploadDirFS . "/" . $newName; 
+            $destWEB = "uploads/" . $newName;         
 
             if (!move_uploaded_file($_FILES["upload_file"]["tmp_name"], $destFS)) {
                 $msg = "Upload failed. Check folder permission.";
@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $db = new DatabaseConnection();
                 $con = $db->openConnection();
 
-                // addCourseFile($con, course_slug, course_title, file_type, original_name, file_path)
+                
                 $ok = $db->addCourseFile($con, $courseTitle, $fileType, $safeName, $destWEB);
 
 
@@ -84,9 +84,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $db->closeConnection($con);
 
                 if ($ok) {
-                    // ✅ IMPORTANT: redirect to YOUR real dashboard file
+                
                     header("Location: i_dashboard.php?upload=success");
-                    // OR: header("Location: view_i_dashboard.php?upload=success");
+                    
                     exit;
                 }
             }

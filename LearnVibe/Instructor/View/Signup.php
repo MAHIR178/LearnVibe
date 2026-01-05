@@ -1,88 +1,78 @@
 <?php
-
-require_once ('../../Admin/Model/Database.php');
+require_once('../../Admin/Model/Database.php');
 
 $errors = [];
 $success = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
     $db   = new DatabaseConnection();
     $conn = $db->openConnection();
 
-    function esc($conn, $value) {
-        return $conn->real_escape_string(trim($value));
-    }
+    
+    function clean($v){ return trim($v ?? ""); }
 
+    // ---------- STUDENT ----------
     if (isset($_POST["student_email"])) {
-        $role       = 'student';
-        $full_name  = esc($conn, $_POST["student_name"]);
-        $email      = esc($conn, $_POST["student_email"]);
-        $contact    = esc($conn, $_POST["student_contact_number"]);
-        $university = esc($conn, $_POST["student_university_name"]);
-        $department = esc($conn, $_POST["student_department"]);
-        $year       = esc($conn, $_POST["student_year"]);
-        $password   = esc($conn, $_POST["student_password"]);
-        $confirm    = esc($conn, $_POST["student_confirm_password"]);
 
-        if ($password !== $confirm) {
-            $errors[] = "Student passwords do not match.";
-        }
+        $full_name  = clean($_POST["student_name"]);
+        $email      = clean($_POST["student_email"]);
+        $contact    = clean($_POST["student_contact_number"]);
+        $university = clean($_POST["student_university_name"]);
+        $department = clean($_POST["student_department"]);
+        $year       = clean($_POST["student_year"]);
+        $password   = clean($_POST["student_password"]);
+        $confirm    = clean($_POST["student_confirm_password"]);
+
+       
 
         if (empty($errors)) {
-            $checkSql = "SELECT id FROM users WHERE email = '$email'";
-            $checkRes = $conn->query($checkSql);
-            if ($checkRes && $checkRes->num_rows > 0) {
+            [$ok, $existsOrErr] = $db->isEmailExists($conn, $email);
+            if (!$ok) {
+                $errors[] = $existsOrErr; // DB error string
+            } elseif ($existsOrErr === true) {
                 $errors[] = "An account already exists with this email.";
             }
         }
 
         if (empty($errors)) {
-            $sql = "
-                INSERT INTO users 
-                    (role, full_name, email, contact_number, university_name, department, year, expertise, password)
-                VALUES
-                    ('$role', '$full_name', '$email', '$contact', '$university', '$department', '$year', NULL, '$password')
-            ";
-            if ($conn->query($sql)) {
+            [$ok, $err] = $db->createStudent($conn, $full_name, $email, $contact, $university, $department, $year, $password);
+            if ($ok) {
                 $success = "Student account created successfully. You can now log in.";
             } else {
-                $errors[] = "Database error: " . $conn->error;
+                $errors[] = $err;
             }
         }
-    } elseif (isset($_POST["instructor_email"])) {
-        $role       = 'instructor';
-        $full_name  = esc($conn, $_POST["instructor_name"]);
-        $email      = esc($conn, $_POST["instructor_email"]);
-        $contact    = esc($conn, $_POST["instructor_contact_number"]);
-        $university = esc($conn, $_POST["instructor_university_name"]);
-        $department = esc($conn, $_POST["instructor_department"]);
-        $expertise  = esc($conn, $_POST["expertise"]);
-        $password   = esc($conn, $_POST["instructor_password"]);
-        $confirm    = esc($conn, $_POST["instructor_confirm_password"]);
 
-        if ($password !== $confirm) {
-            $errors[] = "Instructor passwords do not match.";
-        }
+    // ---------- INSTRUCTOR ----------
+    } elseif (isset($_POST["instructor_email"])) {
+
+        $full_name  = clean($_POST["instructor_name"]);
+        $email      = clean($_POST["instructor_email"]);
+        $contact    = clean($_POST["instructor_contact_number"]);
+        $university = clean($_POST["instructor_university_name"]);
+        $department = clean($_POST["instructor_department"]);
+        $expertise  = clean($_POST["expertise"]);
+        $password   = clean($_POST["instructor_password"]);
+        $confirm    = clean($_POST["instructor_confirm_password"]);
+
+       
 
         if (empty($errors)) {
-            $checkSql = "SELECT id FROM users WHERE email = '$email'";
-            $checkRes = $conn->query($checkSql);
-            if ($checkRes && $checkRes->num_rows > 0) {
+            [$ok, $existsOrErr] = $db->isEmailExists($conn, $email);
+            if (!$ok) {
+                $errors[] = $existsOrErr;
+            } elseif ($existsOrErr === true) {
                 $errors[] = "An account already exists with this email.";
             }
         }
 
         if (empty($errors)) {
-            $sql = "
-                INSERT INTO users 
-                    (role, full_name, email, contact_number, university_name, department, year, expertise, password)
-                VALUES
-                    ('$role', '$full_name', '$email', '$contact', '$university', '$department', NULL, '$expertise', '$password')
-            ";
-            if ($conn->query($sql)) {
+            [$ok, $err] = $db->createInstructor($conn, $full_name, $email, $contact, $university, $department, $expertise, $password);
+            if ($ok) {
                 $success = "Instructor account created successfully. You can now log in.";
             } else {
-                $errors[] = "Database error: " . $conn->error;
+                $errors[] = $err;
             }
         }
     }
@@ -90,6 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $db->closeConnection($conn);
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
