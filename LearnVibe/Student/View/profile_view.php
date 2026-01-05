@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('../../Admin/Model/Database.php');
+include '../../Admin/Model/Database.php';
 
 if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
     header("Location: ../../Instructor/View/Login.php");

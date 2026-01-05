@@ -19,7 +19,7 @@ class DatabaseConnection{
         return $connection;
     }
      // Check if email already exists
-    function isEmailExists($connection, $email){
+    function isEmailExist($connection, $email){
         $sql = "SELECT id FROM users WHERE email = ? LIMIT 1";
         $stmt = $connection->prepare($sql);
         if(!$stmt){
@@ -202,8 +202,36 @@ function updateUserProfileWithPassword($connection, $email, $full_name, $contact
     $stmt->close();
     return $ok;
 }
+    // Get all students
+    function getAllStudents($connection){
 
-   
+        $sql = "SELECT id, full_name, email, contact_number,
+                       university_name, department, year,
+                       created_at
+                FROM users
+                WHERE role='student'
+                ORDER BY created_at DESC";
+
+        // use the provided connection object to perform the query
+        $result = $connection->query($sql);
+
+        return $result;   // return mysqli_result or false on error
+    }
+
+    // Get all instructors
+    function getAllInstructors($connection){
+
+        $sql = "SELECT id, full_name, email, contact_number,
+                       university_name, department, year, expertise,
+                       created_at
+                FROM users
+                WHERE role='instructor'
+                ORDER BY created_at DESC";
+
+        $result = $connection->query($sql);
+        return $result;
+    }
+
     function addCourseFile($connection, $course_title, $file_type, $original_name, $file_path){
         $sql = "INSERT INTO course_files (course_slug, course_title, file_type, original_name, file_path)
                 VALUES (?, ?, ?, ?, ?)";

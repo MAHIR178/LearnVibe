@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('../../Admin/Model/Database.php');
+include '../../Admin/Model/Database.php';
 
 $loginErr = "";
 $email = "";
@@ -118,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                         <p class="login-text">
                             Don't have an account?
-                            <a href="Signup.php">Create one</a>
+                            <a href="instructor_signup.php">Create one</a>
                         </p>
                     </form>
                 </div>

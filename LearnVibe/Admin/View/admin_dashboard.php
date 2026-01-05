@@ -47,7 +47,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
         <div class="card">
             <h3>Instructors</h3>
             <p>View all instructors</p>
-            <a href="#">View</a>
+            <a href="admin_view_instructors.php">View</a>
         </div>
 
         <div class="card">
@@ -55,13 +55,6 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
             <p>View & manage courses</p>
             <a href="#">Open</a>
         </div>
-
-        <div class="card">
-            <h3>Settings</h3>
-            <p>Application configuration</p>
-            <a href="#">Configure</a>
-        </div>
-
     </div>
 </div>
 

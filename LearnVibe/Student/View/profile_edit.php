@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('../../Admin/Model/Database.php');
+include '../../Admin/Model/Database.php';
 
 if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
     header("Location: ../../Instructor/View/Login.php");
@@ -80,24 +80,6 @@ $db->closeConnection($conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile</title>
     <link rel="stylesheet" href="profile_edit.css">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        
-        .password-note {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
-            font-style: italic;
-        }
-        
-        .readonly-input {
-            background-color: #f5f5f5;
-            cursor: not-allowed;
-        }
-    </style>
 </head>
 <body>
 
@@ -228,6 +210,46 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // fetch current user data and populate form fields
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            try {
+                var data = JSON.parse(this.responseText);
+            } catch (e) {
+                console.error('Invalid JSON response', e);
+                return;
+            }
+
+            if (data && data.success && data.user) {
+                var u = data.user;
+                var fullName = document.querySelector('input[name="full_name"]');
+                if (fullName) fullName.value = u.full_name || '';
+
+                var emailInput = document.querySelector('input[type="email"].readonly-input');
+                if (emailInput) emailInput.value = u.email || '';
+
+                var contact = document.querySelector('input[name="contact_number"]');
+                if (contact) contact.value = u.contact_number || '';
+
+                var uni = document.querySelector('input[name="university_name"]');
+                if (uni) uni.value = u.university_name || '';
+
+                var dept = document.querySelector('input[name="department"]');
+                if (dept) dept.value = u.department || '';
+
+                var yearSelect = document.querySelector('select[name="year"]');
+                if (yearSelect && u.year) yearSelect.value = u.year;
+
+                var expertiseInput = document.querySelector('input[name="expertise"]');
+                if (expertiseInput) expertiseInput.value = u.expertise || '';
+            }
+        }
+    };
+
+    xhttp.open("GET", "../Controller/get_current_user.php", true);
+    xhttp.send();
+
     // Auto-hide messages after 5 seconds
     setTimeout(function() {
         const messages = document.querySelectorAll('.message');

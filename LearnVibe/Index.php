@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LearnVibe- Your Learning Assistant</title>
-    <link rel="icon" href="assets/web-favicon.png">
+    <link rel="icon" href="uploads/web-favicon.png">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,8 +21,8 @@
     <div class="navbar">
         <h1 class="logo">Learn<span>Vibe</span></h1>
         <div class="nav-links">
-            <button class="login-btn" onclick="window.location.href='../../Admin/View/admin_login.php'">
-               Admin Login
+            <button class="login-btn" onclick="window.location.href='Admin/View/admin_login.php'">
+               Admin
             </button>
         </div>
     </div>
@@ -33,13 +33,16 @@
             <h2>Your Digital</h2>
             <h2>Learning Hub</h2>
             <p>Where Students Learn, Instructors Teach, and Knowledge Connects...</p>
-            <button id="join-btn" onclick="window.location.href='../../Instructor/View/Signup.php'">
+            <button id="join-btn" onclick="window.location.href='Instructor/View/instructor_signup.php'">
                 Join Us
+            </button>
+            <button id="login-btn" onclick="window.location.href='Instructor/View/instructor_login.php'">
+                Login
             </button>
         </div>
 
         <div class="hero-image">
-            <img src="assets/homepage.jpeg" alt="LearnVibe preview">
+            <img src="uploads/homepage.jpeg" alt="LearnVibe preview">
         </div>
     </section>
 
@@ -53,13 +56,13 @@
                 <h3>Find Us </h3>
                 <div class="social-links">
                     <a class="social-facebook" href="https://facebook.com" target="_blank">
-                        <img src="assets/facebook.png" alt="Facebook">
+                        <img src="uploads/facebook.png" alt="Facebook">
                     </a>
                     <a class="social-linkedin" href="https://linkedin.com" target="_blank">
-                        <img src="assets/linkedin.png" alt="LinkedIn">
+                        <img src="uploads/linkedin.png" alt="LinkedIn">
                     </a>
                     <a class="social-instagram" href="https://instagram.com" target="_blank">
-                        <img src="assets/instagram.png" alt="Instagram">
+                        <img src="uploads/instagram.png" alt="Instagram">
                     </a>
                 </div>
             </div>
@@ -75,25 +78,25 @@
                 <h3>Contact</h3>
                 <p>
                     <a href="">
-                        <img src="assets/email.png" alt="Email icon">
+                        <img src="uploads/email.png" alt="Email icon">
                         example@learnvibe.com
                     </a>
                 </p>
                 <p>
                     <a href="">
-                        <img src="assets/telephone.png" alt="Phone icon">
+                        <img src="uploads/telephone.png" alt="Phone icon">
                         +123 456 7890
                     </a>
                 </p>
                 <p>
                     <a href="">
-                        <img src="assets/location.png" alt="Location icon">
+                        <img src="uploads/location.png" alt="Location icon">
                         <b>Dhaka, Bangladesh</b>
                     </a>
                 </p>
                 <p>
                     <a href="">
-                        <img src="assets/link.png" alt="Link icon">
+                        <img src="uploads/link.png" alt="Link icon">
                         Privacy Policy
                     </a>
                 </p>

@@ -9,7 +9,7 @@ session_unset();
 session_destroy();
 
 // Redirect to site index (Student index)
-header('Location: ../../Student/View/Index.php');
+header('Location: ../../Index.php');
 exit();
 
 ?>

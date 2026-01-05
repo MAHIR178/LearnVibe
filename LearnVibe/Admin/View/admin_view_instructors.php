@@ -13,12 +13,12 @@ $db = new DatabaseConnection();
 $conn = $db->openConnection();
 
 $error = '';
-$result = $db->getAllStudents($conn);
-$students = [];
+$result = $db->getAllInstructors($conn);
+$instructors = [];
 
 if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $students[] = $row;
+        $instructors[] = $row;
     }
 }
 if (!$result) {
@@ -32,9 +32,9 @@ if (!$result) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Students — Admin</title>
+    <title>Instructors — Admin</title>
     <link rel="stylesheet" href="admin_dashboard.css">
-    <link rel="stylesheet" href="admin_view_students.css">
+    <link rel="stylesheet" href="admin_view_instructors.css">
 </head>
 <body>
 
@@ -73,23 +73,24 @@ if (!$result) {
                         <th>University</th>
                         <th>Department</th>
                         <th>Year</th>
-
+                        <th>Expertise</th>
                         <th>Created At</th>
                     </tr>
                 </thead>
 
                 <tbody>
     
-        <?php for ($i = 0; $i < count($students); $i++) { ?>
+        <?php for ($i = 0; $i < count($instructors); $i++) { ?>
     <tr>
-        <td><?php echo htmlspecialchars($students[$i]['id']); ?></td>
-        <td><?php echo htmlspecialchars($students[$i]['full_name']); ?></td>
-        <td><?php echo htmlspecialchars($students[$i]['email']); ?></td>
-        <td><?php echo htmlspecialchars($students[$i]['contact_number']); ?></td>
-        <td><?php echo htmlspecialchars($students[$i]['university_name']); ?></td>
-        <td><?php echo htmlspecialchars($students[$i]['department']); ?></td>
-        <td><?php echo htmlspecialchars($students[$i]['year']); ?></td>
-        <td><?php echo htmlspecialchars($students[$i]['created_at']); ?></td>
+        <td><?php echo htmlspecialchars($instructors[$i]['id']); ?></td>
+        <td><?php echo htmlspecialchars($instructors[$i]['full_name']); ?></td>
+        <td><?php echo htmlspecialchars($instructors[$i]['email']); ?></td>
+        <td><?php echo htmlspecialchars($instructors[$i]['contact_number']); ?></td>
+        <td><?php echo htmlspecialchars($instructors[$i]['university_name']); ?></td>
+        <td><?php echo htmlspecialchars($instructors[$i]['department']); ?></td>
+        <td><?php echo htmlspecialchars($instructors[$i]['year']); ?></td>
+        <td><?php echo htmlspecialchars($instructors[$i]['expertise']); ?></td>
+        <td><?php echo htmlspecialchars($instructors[$i]['created_at']); ?></td>
     </tr>
 <?php } ?>  
                 </tbody>
