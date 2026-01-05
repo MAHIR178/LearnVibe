@@ -9,70 +9,71 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $db   = new DatabaseConnection();
     $conn = $db->openConnection();
 
-    
-    function clean($v){ return trim($v ?? ""); }
+    $clean = function($v){ return trim($v ?? ""); };
 
     // ---------- STUDENT ----------
     if (isset($_POST["student_email"])) {
 
-        $full_name  = clean($_POST["student_name"]);
-        $email      = clean($_POST["student_email"]);
-        $contact    = clean($_POST["student_contact_number"]);
-        $university = clean($_POST["student_university_name"]);
-        $department = clean($_POST["student_department"]);
-        $year       = clean($_POST["student_year"]);
-        $password   = clean($_POST["student_password"]);
-        $confirm    = clean($_POST["student_confirm_password"]);
+        $full_name  = $clean($_POST["student_name"]);
+        $email      = $clean($_POST["student_email"]);
+        $contact    = $clean($_POST["student_contact_number"]);
+        $university = $clean($_POST["student_university_name"]);
+        $department = $clean($_POST["student_department"]);
+        $year       = $clean($_POST["student_year"]);
+        $password   = $clean($_POST["student_password"]);
+        $confirm    = $clean($_POST["student_confirm_password"]);
 
-       
-
-        if (empty($errors)) {
-            [$ok, $existsOrErr] = $db->isEmailExists($conn, $email);
-            if (!$ok) {
-                $errors[] = $existsOrErr; // DB error string
-            } elseif ($existsOrErr === true) {
-                $errors[] = "An account already exists with this email.";
-            }
+        // ✅ password match check
+        if ($password !== $confirm) {
+            $errors[] = "Student passwords do not match.";
         }
 
+        // ✅ email exists check (returns true/false)
+        if (empty($errors) && $db->isEmailExists($conn, $email)) {
+            $errors[] = "An account already exists with this email.";
+        }
+
+        // ✅ create student
         if (empty($errors)) {
-            [$ok, $err] = $db->createStudent($conn, $full_name, $email, $contact, $university, $department, $year, $password);
+            $ok = $db->createStudent($conn, $full_name, $email, $contact, $university, $department, $year, $password);
+
             if ($ok) {
                 $success = "Student account created successfully. You can now log in.";
             } else {
-                $errors[] = $err;
+                $errors[] = "Database error: " . $conn->error;
             }
         }
 
     // ---------- INSTRUCTOR ----------
     } elseif (isset($_POST["instructor_email"])) {
 
-        $full_name  = clean($_POST["instructor_name"]);
-        $email      = clean($_POST["instructor_email"]);
-        $contact    = clean($_POST["instructor_contact_number"]);
-        $university = clean($_POST["instructor_university_name"]);
-        $department = clean($_POST["instructor_department"]);
-        $expertise  = clean($_POST["expertise"]);
-        $password   = clean($_POST["instructor_password"]);
-        $confirm    = clean($_POST["instructor_confirm_password"]);
+        $full_name  = $clean($_POST["instructor_name"]);
+        $email      = $clean($_POST["instructor_email"]);
+        $contact    = $clean($_POST["instructor_contact_number"]);
+        $university = $clean($_POST["instructor_university_name"]);
+        $department = $clean($_POST["instructor_department"]);
+        $expertise  = $clean($_POST["expertise"]);
+        $password   = $clean($_POST["instructor_password"]);
+        $confirm    = $clean($_POST["instructor_confirm_password"]);
 
-       
-
-        if (empty($errors)) {
-            [$ok, $existsOrErr] = $db->isEmailExists($conn, $email);
-            if (!$ok) {
-                $errors[] = $existsOrErr;
-            } elseif ($existsOrErr === true) {
-                $errors[] = "An account already exists with this email.";
-            }
+        // ✅ password match check
+        if ($password !== $confirm) {
+            $errors[] = "Instructor passwords do not match.";
         }
 
+        // ✅ email exists check (returns true/false)
+        if (empty($errors) && $db->isEmailExists($conn, $email)) {
+            $errors[] = "An account already exists with this email.";
+        }
+
+        // ✅ create instructor
         if (empty($errors)) {
-            [$ok, $err] = $db->createInstructor($conn, $full_name, $email, $contact, $university, $department, $expertise, $password);
+            $ok = $db->createInstructor($conn, $full_name, $email, $contact, $university, $department, $expertise, $password);
+
             if ($ok) {
                 $success = "Instructor account created successfully. You can now log in.";
             } else {
-                $errors[] = $err;
+                $errors[] = "Database error: " . $conn->error;
             }
         }
     }
@@ -80,6 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $db->closeConnection($conn);
 }
 ?>
+
 
 
 <!DOCTYPE html>
