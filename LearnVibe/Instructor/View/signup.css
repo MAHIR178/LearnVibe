@@ -1,242 +1,102 @@
-/* -------- RESET -------- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Outfit", sans-serif;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
 }
 
-/* -------- PAGE BACKGROUND & CENTERING -------- */
-body {
-    min-height: 100vh;
-    background: #f5f5f5;           /* simple light background */
-    display: flex;                 /* center the form */
-    align-items: center;
-    justify-content: center;
-    padding: 16px;                 /* some breathing room on small screens */
+body{
+  background:#f2f2f2;
+  padding:20px;
 }
 
-/* -------- WRAPPER & CARD -------- */
-.auth-wrapper {
-    max-width: 600px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.signup-card{
+  width:400px;
+  max-width:100%;
+  margin:40px auto;
+  background:#fff;
+  border:1px solid #ccc;
+  border-radius:6px;
+  padding:20px;
 }
 
-.signup-card {
-    width: 100%;
-    background: #ffffff;
-    border-radius: 8px;
-    border: 1px solid #dddddd;
-    padding: 20px 24px 24px;
-    max-height: calc(100vh - 40px);   /* avoid overflowing viewport too much */
-    overflow-y: auto;
+.signup-card h2{
+  text-align:center;
+  margin-bottom:15px;
 }
 
-/* -------- ERROR / SUCCESS BOXES -------- */
-.error-box {
-    background: #ffe5e5;
-    border: 1px solid #ff9b9b;
-    color: #b30000;
-    padding: 8px 10px;
-    border-radius: 6px;
-    font-size: 13px;
-    margin-bottom: 10px;
+.form-row{
+  margin-bottom:12px;
 }
 
-.success-box {
-    background: #e8ffe5;
-    border: 1px solid #9bff9f;
-    color: #1c6b1f;
-    padding: 8px 10px;
-    border-radius: 6px;
-    font-size: 13px;
-    margin-bottom: 10px;
-}
-
-/* -------- TABS -------- */
-#student-tab,
-#instructor-tab {
-    display: none;
-}
-
-.tabs {
-    display: flex;
-    background: #eeeeee;
-    padding: 2px;
-    border-radius: 999px;
-    margin-bottom: 16px;
-}
-
-.tab-label {
-    flex: 1;
-    text-align: center;
-    padding: 8px 0;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 999px;
-    color: #555;
-}
-
-/* active tab state */
-#student-tab:checked ~ .tabs label[for="student-tab"],
-#instructor-tab:checked ~ .tabs label[for="instructor-tab"] {
-    background: #72A9D4;
-    color: #ffffff;
-}
-
-/* show one form at a time */
-.forms form {
-    display: none;
-}
-
-#student-tab:checked ~ .forms .student-form {
-    display: block;
-}
-
-#instructor-tab:checked ~ .forms .instructor-form {
-    display: block;
-}
-
-/* -------- FORM STYLING -------- */
-.form h2 {
-    font-size: 20px;
-    margin-bottom: 14px;
-    text-align: center;
-}
-
-.form-row {
-    margin-bottom: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.form-row.inline {
-    flex-direction: row;
-    gap: 12px;
-}
-
-.form-row.inline > div {
-    flex: 1;
-}
-
-.form-row label {
-    font-size: 13px;
-    color: #333;
+.form-row label{
+  display:block;
+  margin-bottom:5px;
+  font-size:14px;
 }
 
 .form-row input,
-.form-row select {
-    padding: 8px 10px;
-    border-radius: 6px;
-    border: 1px solid #cccccc;
-    font-size: 14px;
-    background-color: #ffffff;
+.form-row select{
+  width:100%;
+  padding:8px;
+  border:1px solid #ccc;
+  border-radius:4px;
+  font-size:14px;
 }
 
-.form-row input:focus,
-.form-row select:focus {
-    outline: none;
-    border-color: #72A9D4;
+.primary-btn{
+  width:100%;
+  padding:10px;
+  background:#007bff;
+  border:none;
+  color:white;
+  border-radius:4px;
+  cursor:pointer;
+  font-size:15px;
 }
 
-/* checkbox row */
-.checkbox-row {
-    flex-direction: row;
-    align-items: center;
+.primary-btn:hover{
+  background:#0056b3;
 }
 
-.checkbox-row input[type="checkbox"] {
-    margin-right: 6px;
+.error-box{
+  background:#ffe5e5;
+  border:1px solid #ff9999;
+  color:#b30000;
+  padding:10px;
+  border-radius:4px;
+  margin-bottom:12px;
+  font-size:14px;
 }
 
-/* -------- ICON INPUTS -------- */
-.input-with-icon {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+.success-box{
+  background:#e6ffe6;
+  border:1px solid #99ff99;
+  color:#006600;
+  padding:10px;
+  border-radius:4px;
+  margin-bottom:12px;
+  font-size:14px;
 }
 
-.field-wrapper {
-    position: relative;
+.field-error{
+  color:red;
+  font-size:12px;
+  margin-top:3px;
+  display:block;
 }
 
-.field-wrapper input {
-    width: 100%;
-    padding: 8px 10px 8px 28px; /* space for left icon only */
-    border-radius: 6px;
-    border: 1px solid #cccccc;
-    font-size: 14px;
-    background-color: #ffffff;
+.login-text{
+  text-align:center;
+  margin-top:15px;
+  font-size:14px;
 }
 
-.field-wrapper input:focus {
-    outline: none;
-    border-color: #72A9D4;
+.login-text a{
+  color:#007bff;
+  text-decoration:none;
 }
 
-.field-icon-left {
-    position: absolute;
-    left: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 14px;
-    pointer-events: none;
-}
-
-/* small helper text */
-.password-hint {
-    font-size: 11px;
-    color: #777;
-}
-
-/* -------- BUTTON -------- */
-.primary-btn {
-    width: 100%;
-    margin-top: 8px;
-    padding: 10px 0;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-    background: #000000;
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 14px;
-}
-
-/* -------- LOGIN TEXT -------- */
-.login-text {
-    margin-top: 14px;
-    text-align: center;
-    font-size: 13px;
-    color: #555;
-}
-
-.login-text a {
-    color: #72A9D4;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.login-text a:hover {
-    text-decoration: underline;
-}
-
-/* -------- FIELD ERROR (for JS validation) -------- */
-.field-error {
-    color: red;
-    font-size: 12px;
-}
-
-/* -------- RESPONSIVE -------- */
-@media (max-width: 600px) {
-    .signup-card {
-        padding: 18px 16px 20px;
-    }
-
-    .form-row.inline {
-        flex-direction: column;
-    }
+.login-text a:hover{
+  text-decoration:underline;
 }

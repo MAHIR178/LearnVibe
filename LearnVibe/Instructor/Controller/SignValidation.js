@@ -1,9 +1,6 @@
-
-
 function validateStudentForm() {
     let isValid = true;
 
-  
     const name = document.getElementById('student_name').value.trim();
     const nameErr = document.getElementById('student_name_err');
     if (name === "") {
@@ -12,28 +9,23 @@ function validateStudentForm() {
     } else if (name.length < 3) {
         nameErr.innerHTML = "Name must be at least 3 characters";
         isValid = false;
-    } else if (name.length > 100) {
-        nameErr.innerHTML = "Name must be less than 100 characters";
-        isValid = false;
     } else {
         nameErr.innerHTML = "";
     }
 
-    
     const email = document.getElementById('student_email').value.trim();
     const emailErr = document.getElementById('student_email_err');
-    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (email === "") {
         emailErr.innerHTML = "Please enter your email";
         isValid = false;
-    } else if (!email.match(emailPattern)) {
+    } else if (!emailPattern.test(email)) {
         emailErr.innerHTML = "Please enter a valid email";
         isValid = false;
     } else {
         emailErr.innerHTML = "";
     }
 
-   
     const contact = document.getElementById('student_contact_number').value.trim();
     const contactErr = document.getElementById('student_contact_err');
     if (contact === "") {
@@ -46,20 +38,15 @@ function validateStudentForm() {
         contactErr.innerHTML = "";
     }
 
-    
     const uni = document.getElementById('student_university_name').value.trim();
     const uniErr = document.getElementById('student_university_err');
     if (uni === "") {
         uniErr.innerHTML = "Please enter your university name";
         isValid = false;
-    } else if (uni.length > 100) {
-        uniErr.innerHTML = "University name must be less than 100 characters";
-        isValid = false;
     } else {
         uniErr.innerHTML = "";
     }
 
-    
     const dept = document.getElementById('student_department').value.trim();
     const deptErr = document.getElementById('student_department_err');
     if (dept === "") {
@@ -69,7 +56,6 @@ function validateStudentForm() {
         deptErr.innerHTML = "";
     }
 
-   
     const year = document.getElementById('student_year').value;
     const yearErr = document.getElementById('student_year_err');
     if (year === "") {
@@ -79,7 +65,6 @@ function validateStudentForm() {
         yearErr.innerHTML = "";
     }
 
-    
     const pass = document.getElementById('student_password').value;
     const passErr = document.getElementById('student_password_err');
     if (pass.length < 8) {
@@ -89,7 +74,6 @@ function validateStudentForm() {
         passErr.innerHTML = "";
     }
 
-  
     const cpass = document.getElementById('student_confirm_password').value;
     const cpassErr = document.getElementById('student_confirm_password_err');
     if (cpass !== pass) {
@@ -105,7 +89,6 @@ function validateStudentForm() {
 function validateInstructorForm() {
     let isValid = true;
 
-    
     const name = document.getElementById('instructor_name').value.trim();
     const nameErr = document.getElementById('instructor_name_err');
     if (name === "") {
@@ -114,28 +97,23 @@ function validateInstructorForm() {
     } else if (name.length < 3) {
         nameErr.innerHTML = "Name must be at least 3 characters";
         isValid = false;
-    } else if (name.length > 100) {
-        nameErr.innerHTML = "Name must be less than 100 characters";
-        isValid = false;
     } else {
         nameErr.innerHTML = "";
     }
 
-    
     const email = document.getElementById('instructor_email').value.trim();
     const emailErr = document.getElementById('instructor_email_err');
-    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (email === "") {
         emailErr.innerHTML = "Please enter your email";
         isValid = false;
-    } else if (!email.match(emailPattern)) {
+    } else if (!emailPattern.test(email)) {
         emailErr.innerHTML = "Please enter a valid email";
         isValid = false;
     } else {
         emailErr.innerHTML = "";
     }
 
-    
     const contact = document.getElementById('instructor_contact_number').value.trim();
     const contactErr = document.getElementById('instructor_contact_err');
     if (contact === "") {
@@ -148,20 +126,15 @@ function validateInstructorForm() {
         contactErr.innerHTML = "";
     }
 
-   
     const uni = document.getElementById('instructor_university_name').value.trim();
     const uniErr = document.getElementById('instructor_university_err');
     if (uni === "") {
         uniErr.innerHTML = "Please enter your university name";
         isValid = false;
-    } else if (uni.length > 100) {
-        uniErr.innerHTML = "University name must be less than 100 characters";
-        isValid = false;
     } else {
         uniErr.innerHTML = "";
     }
 
-    t
     const dept = document.getElementById('instructor_department').value.trim();
     const deptErr = document.getElementById('instructor_department_err');
     if (dept === "") {
@@ -171,8 +144,7 @@ function validateInstructorForm() {
         deptErr.innerHTML = "";
     }
 
-    
-    const exp = document.getElementById('expertise-text').value.trim();
+    const exp = document.getElementById('expertise').value.trim();
     const expErr = document.getElementById('instructor_expertise_err');
     if (exp === "") {
         expErr.innerHTML = "Please enter your area of expertise";
@@ -181,7 +153,6 @@ function validateInstructorForm() {
         expErr.innerHTML = "";
     }
 
-   
     const pass = document.getElementById('instructor_password').value;
     const passErr = document.getElementById('instructor_password_err');
     if (pass.length < 8) {
@@ -191,7 +162,6 @@ function validateInstructorForm() {
         passErr.innerHTML = "";
     }
 
-    
     const cpass = document.getElementById('instructor_confirm_password').value;
     const cpassErr = document.getElementById('instructor_confirm_password_err');
     if (cpass !== pass) {
@@ -204,24 +174,19 @@ function validateInstructorForm() {
     return isValid;
 }
 
-
 document.addEventListener('DOMContentLoaded', function () {
     const studentForm = document.querySelector('.student-form');
     const instructorForm = document.querySelector('.instructor-form');
 
     if (studentForm) {
         studentForm.addEventListener('submit', function (e) {
-            if (!validateStudentForm()) {
-                e.preventDefault();
-            }
+            if (!validateStudentForm()) e.preventDefault();
         });
     }
 
     if (instructorForm) {
         instructorForm.addEventListener('submit', function (e) {
-            if (!validateInstructorForm()) {
-                e.preventDefault();
-            }
+            if (!validateInstructorForm()) e.preventDefault();
         });
     }
 });
