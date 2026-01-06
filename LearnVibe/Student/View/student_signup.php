@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         // ✅ email exists check (returns true/false)
-        if (empty($errors) && $db->isEmailExists($conn, $email)) {
+        if (empty($errors) && $db->isEmailExist($conn, $email)) {
             $errors[] = "An account already exists with this email.";
         }
 
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         // ✅ email exists check (returns true/false)
-        if (empty($errors) && $db->isEmailExists($conn, $email)) {
+        if (empty($errors) && $db->isEmailExist($conn, $email)) {
             $errors[] = "An account already exists with this email.";
         }
 

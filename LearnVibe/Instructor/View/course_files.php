@@ -3,7 +3,7 @@ session_start();
 include "../../Admin/Model/Database.php";
 
 if (empty($_SESSION["isLoggedIn"])) {
-    header("Location: Login.php");
+    header("Location: instrutor_login.php");
     exit;
 }
 
