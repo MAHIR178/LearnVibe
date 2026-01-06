@@ -3,7 +3,7 @@ session_start();
 
 // If using sessions, redirect to login if not logged in
 if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
-    header("Location: ../../Instructor/View/Login.php");
+    header("Location: ../../Instructor/View/instructor_login.php");
     exit;
 }
 $current_user_email = $_SESSION['email'];

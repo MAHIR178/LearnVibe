@@ -3,7 +3,7 @@ session_start();
 include "../../Admin/Model/Database.php";
 
 if (empty($_SESSION["isLoggedIn"]) || ($_SESSION["role"] ?? '') !== 'instructor') {
-    header("Location: Login.php");
+    header("Location: instructor_login.php");
     exit;
 }
  if (isset($_GET["upload"]) && $_GET["upload"] === "success"): ?>
