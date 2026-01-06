@@ -1,5 +1,5 @@
 <?php
-include '../../Admin/Model/Database.php';
+require_once '../../Admin/Model/Database.php';
 
 $errors = [];
 $success = "";
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         // ✅ email exists check (returns true/false)
-        if (empty($errors) && $db->isEmailExist($conn, $email)) {
+        if (empty($errors) && $db->isEmailExists($conn, $email)) {
             $errors[] = "An account already exists with this email.";
         }
 
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         // ✅ email exists check (returns true/false)
-        if (empty($errors) && $db->isEmailExist($conn, $email)) {
+        if (empty($errors) && $db->isEmailExists($conn, $email)) {
             $errors[] = "An account already exists with this email.";
         }
 
@@ -91,12 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link rel="stylesheet" href="signup.css">
-    <style>
-        .field-error {
-            color: red;
-            font-size: 12px;
-        }
-    </style>
+    
 </head>
 <body>
 
@@ -316,7 +311,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <p class="login-text">
                 Already have an account?
-                <a href="instructor_login.php">Log in</a>
+                <a href="Login.php">Log in</a>
             </p>
         </div>
     </div>
