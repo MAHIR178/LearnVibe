@@ -61,7 +61,7 @@
   <label>Password</label>
 
   <div class="pass-box">
-    <input type="password" name="instructor_password" id="instructor_password" minlength="8" required>
+    <input type="password" name="instructor_password" id="instructor_password" minlength="8" >
     <span class="eye" data-target="instructor_password">👁</span>
   </div>
 
@@ -72,7 +72,7 @@
   <label>Confirm Password</label>
 
   <div class="pass-box">
-    <input type="password" name="instructor_confirm_password" id="instructor_confirm_password" minlength="8" required>
+    <input type="password" name="instructor_confirm_password" id="instructor_confirm_password" minlength="8" >
     <span class="eye" data-target="instructor_confirm_password">👁</span>
   </div>
 
