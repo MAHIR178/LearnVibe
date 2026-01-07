@@ -58,16 +58,26 @@
     </div>
 
     <div class="form-row">
-      <label>Password</label>
-      <input type="password" name="instructor_password" id="instructor_password" minlength="8" >
-      <span class="field-error" id="instructor_password_err"></span>
-    </div>
+  <label>Password</label>
 
-    <div class="form-row">
-      <label>Confirm Password</label>
-      <input type="password" name="instructor_confirm_password" id="instructor_confirm_password" minlength="8">
-      <span class="field-error" id="instructor_confirm_password_err"></span>
-    </div>
+  <div class="pass-box">
+    <input type="password" name="instructor_password" id="instructor_password" minlength="8" required>
+    <span class="eye" data-target="instructor_password">👁</span>
+  </div>
+
+  <span class="field-error" id="instructor_password_err"></span>
+</div>
+
+<div class="form-row">
+  <label>Confirm Password</label>
+
+  <div class="pass-box">
+    <input type="password" name="instructor_confirm_password" id="instructor_confirm_password" minlength="8" required>
+    <span class="eye" data-target="instructor_confirm_password">👁</span>
+  </div>
+
+  <span class="field-error" id="instructor_confirm_password_err"></span>
+</div>
 
 
     <button class="primary-btn" type="submit">Sign Up</button>

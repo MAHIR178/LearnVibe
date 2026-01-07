@@ -232,17 +232,35 @@ function updateUserProfileWithPassword($connection, $email, $full_name, $contact
         return $result;
     }
 
-    function addCourseFile($connection, $course_title, $file_type, $original_name, $file_path){
-        $sql = "INSERT INTO course_files (course_slug, course_title, file_type, original_name, file_path)
-                VALUES (?, ?, ?, ?, ?)";
-        $stmt = $connection->prepare($sql);
-        if(!$stmt){
-            die("Prepare failed: " . $connection->error);
-        }
+    // insert file with instructor id
+function addCourseFile($connection, $course_title, $file_type, $original_name, $file_path, $uploaded_by){
+    $sql = "INSERT INTO course_files (course_slug, course_title, file_type, original_name, file_path, uploaded_by)
+            VALUES (?, ?, ?, ?, ?, ?)";
 
-        $stmt->bind_param("sssss", $course_title, $course_title, $file_type, $original_name, $file_path);
-        return $stmt->execute();
-    }
+    $stmt = $connection->prepare($sql);
+    if(!$stmt){ die("Prepare failed: " . $connection->error); }
+
+    $stmt->bind_param("sssssi", $course_title, $course_title, $file_type, $original_name, $file_path, $uploaded_by);
+    $ok = $stmt->execute();
+    $stmt->close();
+    return $ok;
+}
+
+// get ONLY files uploaded by this instructor
+function getInstructorFiles($connection, $uploaded_by){
+    $sql = "SELECT id, course_title, file_type, original_name, file_path, uploaded_at
+            FROM course_files
+            WHERE uploaded_by = ?
+            ORDER BY id DESC";
+
+    $stmt = $connection->prepare($sql);
+    if(!$stmt){ die("Prepare failed: " . $connection->error); }
+
+    $stmt->bind_param("i", $uploaded_by);
+    $stmt->execute();
+    return $stmt->get_result();
+}
+
 
     function getAllCourseFiles($connection){
         $sql = "SELECT course_title, file_type, original_name, file_path, uploaded_at
@@ -268,6 +286,7 @@ function updateUserProfileWithPassword($connection, $email, $full_name, $contact
         
         return $result;
     }
+ 
 
     function closeConnection($connection){
         $connection->close();

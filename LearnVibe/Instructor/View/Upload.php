@@ -9,53 +9,63 @@ if (empty($_SESSION["isLoggedIn"]) || ($_SESSION["role"] ?? '') !== 'instructor'
 
 $msg = "";
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-if (isset($_POST["submit"])) {
+    $courseTitle = trim($_POST["course"] ?? "");
+    $fileType    = trim($_POST["file_type"] ?? "");
 
-    $courseTitle = $_POST["course"];
-    $fileType    = $_POST["file_type"];
-
-    if (!isset($_FILES["upload_file"]) || $_FILES["upload_file"]["error"] != 0) {
+    if ($courseTitle === "" || $fileType === "") {
+        $msg = "Please select course and file type.";
+    } elseif (!isset($_FILES["upload_file"]) || $_FILES["upload_file"]["error"] !== 0) {
         $msg = "Please choose a file.";
     } else {
 
-        $fileName = $_FILES["upload_file"]["name"];
-        $tmpName  = $_FILES["upload_file"]["tmp_name"];
+        $originalName = basename($_FILES["upload_file"]["name"]);
+        $tmpName      = $_FILES["upload_file"]["tmp_name"];
 
-        // block php uploads
-        $ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-        if ($ext == "php" || $ext == "phtml" || $ext == "phar") {
+        // block dangerous extensions
+        $ext = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+        $blocked = ["php", "phtml", "phar", "php3", "php4", "php5"];
+        if (in_array($ext, $blocked, true)) {
             $msg = "This file type is not allowed.";
         } else {
 
-            // create uploads folder if not exists
-            if (!is_dir("uploads")) {
-                mkdir("uploads");
+            // make uploads folder (inside this folder)
+            $uploadFolderFS = __DIR__ . "/uploads";
+            if (!is_dir($uploadFolderFS)) {
+                mkdir($uploadFolderFS, 0777, true);
             }
 
-            // make unique name
-            $newName = time() . "_" . $fileName;
-            $path = "uploads/" . $newName;
+            // safe name + unique name
+            $safeName = preg_replace('/[^a-zA-Z0-9._-]/', '_', $originalName);
+            $newName  = time() . "_" . uniqid() . "_" . $safeName;
 
-            if (move_uploaded_file($tmpName, $path)) {
+            $destFS  = $uploadFolderFS . "/" . $newName;   // real server path
+            $destWEB = "uploads/" . $newName;              // path saved in DB
+
+            if (move_uploaded_file($tmpName, $destFS)) {
 
                 $db  = new DatabaseConnection();
                 $con = $db->openConnection();
 
-                // save in DB
-                $ok = $db->addCourseFile($con, $courseTitle, $fileType, $fileName, $path);
+                $uploadedBy = (int)($_SESSION["user_id"] ?? 0);
+
+                // ✅ save in DB (with uploaded_by)
+                $ok = $db->addCourseFile($con, $courseTitle, $fileType, $safeName, $destWEB, $uploadedBy);
+
+                if (!$ok) {
+                    $msg = "Database insert failed: " . $con->error;
+                }
 
                 $db->closeConnection($con);
 
                 if ($ok) {
                     header("Location: i_dashboard.php?upload=success");
                     exit;
-                } else {
-                    $msg = "Database insert failed.";
                 }
 
             } else {
-                $msg = "Upload failed.";
+                $msg = "Upload failed. Check folder permission.";
             }
         }
     }
@@ -83,9 +93,12 @@ if (isset($_POST["submit"])) {
 <div class="form-box">
     <h2>Upload File</h2>
 
-    <?php if ($msg != ""): ?>
-        <div class="msg msg-error"><?php echo $msg; ?></div>
+    <?php if ($msg !== ""): ?>
+        <div class="msg msg-error"><?php echo htmlspecialchars($msg); ?></div>
     <?php endif; ?>
+     
+
+    
 
     <form method="POST" enctype="multipart/form-data">
 
@@ -130,7 +143,7 @@ if (isset($_POST["submit"])) {
         </div>
 
         <div class="actions">
-            <button class="btn btn-primary" type="submit" name="submit">Upload</button>
+            <button class="btn btn-primary" type="submit">Upload</button>
             <button class="btn btn-secondary" type="button" onclick="window.location.href='i_dashboard.php'">Cancel</button>
         </div>
 

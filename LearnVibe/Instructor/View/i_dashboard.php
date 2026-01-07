@@ -29,6 +29,8 @@ if (empty($_SESSION["isLoggedIn"]) || ($_SESSION["role"] ?? '') !== 'instructor'
 <div class="top-bar">
     <input type="text" placeholder="Search">
     <input type="button" value="Upload" onclick="window.location.href='Upload.php'">
+    <a class="myuploadbutton" href="../Controller/Myuploads.php">Uploaded-Files</a>
+    <br><br>
 
     <div class="top-links">
         <div class="profile">

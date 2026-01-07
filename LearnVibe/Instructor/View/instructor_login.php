@@ -12,7 +12,7 @@
 <body>
 
     
-    <div class="auth-wrapper">
+
         <div class="signin-card">
             <div class="signin-layout">
 
@@ -40,7 +40,7 @@
                         <div class="form-row input-with-icon">
                             <label for="signin_password">Password</label>
                             <div class="field-wrapper">
-                                <span class="field-icon-left">🔒</span>
+                               
                                 <input
                                     type="password"
                                     id="signin_password"
@@ -49,13 +49,11 @@
                                     required
                                 >
                             </div>
+                            
                         </div>
 
                         <div class="form-row checkbox-row space-between">
-                            <label>
-                                <input type="checkbox" name="remember">
-                                Remember me
-                            </label>
+                           
                             <a href="#" class="link-small">Forgot password?</a>
                         </div>
 
@@ -70,7 +68,7 @@
 
             </div>
         </div>
-    </div>
+   
 
 </body>
 </html>

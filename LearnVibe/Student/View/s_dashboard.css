@@ -22,7 +22,7 @@
     z-index: 1000;
 }
 .top-bar input[type="button"]{
-    margin-left: 500px;
+    margin-left: 400px;
     width: 120px;
     padding: 6px 12px;
     font-size: 18px;
@@ -32,7 +32,12 @@
     
     cursor: pointer;
 }
-
+.myuploadbutton{
+    color: black;
+    border: #ff4d4d;
+   
+    background: yellowgreen
+}
 
 
 .top-bar input {

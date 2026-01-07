@@ -189,4 +189,19 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!validateInstructorForm()) e.preventDefault();
         });
     }
+   document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".eye").forEach(function (eye) {
+    eye.addEventListener("click", function () {
+      const targetId = eye.getAttribute("data-target");
+      const input = document.getElementById(targetId);
+
+      if (!input) return;
+
+      input.type = (input.type === "password") ? "text" : "password";
+    });
+  });
+});
+
+
+
 });

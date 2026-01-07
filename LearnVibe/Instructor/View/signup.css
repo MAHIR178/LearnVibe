@@ -55,9 +55,6 @@ body{
   font-size:15px;
 }
 
-.primary-btn:hover{
-  background:#0056b3;
-}
 
 .error-box{
   background:#ffe5e5;
@@ -99,4 +96,25 @@ body{
 
 .login-text a:hover{
   text-decoration:underline;
+}
+.pass-box{
+  position: relative;
+  width: 100%;
+}
+
+.pass-box input{
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px;   /* space for eye */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.eye{
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
 }
