@@ -71,7 +71,7 @@
 
   <div class="pass-box">
     <input type="password" name="student_password" id="student_password" minlength="8" required>
-    <span class="eye" data-target="student_password">👁</span>
+    <span class="eye" data-target="student_password">👁️</span>
   </div>
 
   <span class="field-error" id="student_password_err"></span>
@@ -82,7 +82,7 @@
 
   <div class="pass-box">
     <input type="password" name="student_confirm_password" id="student_confirm_password" minlength="8" required>
-    <span class="eye" data-target="student_confirm_password">👁</span>
+    <span class="eye" data-target="student_confirm_password">👁️</span>
   </div>
 
   <span class="field-error" id="student_confirm_password_err"></span>

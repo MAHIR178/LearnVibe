@@ -188,20 +188,23 @@ document.addEventListener('DOMContentLoaded', function () {
         instructorForm.addEventListener('submit', function (e) {
             if (!validateInstructorForm()) e.preventDefault();
         });
-    }
-   document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".eye").forEach(function (eye) {
+    }});
+  document.addEventListener("DOMContentLoaded", function () {
+  const eyes = document.querySelectorAll(".eye");
+
+  eyes.forEach(function (eye) {
     eye.addEventListener("click", function () {
-      const targetId = eye.getAttribute("data-target");
-      const input = document.getElementById(targetId);
+      const id = eye.getAttribute("data-target");
+      const input = document.getElementById(id);
 
-      if (!input) return;
-
-      input.type = (input.type === "password") ? "text" : "password";
+      if (input.type === "password") input.type = "text";
+      else input.type = "password";
     });
   });
 });
+  
 
 
 
-});
+
+
