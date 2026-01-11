@@ -11,7 +11,7 @@ $courseTitle = $_GET["course"] ?? "";
 $courseTitle = trim($courseTitle);
 
 if ($courseTitle === "") {
-    header("Location: i_dashboard.php");
+    header("Location: ../../Student/View/s_dashboard.php");
     exit;
 }
 
@@ -34,7 +34,7 @@ $res = $db->getCourseFilesByTitle($con, $courseTitle);
 <div class="top-bar">
     <input type="text" placeholder="Search">
     <div class="top-links">
-        <a href="i_dashboard.php">Back</a>
+        <a href="../../Student/View/s_dashboard.php">Back</a>
         <a href="Logout.php">Logout</a>
     </div>
 </div>
