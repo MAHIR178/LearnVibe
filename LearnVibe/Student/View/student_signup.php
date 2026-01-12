@@ -9,7 +9,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Sign Up</title>
-  <link rel="stylesheet" href="../../Instructor/View/signup.css">
+  <link rel="stylesheet" href="signup.css">
 </head>
 <body>
 
@@ -22,7 +22,7 @@
     <div class="success-box"><?php echo htmlspecialchars($_GET["success"]); ?></div>
   <?php endif; ?>
 
-  <form class="student-form" action="../../Instructor/Controller/Process.php" method="post">
+  <form class="student-form" action="../../Instructor/Controller/Process.php" method="post" novalidate>
 
     <div class="form-row">
       <label>Full Name</label>

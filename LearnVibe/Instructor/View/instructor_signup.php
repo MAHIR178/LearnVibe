@@ -19,7 +19,7 @@
     <div class="success-box"><?php echo htmlspecialchars($_GET["success"]); ?></div>
   <?php endif; ?>
 
-  <form class="instructor-form" action="../Controller/Process.php" method="post" >
+  <form class="instructor-form" action="../Controller/Process.php" method="post" novalidate>
 
     <div class="form-row">
       <label>Full Name</label>

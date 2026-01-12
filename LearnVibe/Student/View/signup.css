@@ -1,0 +1,120 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  background:#f2f2f2;
+  padding:20px;
+}
+
+.signup-card{
+  width:400px;
+  max-width:100%;
+  margin:40px auto;
+  background:#fff;
+  border:1px solid #ccc;
+  border-radius:6px;
+  padding:20px;
+}
+
+.signup-card h2{
+  text-align:center;
+  margin-bottom:15px;
+}
+
+.form-row{
+  margin-bottom:12px;
+}
+
+.form-row label{
+  display:block;
+  margin-bottom:5px;
+  font-size:14px;
+}
+
+.form-row input,
+.form-row select{
+  width:100%;
+  padding:8px;
+  border:1px solid #ccc;
+  border-radius:4px;
+  font-size:14px;
+}
+
+.primary-btn{
+  width:100%;
+  padding:10px;
+  background-color: black;
+  border:none;
+  color:white;
+  border-radius:4px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+
+.error-box{
+  background:#ffe5e5;
+  border:1px solid #ff9999;
+  color:#b30000;
+  padding:10px;
+  border-radius:4px;
+  margin-bottom:12px;
+  font-size:14px;
+}
+
+.success-box{
+  background:#e6ffe6;
+  border:1px solid #99ff99;
+  color:#006600;
+  padding:10px;
+  border-radius:4px;
+  margin-bottom:12px;
+  font-size:14px;
+}
+
+.field-error{
+  color:red;
+  font-size:12px;
+  margin-top:3px;
+  display:block;
+}
+
+.login-text{
+  text-align:center;
+  margin-top:15px;
+  font-size:14px;
+}
+
+.login-text a{
+  color:#007bff;
+  text-decoration:none;
+}
+
+.login-text a:hover{
+  text-decoration:underline;
+}
+.pass-box{
+  position: relative;
+  width: 100%;
+}
+
+.pass-box input{
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px;   /* space for eye */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.eye{
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+}

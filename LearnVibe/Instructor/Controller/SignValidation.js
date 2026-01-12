@@ -43,7 +43,11 @@ function validateStudentForm() {
     if (uni === "") {
         uniErr.innerHTML = "Please enter your university name";
         isValid = false;
-    } else {
+    } else if (uni.length < 2) {
+        uniErr.innerHTML = "University Name must be at least 2 characters";
+        isValid = false;
+    } 
+      else {
         uniErr.innerHTML = "";
     }
 
@@ -52,7 +56,11 @@ function validateStudentForm() {
     if (dept === "") {
         deptErr.innerHTML = "Please enter your department";
         isValid = false;
-    } else {
+    } else if (dept.length < 2) {
+        deptErr.innerHTML = "Department Name must be at least 2 characters";
+        isValid = false;
+    }
+      else {
         deptErr.innerHTML = "";
     }
 
@@ -131,7 +139,11 @@ function validateInstructorForm() {
     if (uni === "") {
         uniErr.innerHTML = "Please enter your university name";
         isValid = false;
-    } else {
+    } else if (uni.length < 2) {
+        uniErr.innerHTML = "University Name must be at least 2 characters";
+        isValid = false;
+    }
+      else {
         uniErr.innerHTML = "";
     }
 
@@ -140,7 +152,11 @@ function validateInstructorForm() {
     if (dept === "") {
         deptErr.innerHTML = "Please enter your department";
         isValid = false;
-    } else {
+    } else if (dept.length < 2) {
+        deptErr.innerHTML = "Department Name must be at least 2 characters";
+        isValid = false;
+    }
+     else {
         deptErr.innerHTML = "";
     }
 

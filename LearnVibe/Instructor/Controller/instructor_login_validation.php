@@ -6,17 +6,16 @@ require_once '../../Admin/Model/Database.php';
 if (!empty($_SESSION["isLoggedIn"])) {
     $role = $_SESSION["role"] ?? null;
 
-    if ($role === "student") {
-        header("Location: ../../Student/View/s_dashboard.php");
-    } elseif ($role === "instructor") {
+    if ($role === "instructor" && $role !== "student") {
         header("Location: ../View/i_dashboard.php");
-    } else {
+    }
+    else {
         header("Location: ../View/dashboard.php");
     }
     exit;
 }
 
-// Only allow POST
+
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: ../View/instructor_login.php");
     exit;
@@ -26,7 +25,7 @@ $email    = trim($_POST["email"] ?? "");
 $password = trim($_POST["password"] ?? "");
 
 if ($email === "" || $password === "") {
-    header("Location: ../View/Login.php?error=" . urlencode("Please enter both email and password.") . "&email=" . urlencode($email));
+    header("Location: ../View/instructor_login.php?error=" . urlencode("Please enter both email and password.") . "&email=" . urlencode($email));
     exit;
 }
 
@@ -38,23 +37,26 @@ $user = $db->loginUser($conn, $email, $password);
 $db->closeConnection($conn);
 
 if ($user) {
+    $role = $user["role"] ?? null;
+
+    // Only allow instructors to log in from the instructor login page
+    if ($role !== "instructor") {
+        header("Location: ../View/instructor_login.php?error=" . urlencode("This account is not an instructor account. Please use the student login.") . "&email=" . urlencode($email));
+        exit;
+    }
+
+    // proceed with instructor login
     $_SESSION["isLoggedIn"] = true;
     $_SESSION["user_id"]    = $user["id"];
-    $_SESSION["role"]       = $user["role"] ?? null;
+    $_SESSION["role"]       = $role;
     $_SESSION["full_name"]  = $user["full_name"] ?? null;
     $_SESSION["email"]      = $user["email"];
     $_SESSION["user_email"] = $user["email"];
 
-    if ($_SESSION["role"] === "student") {
-        header("Location: ../../Student/View/s_dashboard.php");
-    } elseif ($_SESSION["role"] === "instructor") {
-        header("Location: ../View/i_dashboard.php");
-    } else {
-        header("Location: ../View/dashboard.php");
-    }
+    header("Location: ../View/s_dashboard.php");
     exit;
 }
 
 // Invalid login
-header("Location: ../View/instructor_Login.php?error=" . urlencode("Invalid email or password.") . "&email=" . urlencode($email));
+header("Location: ../View/instructor_login.php?error=" . urlencode("Invalid email or password.") . "&email=" . urlencode($email));
 exit;

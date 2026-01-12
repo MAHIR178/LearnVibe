@@ -36,7 +36,7 @@
             <button id="join-btn" onclick="window.location.href='Instructor/View/instructor_signup.php'">
                 Join Us
             </button>
-            <button id="login-btn" onclick="window.location.href='Instructor/View/instructor_login.php'">
+            <button id="login-btn" onclick="window.location.href='Student/View/student_login.php'">
                 Login
             </button>
         </div>

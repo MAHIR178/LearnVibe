@@ -212,7 +212,6 @@ function updateUserProfileWithPassword($connection, $email, $full_name, $contact
                 WHERE role='student'
                 ORDER BY created_at DESC";
 
-        // use the provided connection object to perform the query
         $result = $connection->query($sql);
 
         return $result;   // return mysqli_result or false on error

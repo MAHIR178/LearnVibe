@@ -11,13 +11,11 @@
 </head>
 <body>
 
-    
-
         <div class="signin-card">
             <div class="signin-layout">
 
                 <div class="signin-content">
-                    <form class="form signin-form" action="../Controller/Loginvalid.php" method="post">
+                    <form class="form signin-form" action="../Controller/instructor_login_validation.php" method="post" novalidate>
                         <h2>Welcome Back</h2>
 
                         <?php if (!empty($_GET["error"])): ?>
@@ -58,6 +56,11 @@
                         </div>
 
                         <button type="submit" class="primary-btn">Sign In</button>
+
+                          <p class="login-text">
+                            Login as Student
+                        <a href="../../Student/View/student_login.php">Go Student</a>
+                        </p>
 
                         <p class="login-text">
                             Don't have an account?
