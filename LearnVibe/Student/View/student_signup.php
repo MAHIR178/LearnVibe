@@ -104,6 +104,6 @@
   </p>
 </div>
 
-<script src="../../Instructor/Controller/SignValidation.js"></script>
+<script src="../Controller/JS/student_signup_validation.js"></script>
 </body>
 </html>

@@ -94,6 +94,6 @@
   </p>
 </div>
 
-<script src="../Controller/SignValidation.js"></script>
+<script src="../Controller/JS/instructor_sigunp_validation.js"></script>
 </body>
 </html>
