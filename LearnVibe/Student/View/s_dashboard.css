@@ -32,6 +32,15 @@
     
     cursor: pointer;
 }
+.logout {
+    background: #dc2626;
+    padding: 8px 14px;
+    border-radius: 4px;
+}
+.logout:hover {
+    background: #b91c1c;
+}
+
 .myuploadbutton{
     color: black;
     border: #ff4d4d;

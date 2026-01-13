@@ -42,12 +42,6 @@ if (!$result) {
 <div class="top-bar">
     <h2>Admin Dashboard</h2>
     <div class="top-links">
-        <div class="profile">
-            <a href="#" id="profile-btn">Admin ▼</a>
-            <div class="profile-menu" id="profile-menu">
-                <a href="#">Profile</a>
-            </div>
-        </div>
         <a href="admin_logout.php" class="logout">Logout</a>
     </div>
 </div>
@@ -73,8 +67,8 @@ if (!$result) {
                         <th>University</th>
                         <th>Department</th>
                         <th>Year</th>
-
                         <th>Created At</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
 
@@ -90,6 +84,27 @@ if (!$result) {
         <td><?php echo htmlspecialchars($students[$i]['department']); ?></td>
         <td><?php echo htmlspecialchars($students[$i]['year']); ?></td>
         <td><?php echo htmlspecialchars($students[$i]['created_at']); ?></td>
+        <td>
+
+    <!-- EDIT BUTTON -->
+    <form method="post"
+          action="admin_edit_student.php"
+          style="display:inline;">
+        <input type="hidden"
+               name="id"
+               value="<?php echo $students[$i]['id']; ?>">
+        <button type="submit"
+                class="btn edit-btn">
+            Edit
+        </button>
+    </form>
+
+    <!-- DELETE BUTTON -->
+    <form method="post" action="../Controller/admin_delete_student.php">
+        <input type="hidden" name="id" value="<?php echo $students[$i]['id']; ?>">
+        <button type="submit" class="btn delete-btn"> Delete </button>
+    </form>
+</td>
     </tr>
 <?php } ?>  
                 </tbody>
@@ -102,23 +117,6 @@ if (!$result) {
 <div class="footer">
     <p>© 2025 Course Project | Admin Panel</p>
 </div>
-
-<!-- JS: Profile dropdown -->
-<script>
-const profileBtn = document.getElementById('profile-btn');
-const profileMenu = document.getElementById('profile-menu');
-if (profileBtn) {
-    profileBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
-    });
-}
-document.addEventListener('click', function (e) {
-    if (profileBtn && !profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
-        profileMenu.style.display = 'none';
-    }
-});
-</script>
 
 </body>
 </html>

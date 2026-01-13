@@ -105,6 +105,28 @@ function loginUser($connection, $email, $password){
     $stmt->close();
     return $user; // assoc array or null
 }
+function adminLogin($username, $password)
+{
+    $conn = $this->openConnection();
+
+    $sql = "SELECT * FROM admin WHERE username = ? AND password = ?";
+    $stmt = $conn->prepare($sql);
+
+    if (!$stmt) {
+        return false;
+    }
+
+    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $admin = $result->fetch_assoc();
+
+    $stmt->close();
+    $this->closeConnection($conn);
+
+    return $admin; // returns admin data if found, false otherwise
+}
 
 
 // -------------------------
@@ -230,6 +252,37 @@ function updateUserProfileWithPassword($connection, $email, $full_name, $contact
         $result = $connection->query($sql);
         return $result;
     }
+    // Delete student by Admin
+    function deleteStudent($connection, $id)
+      {
+        $sql = "DELETE FROM users WHERE id = ? AND role = 'student'";
+        $stmt = $connection->prepare($sql);
+        if (!$stmt) {
+            return false;
+        }
+
+        $stmt->bind_param("i", $id);
+        $ok = $stmt->execute();
+        $stmt->close();
+
+        return $ok;
+}
+    // Delete instructor by Admin
+    function deleteInstructor($connection, $id)
+    {
+        $sql = "DELETE FROM users WHERE id = ? AND role = 'instructor'";
+        $stmt = $connection->prepare($sql);
+        if (!$stmt) {
+            return false;
+        }
+
+        $stmt->bind_param("i", $id);
+        $ok = $stmt->execute();
+        $stmt->close();
+
+        return $ok;
+    }
+
 
     // insert file with instructor id
 function addCourseFile($connection, $course_title, $file_type, $original_name, $file_path, $uploaded_by){

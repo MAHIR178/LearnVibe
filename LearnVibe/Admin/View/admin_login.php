@@ -1,28 +1,12 @@
 <?php
 session_start();
 
-$error = '';
-if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
-    header('Location: admin_dashboard.php');
-    exit();
+$admin_error = null;
+if (isset($_SESSION['admin_error'])) {
+    $admin_error = $_SESSION['admin_error'];
+    unset($_SESSION['admin_error']);
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = isset($_POST['username']) ? trim($_POST['username']) : '';
-    $password = isset($_POST['password']) ? $_POST['password'] : '';
-
-    // Simple admin credential check (unique for admin login)
-    $adminUser = 'admin';
-    $adminPass = 'admin123';
-
-    if ($username === $adminUser && $password === $adminPass) {
-        $_SESSION['admin_logged_in'] = true;
-        header('Location: admin_dashboard.php');
-        exit();
-    } else {
-        $error = 'Invalid username or password.';
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
 <div class="login-wrapper">
-    <form method="post" class="login-card" autocomplete="off">
+    <form method="post" class="login-card" action="../Controller/admin_login_validation.php" novalidate>
         <h2>Admin Login</h2>
-        <?php if ($error): ?>
-            <div class="error"><?php echo htmlspecialchars($error); ?></div>
+        <?php if ($admin_error): ?>
+            <div class="error"><?php echo htmlspecialchars($admin_error); ?></div>
         <?php endif; ?>
 
         <label for="username">Username</label>

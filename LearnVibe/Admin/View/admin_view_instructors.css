@@ -23,3 +23,45 @@ th {
     margin:12px 0; 
     color:#2563eb; 
     text-decoration:none; }
+    
+td form {
+    display: inline-block;
+    margin: 0;
+}
+
+.btn {
+    padding: 6px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* EDIT */
+.edit-btn {
+    background-color: black;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #333333;
+}
+
+/* DELETE */
+.delete-btn {
+    background-color: #e74c3c;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Actions column alignment */
+table th:last-child,
+table td:last-child {
+    text-align: center;
+    width: 170px;
+}

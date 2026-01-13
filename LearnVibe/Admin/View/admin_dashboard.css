@@ -14,7 +14,7 @@ body {
 
 /* ===== TOP BAR ===== */
 .top-bar {
-    background: #72A9D4;
+    background: rgb(43, 130, 245);
     color: #fff;
     padding: 15px 30px;
     display: flex;

@@ -23,13 +23,6 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     <h2>Admin Dashboard</h2>
 
     <div class="top-links">
-        <div class="profile">
-            <a href="#" id="profile-btn">Admin ▼</a>
-            <div class="profile-menu" id="profile-menu">
-                <a href="#">Profile</a>
-                <a href="#">Settings</a>
-            </div>
-        </div>
         <a href="admin_logout.php" class="logout">Logout</a>
     </div>
 </div>
@@ -62,24 +55,5 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 <div class="footer">
     <p>© 2025 Course Project | Admin Panel</p>
 </div>
-
-<!-- JS: Profile dropdown -->
-<script>
-const profileBtn = document.getElementById('profile-btn');
-const profileMenu = document.getElementById('profile-menu');
-
-profileBtn.addEventListener('click', function (e) {
-    e.preventDefault();
-    profileMenu.style.display =
-        profileMenu.style.display === 'block' ? 'none' : 'block';
-});
-
-document.addEventListener('click', function (e) {
-    if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
-        profileMenu.style.display = 'none';
-    }
-});
-</script>
-
 </body>
 </html>

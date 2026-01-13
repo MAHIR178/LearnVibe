@@ -34,7 +34,7 @@ $current_user_email = $_SESSION['email'];
     <a href="profile_edit.php">Edit</a>
 </div>
         </div>
-        <a href="../../Instructor/View/Logout.php">Logout</a>
+        <a href="../../Instructor/View/Logout.php" class="logout">Logout</a>
     </div>
 </div>
 
