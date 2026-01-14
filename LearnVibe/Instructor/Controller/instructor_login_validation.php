@@ -53,7 +53,7 @@ if ($user) {
     $_SESSION["email"]      = $user["email"];
     $_SESSION["user_email"] = $user["email"];
 
-    header("Location: ../View/s_dashboard.php");
+    header("Location: ../View/i_dashboard.php");
     exit;
 }
 
