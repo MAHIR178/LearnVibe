@@ -190,7 +190,7 @@ $all_courses = [
                         'English Reading Skills & Public Speaking' => 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
                         'Introduction to Computer Studies' => 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
                         'Introduction to Programming' => 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Introduction to Programming Lab' => 'https://images.unsplash.com/photo-1580894742597-87bc8789db3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Introduction to Programming Lab' => 'https://mir-s3-cdn-cf.behance.net/project_modules/fs/5e2115104733947.5f69c10ec4243.jpg',
                         
                         // Semester 2
                         'Discrete Mathematics' => 'https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
@@ -205,7 +205,7 @@ $all_courses = [
                         // Semester 3
                         'Chemistry' => 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
                         'Complex Variable, Laplace & Z-Transformation' => 'https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Introduction to Database' => 'https://images.unsplash.com/photo-1543943217-9bf5b289b7c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Introduction to Database' => 'https://bs-uploads.toptal.io/blackfish-uploads/components/open_graph_image/10698762/og_image/optimized/0712-Bad_Practices_in_Database_Design_-_Are_You_Making_These_Mistakes_Dan_Social-754bc73011e057dc76e55a44a954e0c3.png',
                         'Electronic Devices Lab' => 'https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
                         'Principles of Accounting' => 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
                         'Electronic Devices' => 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
