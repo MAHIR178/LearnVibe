@@ -142,6 +142,158 @@ $all_courses = [
     ['slug' => 'wireless-sensor-networks', 'title' => 'Wireless Sensor Networks'],
     ['slug' => 'industrial-electronics', 'title' => 'Industrial Electronics, Drives & Instrumentation'],
 ];
+
+// Define course descriptions
+$course_descriptions = [
+    // Semester 1
+    'Differential Calculus & Co-ordinate Geometry' => 'Learn derivatives, limits, and analytical geometry for engineering applications',
+    'Physics 1' => 'Fundamental principles of mechanics, thermodynamics, and wave motion',
+    'Physics 1 Lab' => 'Hands-on experiments in mechanics and thermodynamics',
+    'English Reading Skills & Public Speaking' => 'Develop communication skills and presentation techniques',
+    'Introduction to Computer Studies' => 'Overview of computer systems and their applications',
+    'Introduction to Programming' => 'Basic programming concepts using C/C++ language',
+    'Introduction to Programming Lab' => 'Practical programming exercises and problem solving',
+    
+    // Semester 2
+    'Discrete Mathematics' => 'Mathematical structures for computer science applications',
+    'Integral Calculus & Ordinary Differential Equations' => 'Integration techniques and solving differential equations',
+    'Object Oriented Programming 1' => 'Learn OOP concepts with Java programming language',
+    'Physics 2' => 'Electricity, magnetism, and modern physics concepts',
+    'Physics 2 Lab' => 'Experiments in electricity, magnetism, and optics',
+    'English Writing Skills & Communications' => 'Technical writing and professional communication',
+    'Introduction to Electrical Circuits' => 'Basic circuit theory, laws, and analysis techniques',
+    'Introduction to Electrical Circuits Lab' => 'Practical circuit design and measurement',
+    
+    // Semester 3
+    'Chemistry' => 'Chemical principles and reactions for engineering applications',
+    'Complex Variable, Laplace & Z-Transformation' => 'Complex analysis and transform methods',
+    'Introduction to Database' => 'Database concepts, SQL, and relational database design',
+    'Electronic Devices Lab' => 'Practical experiments with semiconductor devices',
+    'Principles of Accounting' => 'Basic accounting principles and financial statements',
+    'Electronic Devices' => 'Semiconductor devices, diodes, transistors, and amplifiers',
+    'Data Structure' => 'Study of arrays, linked lists, stacks, queues, and trees',
+    'Data Structure Lab' => 'Implementation and analysis of data structures',
+    'Computer Aided Design & Drafting' => 'CAD tools for engineering design and modeling',
+    
+    // Semester 4
+    'Algorithms' => 'Design and analysis of efficient algorithms for problem solving',
+    'Matrices, Vectors, Fourier Analysis' => 'Linear algebra and Fourier analysis techniques',
+    'Object Oriented Programming 2' => 'Advanced OOP concepts and software development',
+    'Object Oriented Analysis and Design' => 'Software design patterns and UML modeling',
+    'Bangladesh Studies' => 'History, culture, and development of Bangladesh',
+    'Digital Logic and Circuits' => 'Boolean algebra, logic gates, and digital circuit design',
+    'Digital Logic and Circuits Lab' => 'Practical digital circuit implementation',
+    'Computational Statistics and Probability' => 'Statistical methods and probability theory for data analysis',
+    
+    // Semester 5
+    'Theory of Computation' => 'Formal languages, automata theory, and computational complexity',
+    'Principles of Economics' => 'Micro and macro economic principles',
+    'Business Communication' => 'Professional communication in business context',
+    'Numerical Methods for Science and Engineering' => 'Numerical algorithms for scientific computing',
+    'Data Communication' => 'Network protocols, transmission media, and communication systems',
+    'Microprocessor and Embedded Systems' => 'Microprocessor architecture and embedded system design',
+    'Software Engineering' => 'Software development lifecycle, methodologies, and project management',
+    
+    // Semester 6
+    'Artificial Intelligence and Expert System' => 'AI algorithms, knowledge representation, and expert systems',
+    'Computer Networks' => 'Network architectures, protocols, and internet technologies',
+    'Computer Organization and Architecture' => 'Computer hardware design and system architecture',
+    'Operating System' => 'Process management, memory management, and file systems',
+    'Web Technologies' => 'HTML, CSS, JavaScript, and server-side programming',
+    'Engineering Ethics' => 'Professional ethics and social responsibility for engineers',
+    'Compiler Design' => 'Compiler construction techniques and optimization',
+    
+    // Semester 7
+    'Computer Graphics' => '2D/3D graphics, rendering techniques, and visualization',
+    'Research Methodology' => 'Research design, data collection, and academic writing',
+    'Engineering Management' => 'Project management, ethics, and professional practice',
+    
+    // Semester 8
+    'Thesis' => 'Final year research project and dissertation',
+    'Internship' => 'Industry experience and practical training',
+    
+    // Major in Information Systems
+    'Advance Database Management System' => 'Advanced SQL, indexing, transactions, and distributed databases',
+    'Management Information System' => 'Information systems for business decision making',
+    'Enterprise Resource Planning' => 'ERP systems and business process integration',
+    'Data Warehouse and Data Mining' => 'Data storage, retrieval, and pattern discovery',
+    'Human Computer Interaction' => 'User interface design and usability principles',
+    'Business Intelligence and Decision Support Systems' => 'Data analytics for business intelligence',
+    'Introduction to Data Science' => 'Data analysis, visualization, and predictive modeling',
+    'Cyber Laws & Information Security' => 'Legal aspects and security measures in cyberspace',
+    'Digital Marketing' => 'Online marketing strategies and e-commerce',
+    'E-Commerce, E-Governance & E-Series' => 'Electronic business models and governance',
+    
+    // Major in Software Engineering
+    'Software Development Project Management' => 'Planning, scheduling, and controlling software projects',
+    'Software Requirement Engineering' => 'Elicitation, analysis, and specification of software requirements',
+    'Software Quality and Testing' => 'Testing methodologies and quality assurance',
+    'Programming in Python' => 'Python programming for data analysis and applications',
+    'Virtual Reality Systems Design' => 'VR technologies and immersive environment design',
+    'Advanced Programming with Java' => 'Advanced Java programming and frameworks',
+    'Advanced Programming with .NET' => '.NET framework and C# programming',
+    'Advanced Programming in Web Technology' => 'Advanced web development with modern frameworks',
+    'Mobile Application Development' => 'iOS and Android app development',
+    'Software Architecture and Design Patterns' => 'Software design principles and architectural patterns',
+    
+    // Major in Computational Theory
+    'Computer Science Mathematics' => 'Advanced mathematical concepts for computer science',
+    'Basic Graph Theory' => 'Graph theory and its applications in computing',
+    'Advanced Algorithm Techniques' => 'Complex algorithm design and analysis',
+    'Natural Language Processing' => 'Computational linguistics and language processing',
+    'Linear Programming' => 'Optimization techniques and linear models',
+    'Parallel Computing' => 'Parallel algorithms and distributed systems',
+    'Machine Learning' => 'Supervised and unsupervised learning algorithms',
+    
+    // Major in Computer Engineering
+    'Basic Mechanical Engineering' => 'Fundamentals of mechanical systems and design',
+    'Digital Signal Processing' => 'Signal processing algorithms and applications',
+    'VLSI Circuit Design' => 'Very Large Scale Integration circuit design',
+    'Signals & Linear System' => 'Signal analysis and linear system theory',
+    'Digital System Design' => 'Advanced digital circuit and system design',
+    'Image Processing' => 'Digital image analysis and processing techniques',
+    'Multimedia Systems' => 'Audio, video, and multimedia technologies',
+    'Simulation & Modeling' => 'Computer simulation and modeling techniques',
+    'Advanced Computer Networks' => 'Advanced networking concepts and protocols',
+    'Computer Vision and Pattern Recognition' => 'Image recognition and computer vision algorithms',
+    'Network Security' => 'Cryptography, firewalls, and security protocols',
+    'Advanced Operating System' => 'Advanced operating system concepts and design',
+    'Digital Design with System [Verilog, VHDL & FPGAs]' => 'Hardware description languages and FPGA design',
+    'Robotics Engineering' => 'Robotics systems and automation',
+    'Telecommunications Engineering' => 'Telecommunication systems and networks',
+    'Network Resource Management & Organization' => 'Network administration and resource allocation',
+    'Wireless Sensor Networks' => 'Wireless networking and sensor technologies',
+    'Industrial Electronics, Drives & Instrumentation' => 'Industrial control systems and instrumentation',
+];
+
+// 🔴 CHECK FOR AJAX REQUEST FIRST - IMPORTANT!
+if (isset($_GET['search_query']) && !empty($_GET['search_query'])) {
+    $search_query = strtolower($_GET['search_query']);
+    $results = [];
+    
+    foreach ($all_courses as $course) {
+        $title = strtolower($course['title']);
+        $slug = strtolower($course['slug']);
+        
+        // Search in title or slug
+        if (strpos($title, $search_query) !== false || strpos($slug, $search_query) !== false) {
+            $description = $course_descriptions[$course['title']] ?? 'Explore this course to enhance your knowledge in Computer Science and Engineering';
+            
+            $results[] = [
+                'slug' => $course['slug'],
+                'title' => $course['title'],
+                'description' => substr($description, 0, 100) . '...'
+            ];
+        }
+    }
+    
+    // Return JSON response and STOP execution
+    header('Content-Type: application/json');
+    echo json_encode($results);
+    exit; // 🔴 CRITICAL: Stop HTML from rendering
+}
+
+// If NOT an AJAX request, continue with normal page rendering below
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -150,12 +302,73 @@ $all_courses = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Dashboard | LearnVibe</title>
     <link rel="stylesheet" href="s_dashboard.css">
+    <style>
+        /* Add search dropdown styles */
+        .search-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .search-results {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 0 0 6px 6px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 2000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .search-result-item {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .search-result-item h4 {
+            margin: 0 0 5px 0;
+            color: #2b82f5;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .search-result-item p {
+            margin: 0;
+            color: #666;
+            font-size: 12px;
+            line-height: 1.3;
+        }
+
+        .no-results {
+            padding: 12px;
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
 
 <!-- TOP BAR -->
 <div class="top-bar">
-    <input type="text" placeholder="Search">
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search courses...">
+        <div class="search-results" id="searchResults"></div>
+    </div>
     <div class="top-links">
         <!-- Feedback Button in top bar -->
         <a href="feedback.php" class="feedback-btn">Feedback</a>
@@ -237,7 +450,7 @@ $all_courses = [
                         'Computer Networks' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
                         'Computer Organization and Architecture' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
                         'Operating System' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Web Technologies' => 'https://images.unsplash.com/photo-1460925895917  afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Web Technologies' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
                         'Engineering Ethics' => 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
                         'Compiler Design' => 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
                         
@@ -313,131 +526,7 @@ $all_courses = [
                 </a>
                 
                 <p>
-                    <?php 
-                    // Course descriptions
-                    $descriptions = [
-                        // Semester 1
-                        'Differential Calculus & Co-ordinate Geometry' => 'Learn derivatives, limits, and analytical geometry for engineering applications',
-                        'Physics 1' => 'Fundamental principles of mechanics, thermodynamics, and wave motion',
-                        'Physics 1 Lab' => 'Hands-on experiments in mechanics and thermodynamics',
-                        'English Reading Skills & Public Speaking' => 'Develop communication skills and presentation techniques',
-                        'Introduction to Computer Studies' => 'Overview of computer systems and their applications',
-                        'Introduction to Programming' => 'Basic programming concepts using C/C++ language',
-                        'Introduction to Programming Lab' => 'Practical programming exercises and problem solving',
-                        
-                        // Semester 2
-                        'Discrete Mathematics' => 'Mathematical structures for computer science applications',
-                        'Integral Calculus & Ordinary Differential Equations' => 'Integration techniques and solving differential equations',
-                        'Object Oriented Programming 1' => 'Learn OOP concepts with Java programming language',
-                        'Physics 2' => 'Electricity, magnetism, and modern physics concepts',
-                        'Physics 2 Lab' => 'Experiments in electricity, magnetism, and optics',
-                        'English Writing Skills & Communications' => 'Technical writing and professional communication',
-                        'Introduction to Electrical Circuits' => 'Basic circuit theory, laws, and analysis techniques',
-                        'Introduction to Electrical Circuits Lab' => 'Practical circuit design and measurement',
-                        
-                        // Semester 3
-                        'Chemistry' => 'Chemical principles and reactions for engineering applications',
-                        'Complex Variable, Laplace & Z-Transformation' => 'Complex analysis and transform methods',
-                        'Introduction to Database' => 'Database concepts, SQL, and relational database design',
-                        'Electronic Devices Lab' => 'Practical experiments with semiconductor devices',
-                        'Principles of Accounting' => 'Basic accounting principles and financial statements',
-                        'Electronic Devices' => 'Semiconductor devices, diodes, transistors, and amplifiers',
-                        'Data Structure' => 'Study of arrays, linked lists, stacks, queues, and trees',
-                        'Data Structure Lab' => 'Implementation and analysis of data structures',
-                        'Computer Aided Design & Drafting' => 'CAD tools for engineering design and modeling',
-                        
-                        // Semester 4
-                        'Algorithms' => 'Design and analysis of efficient algorithms for problem solving',
-                        'Matrices, Vectors, Fourier Analysis' => 'Linear algebra and Fourier analysis techniques',
-                        'Object Oriented Programming 2' => 'Advanced OOP concepts and software development',
-                        'Object Oriented Analysis and Design' => 'Software design patterns and UML modeling',
-                        'Bangladesh Studies' => 'History, culture, and development of Bangladesh',
-                        'Digital Logic and Circuits' => 'Boolean algebra, logic gates, and digital circuit design',
-                        'Digital Logic and Circuits Lab' => 'Practical digital circuit implementation',
-                        'Computational Statistics and Probability' => 'Statistical methods and probability theory for data analysis',
-                        
-                        // Semester 5
-                        'Theory of Computation' => 'Formal languages, automata theory, and computational complexity',
-                        'Principles of Economics' => 'Micro and macro economic principles',
-                        'Business Communication' => 'Professional communication in business context',
-                        'Numerical Methods for Science and Engineering' => 'Numerical algorithms for scientific computing',
-                        'Data Communication' => 'Network protocols, transmission media, and communication systems',
-                        'Microprocessor and Embedded Systems' => 'Microprocessor architecture and embedded system design',
-                        'Software Engineering' => 'Software development lifecycle, methodologies, and project management',
-                        
-                        // Semester 6
-                        'Artificial Intelligence and Expert System' => 'AI algorithms, knowledge representation, and expert systems',
-                        'Computer Networks' => 'Network architectures, protocols, and internet technologies',
-                        'Computer Organization and Architecture' => 'Computer hardware design and system architecture',
-                        'Operating System' => 'Process management, memory management, and file systems',
-                        'Web Technologies' => 'HTML, CSS, JavaScript, and server-side programming',
-                        'Engineering Ethics' => 'Professional ethics and social responsibility for engineers',
-                        'Compiler Design' => 'Compiler construction techniques and optimization',
-                        
-                        // Semester 7
-                        'Computer Graphics' => '2D/3D graphics, rendering techniques, and visualization',
-                        'Research Methodology' => 'Research design, data collection, and academic writing',
-                        'Engineering Management' => 'Project management, ethics, and professional practice',
-                        
-                        // Semester 8
-                        'Thesis' => 'Final year research project and dissertation',
-                        'Internship' => 'Industry experience and practical training',
-                        
-                        // Major in Information Systems
-                        'Advance Database Management System' => 'Advanced SQL, indexing, transactions, and distributed databases',
-                        'Management Information System' => 'Information systems for business decision making',
-                        'Enterprise Resource Planning' => 'ERP systems and business process integration',
-                        'Data Warehouse and Data Mining' => 'Data storage, retrieval, and pattern discovery',
-                        'Human Computer Interaction' => 'User interface design and usability principles',
-                        'Business Intelligence and Decision Support Systems' => 'Data analytics for business intelligence',
-                        'Introduction to Data Science' => 'Data analysis, visualization, and predictive modeling',
-                        'Cyber Laws & Information Security' => 'Legal aspects and security measures in cyberspace',
-                        'Digital Marketing' => 'Online marketing strategies and e-commerce',
-                        'E-Commerce, E-Governance & E-Series' => 'Electronic business models and governance',
-                        
-                        // Major in Software Engineering
-                        'Software Development Project Management' => 'Planning, scheduling, and controlling software projects',
-                        'Software Requirement Engineering' => 'Elicitation, analysis, and specification of software requirements',
-                        'Software Quality and Testing' => 'Testing methodologies and quality assurance',
-                        'Programming in Python' => 'Python programming for data analysis and applications',
-                        'Virtual Reality Systems Design' => 'VR technologies and immersive environment design',
-                        'Advanced Programming with Java' => 'Advanced Java programming and frameworks',
-                        'Advanced Programming with .NET' => '.NET framework and C# programming',
-                        'Advanced Programming in Web Technology' => 'Advanced web development with modern frameworks',
-                        'Mobile Application Development' => 'iOS and Android app development',
-                        'Software Architecture and Design Patterns' => 'Software design principles and architectural patterns',
-                        
-                        // Major in Computational Theory
-                        'Computer Science Mathematics' => 'Advanced mathematical concepts for computer science',
-                        'Basic Graph Theory' => 'Graph theory and its applications in computing',
-                        'Advanced Algorithm Techniques' => 'Complex algorithm design and analysis',
-                        'Natural Language Processing' => 'Computational linguistics and language processing',
-                        'Linear Programming' => 'Optimization techniques and linear models',
-                        'Parallel Computing' => 'Parallel algorithms and distributed systems',
-                        'Machine Learning' => 'Supervised and unsupervised learning algorithms',
-                        
-                        // Major in Computer Engineering
-                        'Basic Mechanical Engineering' => 'Fundamentals of mechanical systems and design',
-                        'Digital Signal Processing' => 'Signal processing algorithms and applications',
-                        'VLSI Circuit Design' => 'Very Large Scale Integration circuit design',
-                        'Signals & Linear System' => 'Signal analysis and linear system theory',
-                        'Digital System Design' => 'Advanced digital circuit and system design',
-                        'Image Processing' => 'Digital image analysis and processing techniques',
-                        'Multimedia Systems' => 'Audio, video, and multimedia technologies',
-                        'Simulation & Modeling' => 'Computer simulation and modeling techniques',
-                        'Advanced Computer Networks' => 'Advanced networking concepts and protocols',
-                        'Computer Vision and Pattern Recognition' => 'Image recognition and computer vision algorithms',
-                        'Network Security' => 'Cryptography, firewalls, and security protocols',
-                        'Advanced Operating System' => 'Advanced operating system concepts and design',
-                        'Digital Design with System [Verilog, VHDL & FPGAs]' => 'Hardware description languages and FPGA design',
-                        'Robotics Engineering' => 'Robotics systems and automation',
-                        'Telecommunications Engineering' => 'Telecommunication systems and networks',
-                        'Network Resource Management & Organization' => 'Network administration and resource allocation',
-                        'Wireless Sensor Networks' => 'Wireless networking and sensor technologies',
-                        'Industrial Electronics, Drives & Instrumentation' => 'Industrial control systems and instrumentation',
-                    ];
-                    echo $descriptions[$course['title']] ?? 'Explore this course to enhance your knowledge in Computer Science and Engineering';
-                    ?>
+                    <?= $course_descriptions[$course['title']] ?? 'Explore this course to enhance your knowledge in Computer Science and Engineering' ?>
                 </p>
                 
                 <div class="course-actions">
@@ -472,6 +561,144 @@ profileBtn.addEventListener('click', function(e) {
 document.addEventListener('click', function(e) {
     if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
         profileMenu.style.display = 'none';
+    }
+});
+</script>
+
+<!-- JS for AJAX Search -->
+<script>
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+let searchTimeout;
+
+// Function to perform search
+// In s_dashboard.php JavaScript, update the performSearch function:
+
+function performSearch() {
+    const query = searchInput.value.trim();
+    
+    // Show results even for single character
+    if (query.length < 1) {
+        searchResults.style.display = 'none';
+        searchResults.innerHTML = '';
+        return;
+    }
+    
+    // Create XMLHttpRequest object
+    const xhr = new XMLHttpRequest();
+    
+    // Configure the request
+    xhr.open('GET', 'search_courses.php?search_query=' + encodeURIComponent(query), true);
+    
+    // Set up the callback function
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try {
+                    const results = JSON.parse(xhr.responseText);
+                    displayResults(results);
+                } catch (e) {
+                    console.error('Error parsing JSON:', e);
+                    displayResults([]);
+                }
+            } else {
+                console.error('Request failed with status:', xhr.status);
+                displayResults([]);
+            }
+        }
+    };
+    
+    // Handle errors
+    xhr.onerror = function() {
+        console.error('Request failed');
+        displayResults([]);
+    };
+    
+    // Send the request
+    xhr.send();
+}
+
+// Function to display search results
+function displayResults(results) {
+    searchResults.innerHTML = '';
+    
+    if (results.length === 0) {
+        const noResults = document.createElement('div');
+        noResults.className = 'no-results';
+        noResults.textContent = 'No courses found';
+        searchResults.appendChild(noResults);
+    } else {
+        // Limit to top 10 results
+        const limitedResults = results.slice(0, 10);
+        
+        limitedResults.forEach(course => {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'search-result-item';
+            resultItem.innerHTML = `
+                <h4>${escapeHtml(course.title)}</h4>
+                <p>${escapeHtml(course.description)}</p>
+            `;
+            
+            // Add click event to navigate to course
+            resultItem.addEventListener('click', function() {
+                window.location.href = `../../Instructor/View/course_files.php?course=${encodeURIComponent(course.slug)}`;
+            });
+            
+            searchResults.appendChild(resultItem);
+        });
+    }
+    
+    searchResults.style.display = 'block';
+}
+
+// Helper function to escape HTML
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// Event listeners for search
+searchInput.addEventListener('input', function() {
+    // Clear previous timeout
+    clearTimeout(searchTimeout);
+    
+    // Set new timeout (debouncing - wait 300ms after typing stops)
+    searchTimeout = setTimeout(performSearch, 300);
+});
+
+searchInput.addEventListener('focus', function() {
+    if (searchInput.value.trim().length >= 2) {
+        performSearch();
+    }
+});
+
+// Hide results when clicking outside
+document.addEventListener('click', function(e) {
+    if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.style.display = 'none';
+    }
+});
+
+// Keyboard navigation
+searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        searchResults.style.display = 'none';
+        searchInput.blur();
+    } else if (e.key === 'Enter' && searchInput.value.trim().length > 0) {
+        // If user presses Enter, navigate to first result or show all results
+        const firstResult = searchResults.querySelector('.search-result-item');
+        if (firstResult) {
+            firstResult.click();
+        }
+        e.preventDefault();
+    }
+});
+
+// Show results when input is focused and has content
+searchInput.addEventListener('focus', function() {
+    if (searchInput.value.trim().length >= 2) {
+        performSearch();
     }
 });
 </script>
