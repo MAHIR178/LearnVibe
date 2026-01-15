@@ -20,24 +20,127 @@ try {
     $pdo = null;
 }
 
-// Define courses array
+// Define ALL courses array - Complete AIUB CSE Curriculum
 $all_courses = [
-    ['slug' => 'Cyber Security', 'title' => 'Cyber Security'],
-    ['slug' => 'Machine Learning', 'title' => 'Machine Learning'],
-    ['slug' => 'Web Development', 'title' => 'Web Development'],
-    ['slug' => 'Python Programming', 'title' => 'Python Programming'],
-    ['slug' => 'Artificial Intelligence', 'title' => 'Artificial Intelligence'],
-    ['slug' => 'Data Science', 'title' => 'Data Science'],
-    ['slug' => 'Programming in Java', 'title' => 'Programming in Java'],
-    ['slug' => 'Database Management', 'title' => 'Database Management'],
-    ['slug' => 'Cloud Computing', 'title' => 'Cloud Computing'],
-    ['slug' => 'Blockchain', 'title' => 'Blockchain'],
-    ['slug' => 'Deep Learning', 'title' => 'Deep Learning'],
-    ['slug' => 'Neural Networks', 'title' => 'Neural Networks'],
-    ['slug' => 'Software Engineering', 'title' => 'Software Engineering'],
-    ['slug' => 'Android App Development', 'title' => 'Android App Development'],
-    ['slug' => 'C++ Programming', 'title' => 'C++ Programming'],
-    ['slug' => 'AI & ML Projects', 'title' => 'AI & ML Projects'],
+    // Semester 1
+    ['slug' => 'differential-calculus', 'title' => 'Differential Calculus & Co-ordinate Geometry'],
+    ['slug' => 'physics-1', 'title' => 'Physics 1'],
+    ['slug' => 'physics-1-lab', 'title' => 'Physics 1 Lab'],
+    ['slug' => 'english-reading', 'title' => 'English Reading Skills & Public Speaking'],
+    ['slug' => 'intro-computer-studies', 'title' => 'Introduction to Computer Studies'],
+    ['slug' => 'intro-programming', 'title' => 'Introduction to Programming'],
+    ['slug' => 'intro-programming-lab', 'title' => 'Introduction to Programming Lab'],
+    
+    // Semester 2
+    ['slug' => 'discrete-mathematics', 'title' => 'Discrete Mathematics'],
+    ['slug' => 'integral-calculus', 'title' => 'Integral Calculus & Ordinary Differential Equations'],
+    ['slug' => 'object-oriented-programming-1', 'title' => 'Object Oriented Programming 1'],
+    ['slug' => 'physics-2', 'title' => 'Physics 2'],
+    ['slug' => 'physics-2-lab', 'title' => 'Physics 2 Lab'],
+    ['slug' => 'english-writing', 'title' => 'English Writing Skills & Communications'],
+    ['slug' => 'electrical-circuits', 'title' => 'Introduction to Electrical Circuits'],
+    ['slug' => 'electrical-circuits-lab', 'title' => 'Introduction to Electrical Circuits Lab'],
+    
+    // Semester 3
+    ['slug' => 'chemistry', 'title' => 'Chemistry'],
+    ['slug' => 'complex-variable', 'title' => 'Complex Variable, Laplace & Z-Transformation'],
+    ['slug' => 'introduction-database', 'title' => 'Introduction to Database'],
+    ['slug' => 'electronic-devices-lab', 'title' => 'Electronic Devices Lab'],
+    ['slug' => 'principles-accounting', 'title' => 'Principles of Accounting'],
+    ['slug' => 'electronic-devices', 'title' => 'Electronic Devices'],
+    ['slug' => 'data-structures', 'title' => 'Data Structure'],
+    ['slug' => 'data-structures-lab', 'title' => 'Data Structure Lab'],
+    ['slug' => 'computer-aided-design', 'title' => 'Computer Aided Design & Drafting'],
+    
+    // Semester 4
+    ['slug' => 'algorithms', 'title' => 'Algorithms'],
+    ['slug' => 'matrices-vectors', 'title' => 'Matrices, Vectors, Fourier Analysis'],
+    ['slug' => 'object-oriented-programming-2', 'title' => 'Object Oriented Programming 2'],
+    ['slug' => 'object-oriented-analysis', 'title' => 'Object Oriented Analysis and Design'],
+    ['slug' => 'bangladesh-studies', 'title' => 'Bangladesh Studies'],
+    ['slug' => 'digital-logic', 'title' => 'Digital Logic and Circuits'],
+    ['slug' => 'digital-logic-lab', 'title' => 'Digital Logic and Circuits Lab'],
+    ['slug' => 'computational-statistics', 'title' => 'Computational Statistics and Probability'],
+    
+    // Semester 5
+    ['slug' => 'theory-computation', 'title' => 'Theory of Computation'],
+    ['slug' => 'principles-economics', 'title' => 'Principles of Economics'],
+    ['slug' => 'business-communication', 'title' => 'Business Communication'],
+    ['slug' => 'numerical-methods', 'title' => 'Numerical Methods for Science and Engineering'],
+    ['slug' => 'data-communication', 'title' => 'Data Communication'],
+    ['slug' => 'microprocessor', 'title' => 'Microprocessor and Embedded Systems'],
+    ['slug' => 'software-engineering', 'title' => 'Software Engineering'],
+    
+    // Semester 6
+    ['slug' => 'artificial-intelligence', 'title' => 'Artificial Intelligence and Expert System'],
+    ['slug' => 'computer-networks', 'title' => 'Computer Networks'],
+    ['slug' => 'computer-organization', 'title' => 'Computer Organization and Architecture'],
+    ['slug' => 'operating-system', 'title' => 'Operating System'],
+    ['slug' => 'web-technologies', 'title' => 'Web Technologies'],
+    ['slug' => 'engineering-ethics', 'title' => 'Engineering Ethics'],
+    ['slug' => 'compiler-design', 'title' => 'Compiler Design'],
+    
+    // Semester 7
+    ['slug' => 'computer-graphics', 'title' => 'Computer Graphics'],
+    ['slug' => 'research-methodology', 'title' => 'Research Methodology'],
+    ['slug' => 'engineering-management', 'title' => 'Engineering Management'],
+    
+    // Semester 8
+    ['slug' => 'thesis', 'title' => 'Thesis'],
+    ['slug' => 'internship', 'title' => 'Internship'],
+    
+    // Major in Information Systems
+    ['slug' => 'advance-database', 'title' => 'Advance Database Management System'],
+    ['slug' => 'management-information-system', 'title' => 'Management Information System'],
+    ['slug' => 'enterprise-resource-planning', 'title' => 'Enterprise Resource Planning'],
+    ['slug' => 'data-warehouse-mining', 'title' => 'Data Warehouse and Data Mining'],
+    ['slug' => 'human-computer-interaction', 'title' => 'Human Computer Interaction'],
+    ['slug' => 'business-intelligence', 'title' => 'Business Intelligence and Decision Support Systems'],
+    ['slug' => 'introduction-data-science', 'title' => 'Introduction to Data Science'],
+    ['slug' => 'cyber-laws', 'title' => 'Cyber Laws & Information Security'],
+    ['slug' => 'digital-marketing', 'title' => 'Digital Marketing'],
+    ['slug' => 'e-commerce', 'title' => 'E-Commerce, E-Governance & E-Series'],
+    
+    // Major in Software Engineering
+    ['slug' => 'software-development-pm', 'title' => 'Software Development Project Management'],
+    ['slug' => 'software-requirement-engineering', 'title' => 'Software Requirement Engineering'],
+    ['slug' => 'software-quality-testing', 'title' => 'Software Quality and Testing'],
+    ['slug' => 'programming-python', 'title' => 'Programming in Python'],
+    ['slug' => 'virtual-reality', 'title' => 'Virtual Reality Systems Design'],
+    ['slug' => 'advanced-java', 'title' => 'Advanced Programming with Java'],
+    ['slug' => 'advanced-dotnet', 'title' => 'Advanced Programming with .NET'],
+    ['slug' => 'advanced-web-tech', 'title' => 'Advanced Programming in Web Technology'],
+    ['slug' => 'mobile-app-development', 'title' => 'Mobile Application Development'],
+    ['slug' => 'software-architecture', 'title' => 'Software Architecture and Design Patterns'],
+    
+    // Major in Computational Theory
+    ['slug' => 'computer-science-math', 'title' => 'Computer Science Mathematics'],
+    ['slug' => 'graph-theory', 'title' => 'Basic Graph Theory'],
+    ['slug' => 'advanced-algorithms', 'title' => 'Advanced Algorithm Techniques'],
+    ['slug' => 'natural-language-processing', 'title' => 'Natural Language Processing'],
+    ['slug' => 'linear-programming', 'title' => 'Linear Programming'],
+    ['slug' => 'parallel-computing', 'title' => 'Parallel Computing'],
+    ['slug' => 'machine-learning', 'title' => 'Machine Learning'],
+    
+    // Major in Computer Engineering
+    ['slug' => 'basic-mechanical-engineering', 'title' => 'Basic Mechanical Engineering'],
+    ['slug' => 'digital-signal-processing', 'title' => 'Digital Signal Processing'],
+    ['slug' => 'vlsi-circuit-design', 'title' => 'VLSI Circuit Design'],
+    ['slug' => 'signals-linear-system', 'title' => 'Signals & Linear System'],
+    ['slug' => 'digital-system-design', 'title' => 'Digital System Design'],
+    ['slug' => 'image-processing', 'title' => 'Image Processing'],
+    ['slug' => 'multimedia-systems', 'title' => 'Multimedia Systems'],
+    ['slug' => 'simulation-modeling', 'title' => 'Simulation & Modeling'],
+    ['slug' => 'advanced-computer-networks', 'title' => 'Advanced Computer Networks'],
+    ['slug' => 'computer-vision', 'title' => 'Computer Vision and Pattern Recognition'],
+    ['slug' => 'network-security', 'title' => 'Network Security'],
+    ['slug' => 'advanced-operating-system', 'title' => 'Advanced Operating System'],
+    ['slug' => 'digital-design-system', 'title' => 'Digital Design with System [Verilog, VHDL & FPGAs]'],
+    ['slug' => 'robotics-engineering', 'title' => 'Robotics Engineering'],
+    ['slug' => 'telecommunications', 'title' => 'Telecommunications Engineering'],
+    ['slug' => 'network-resource-management', 'title' => 'Network Resource Management & Organization'],
+    ['slug' => 'wireless-sensor-networks', 'title' => 'Wireless Sensor Networks'],
+    ['slug' => 'industrial-electronics', 'title' => 'Industrial Electronics, Drives & Instrumentation'],
 ];
 ?>
 <!DOCTYPE html>
@@ -78,15 +181,129 @@ $all_courses = [
             <div class="course">
                 <a href="<?= $link ?>">
                     <?php 
+                    // Course images mapping
                     $images = [
-                        'Cyber Security' => 'https://media.geeksforgeeks.org/wp-content/uploads/20250405172151734944/Difference-Between-Cyber-Security-and-Information-Security.webp',
-                        'Machine Learning' => 'https://img.freepik.com/premium-vector/machine-learning-ai-artificial-intelligence-deep-learning-big-data-neural-network-background-with-circuit-board-connections-tech-icons-wireframe-hand-pressing-button-vector-illustration_127544-3668.jpg?semt=ais_hybrid&w=740&q=80',
-                        'Web Development' => 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20221222184908/web-development1.png',
-                        'Python Programming' => 'https://4kwallpapers.com/images/wallpapers/python-programming-3840x2160-16102.jpg',
-                        'Artificial Intelligence' => 'https://static.vecteezy.com/system/resources/thumbnails/046/996/176/small/circuit-board-machine-learning-and-artificial-intelligence-are-processing-big-data-and-information-hi-tech-blue-background-vector.jpg',
-                        'Data Science' => 'https://www.mygreatlearning.com/blog/wp-content/uploads/2019/09/What-is-data-science-2.jpg',
+                        // Semester 1
+                        'Differential Calculus & Co-ordinate Geometry' => 'https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Physics 1' => 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Physics 1 Lab' => 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'English Reading Skills & Public Speaking' => 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Introduction to Computer Studies' => 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Introduction to Programming' => 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Introduction to Programming Lab' => 'https://images.unsplash.com/photo-1580894742597-87bc8789db3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        
+                        // Semester 2
+                        'Discrete Mathematics' => 'https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Integral Calculus & Ordinary Differential Equations' => 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Object Oriented Programming 1' => 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Physics 2' => 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Physics 2 Lab' => 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'English Writing Skills & Communications' => 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Introduction to Electrical Circuits' => 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Introduction to Electrical Circuits Lab' => 'https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        
+                        // Semester 3
+                        'Chemistry' => 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Complex Variable, Laplace & Z-Transformation' => 'https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Introduction to Database' => 'https://images.unsplash.com/photo-1543943217-9bf5b289b7c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Electronic Devices Lab' => 'https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Principles of Accounting' => 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Electronic Devices' => 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Data Structure' => 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Data Structure Lab' => 'https://images.unsplash.com/photo-1580894742597-87bc8789db3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Computer Aided Design & Drafting' => 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        
+                        // Semester 4
+                        'Algorithms' => 'https://images.unsplash.com/photo-1580894894513-541e068a3e2b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Matrices, Vectors, Fourier Analysis' => 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Object Oriented Programming 2' => 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Object Oriented Analysis and Design' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Bangladesh Studies' => 'https://images.unsplash.com/photo-1593693399045-966b4c0e0409?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Digital Logic and Circuits' => 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Digital Logic and Circuits Lab' => 'https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Computational Statistics and Probability' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        
+                        // Semester 5
+                        'Theory of Computation' => 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Principles of Economics' => 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Business Communication' => 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Numerical Methods for Science and Engineering' => 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Data Communication' => 'https://images.unsplash.com/photo-1581276879432-15e50529f34b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Microprocessor and Embedded Systems' => 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Software Engineering' => 'https://images.unsplash.com/photo-1526498460520-4c246339dccb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        
+                        // Semester 6
+                        'Artificial Intelligence and Expert System' => 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Computer Networks' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Computer Organization and Architecture' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Operating System' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Web Technologies' => 'https://images.unsplash.com/photo-1460925895917  afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Engineering Ethics' => 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Compiler Design' => 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        
+                        // Semester 7
+                        'Computer Graphics' => 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Research Methodology' => 'https://images.unsplash.com/photo-1554475900-0a0350bad5d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Engineering Management' => 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        
+                        // Semester 8
+                        'Thesis' => 'https://images.unsplash.com/photo-1554475900-0a0350bad5d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Internship' => 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        
+                        // Major in Information Systems
+                        'Advance Database Management System' => 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Management Information System' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Enterprise Resource Planning' => 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Data Warehouse and Data Mining' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Human Computer Interaction' => 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Business Intelligence and Decision Support Systems' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Introduction to Data Science' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Cyber Laws & Information Security' => 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Digital Marketing' => 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'E-Commerce, E-Governance & E-Series' => 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        
+                        // Major in Software Engineering
+                        'Software Development Project Management' => 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Software Requirement Engineering' => 'https://images.unsplash.com/photo-1526498460520-4c246339dccb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Software Quality and Testing' => 'https://images.unsplash.com/photo-1526498460520-4c246339dccb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Programming in Python' => 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Virtual Reality Systems Design' => 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Advanced Programming with Java' => 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Advanced Programming with .NET' => 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Advanced Programming in Web Technology' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Mobile Application Development' => 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Software Architecture and Design Patterns' => 'https://images.unsplash.com/photo-1526498460520-4c246339dccb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        
+                        // Major in Computational Theory
+                        'Computer Science Mathematics' => 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Basic Graph Theory' => 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Advanced Algorithm Techniques' => 'https://images.unsplash.com/photo-1580894894513-541e068a3e2b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Natural Language Processing' => 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Linear Programming' => 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Parallel Computing' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Machine Learning' => 'https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        
+                        // Major in Computer Engineering
+                        'Basic Mechanical Engineering' => 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Digital Signal Processing' => 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'VLSI Circuit Design' => 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Signals & Linear System' => 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Digital System Design' => 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Image Processing' => 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Multimedia Systems' => 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Simulation & Modeling' => 'https://images.unsplash.com/photo-1554475900-0a0350bad5d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Advanced Computer Networks' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Computer Vision and Pattern Recognition' => 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Network Security' => 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Advanced Operating System' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Digital Design with System [Verilog, VHDL & FPGAs]' => 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Robotics Engineering' => 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Telecommunications Engineering' => 'https://images.unsplash.com/photo-1581276879432-15e50529f34b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Network Resource Management & Organization' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Wireless Sensor Networks' => 'https://images.unsplash.com/photo-1581276879432-15e50529f34b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                        'Industrial Electronics, Drives & Instrumentation' => 'https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
                     ];
-                    $image_url = $images[$course['title']] ?? 'https://via.placeholder.com/300x210/2b82f5/ffffff?text=' . urlencode($course['title']);
+                    $image_url = $images[$course['title']] ?? 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80';
                     ?>
                     <img src="<?= $image_url ?>" alt="<?= htmlspecialchars($course['title']) ?>">
                 </a>
@@ -97,31 +314,134 @@ $all_courses = [
                 
                 <p>
                     <?php 
+                    // Course descriptions
                     $descriptions = [
-                        'Cyber Security' => 'Learn to protect networks and systems from cyber threats',
-                        'Machine Learning' => 'Master algorithms to make computers learn from data',
-                        'Web Development' => 'Build modern websites using HTML, CSS, and JavaScript',
-                        'Python Programming' => 'Learn Python from basics to advanced for multiple applications',
-                        'Artificial Intelligence' => 'Explore AI concepts and build intelligent systems',
-                        'Data Science' => 'Analyze data and extract insights using Python and R',
-                        'Programming in Java' => 'Learn Java programming from basics to advanced level',
-                        'Database Management' => 'Understand databases and SQL for data storage and retrieval',
-                        'Cloud Computing' => 'Learn about cloud platforms like AWS, Azure, and GCP',
-                        'Blockchain' => 'Explore blockchain technology and decentralized systems',
-                        'Deep Learning' => 'Build neural networks and learn deep learning techniques',
-                        'Neural Networks' => 'Understand architectures for AI and ML applications',
-                        'Software Engineering' => 'Learn software development life cycle and best practices',
-                        'Android App Development' => 'Create Android apps using Java and Kotlin',
-                        'C++ Programming' => 'Learn C++ programming from beginner to advanced level',
-                        'AI & ML Projects' => 'Build hands-on projects in AI and Machine Learning',
+                        // Semester 1
+                        'Differential Calculus & Co-ordinate Geometry' => 'Learn derivatives, limits, and analytical geometry for engineering applications',
+                        'Physics 1' => 'Fundamental principles of mechanics, thermodynamics, and wave motion',
+                        'Physics 1 Lab' => 'Hands-on experiments in mechanics and thermodynamics',
+                        'English Reading Skills & Public Speaking' => 'Develop communication skills and presentation techniques',
+                        'Introduction to Computer Studies' => 'Overview of computer systems and their applications',
+                        'Introduction to Programming' => 'Basic programming concepts using C/C++ language',
+                        'Introduction to Programming Lab' => 'Practical programming exercises and problem solving',
+                        
+                        // Semester 2
+                        'Discrete Mathematics' => 'Mathematical structures for computer science applications',
+                        'Integral Calculus & Ordinary Differential Equations' => 'Integration techniques and solving differential equations',
+                        'Object Oriented Programming 1' => 'Learn OOP concepts with Java programming language',
+                        'Physics 2' => 'Electricity, magnetism, and modern physics concepts',
+                        'Physics 2 Lab' => 'Experiments in electricity, magnetism, and optics',
+                        'English Writing Skills & Communications' => 'Technical writing and professional communication',
+                        'Introduction to Electrical Circuits' => 'Basic circuit theory, laws, and analysis techniques',
+                        'Introduction to Electrical Circuits Lab' => 'Practical circuit design and measurement',
+                        
+                        // Semester 3
+                        'Chemistry' => 'Chemical principles and reactions for engineering applications',
+                        'Complex Variable, Laplace & Z-Transformation' => 'Complex analysis and transform methods',
+                        'Introduction to Database' => 'Database concepts, SQL, and relational database design',
+                        'Electronic Devices Lab' => 'Practical experiments with semiconductor devices',
+                        'Principles of Accounting' => 'Basic accounting principles and financial statements',
+                        'Electronic Devices' => 'Semiconductor devices, diodes, transistors, and amplifiers',
+                        'Data Structure' => 'Study of arrays, linked lists, stacks, queues, and trees',
+                        'Data Structure Lab' => 'Implementation and analysis of data structures',
+                        'Computer Aided Design & Drafting' => 'CAD tools for engineering design and modeling',
+                        
+                        // Semester 4
+                        'Algorithms' => 'Design and analysis of efficient algorithms for problem solving',
+                        'Matrices, Vectors, Fourier Analysis' => 'Linear algebra and Fourier analysis techniques',
+                        'Object Oriented Programming 2' => 'Advanced OOP concepts and software development',
+                        'Object Oriented Analysis and Design' => 'Software design patterns and UML modeling',
+                        'Bangladesh Studies' => 'History, culture, and development of Bangladesh',
+                        'Digital Logic and Circuits' => 'Boolean algebra, logic gates, and digital circuit design',
+                        'Digital Logic and Circuits Lab' => 'Practical digital circuit implementation',
+                        'Computational Statistics and Probability' => 'Statistical methods and probability theory for data analysis',
+                        
+                        // Semester 5
+                        'Theory of Computation' => 'Formal languages, automata theory, and computational complexity',
+                        'Principles of Economics' => 'Micro and macro economic principles',
+                        'Business Communication' => 'Professional communication in business context',
+                        'Numerical Methods for Science and Engineering' => 'Numerical algorithms for scientific computing',
+                        'Data Communication' => 'Network protocols, transmission media, and communication systems',
+                        'Microprocessor and Embedded Systems' => 'Microprocessor architecture and embedded system design',
+                        'Software Engineering' => 'Software development lifecycle, methodologies, and project management',
+                        
+                        // Semester 6
+                        'Artificial Intelligence and Expert System' => 'AI algorithms, knowledge representation, and expert systems',
+                        'Computer Networks' => 'Network architectures, protocols, and internet technologies',
+                        'Computer Organization and Architecture' => 'Computer hardware design and system architecture',
+                        'Operating System' => 'Process management, memory management, and file systems',
+                        'Web Technologies' => 'HTML, CSS, JavaScript, and server-side programming',
+                        'Engineering Ethics' => 'Professional ethics and social responsibility for engineers',
+                        'Compiler Design' => 'Compiler construction techniques and optimization',
+                        
+                        // Semester 7
+                        'Computer Graphics' => '2D/3D graphics, rendering techniques, and visualization',
+                        'Research Methodology' => 'Research design, data collection, and academic writing',
+                        'Engineering Management' => 'Project management, ethics, and professional practice',
+                        
+                        // Semester 8
+                        'Thesis' => 'Final year research project and dissertation',
+                        'Internship' => 'Industry experience and practical training',
+                        
+                        // Major in Information Systems
+                        'Advance Database Management System' => 'Advanced SQL, indexing, transactions, and distributed databases',
+                        'Management Information System' => 'Information systems for business decision making',
+                        'Enterprise Resource Planning' => 'ERP systems and business process integration',
+                        'Data Warehouse and Data Mining' => 'Data storage, retrieval, and pattern discovery',
+                        'Human Computer Interaction' => 'User interface design and usability principles',
+                        'Business Intelligence and Decision Support Systems' => 'Data analytics for business intelligence',
+                        'Introduction to Data Science' => 'Data analysis, visualization, and predictive modeling',
+                        'Cyber Laws & Information Security' => 'Legal aspects and security measures in cyberspace',
+                        'Digital Marketing' => 'Online marketing strategies and e-commerce',
+                        'E-Commerce, E-Governance & E-Series' => 'Electronic business models and governance',
+                        
+                        // Major in Software Engineering
+                        'Software Development Project Management' => 'Planning, scheduling, and controlling software projects',
+                        'Software Requirement Engineering' => 'Elicitation, analysis, and specification of software requirements',
+                        'Software Quality and Testing' => 'Testing methodologies and quality assurance',
+                        'Programming in Python' => 'Python programming for data analysis and applications',
+                        'Virtual Reality Systems Design' => 'VR technologies and immersive environment design',
+                        'Advanced Programming with Java' => 'Advanced Java programming and frameworks',
+                        'Advanced Programming with .NET' => '.NET framework and C# programming',
+                        'Advanced Programming in Web Technology' => 'Advanced web development with modern frameworks',
+                        'Mobile Application Development' => 'iOS and Android app development',
+                        'Software Architecture and Design Patterns' => 'Software design principles and architectural patterns',
+                        
+                        // Major in Computational Theory
+                        'Computer Science Mathematics' => 'Advanced mathematical concepts for computer science',
+                        'Basic Graph Theory' => 'Graph theory and its applications in computing',
+                        'Advanced Algorithm Techniques' => 'Complex algorithm design and analysis',
+                        'Natural Language Processing' => 'Computational linguistics and language processing',
+                        'Linear Programming' => 'Optimization techniques and linear models',
+                        'Parallel Computing' => 'Parallel algorithms and distributed systems',
+                        'Machine Learning' => 'Supervised and unsupervised learning algorithms',
+                        
+                        // Major in Computer Engineering
+                        'Basic Mechanical Engineering' => 'Fundamentals of mechanical systems and design',
+                        'Digital Signal Processing' => 'Signal processing algorithms and applications',
+                        'VLSI Circuit Design' => 'Very Large Scale Integration circuit design',
+                        'Signals & Linear System' => 'Signal analysis and linear system theory',
+                        'Digital System Design' => 'Advanced digital circuit and system design',
+                        'Image Processing' => 'Digital image analysis and processing techniques',
+                        'Multimedia Systems' => 'Audio, video, and multimedia technologies',
+                        'Simulation & Modeling' => 'Computer simulation and modeling techniques',
+                        'Advanced Computer Networks' => 'Advanced networking concepts and protocols',
+                        'Computer Vision and Pattern Recognition' => 'Image recognition and computer vision algorithms',
+                        'Network Security' => 'Cryptography, firewalls, and security protocols',
+                        'Advanced Operating System' => 'Advanced operating system concepts and design',
+                        'Digital Design with System [Verilog, VHDL & FPGAs]' => 'Hardware description languages and FPGA design',
+                        'Robotics Engineering' => 'Robotics systems and automation',
+                        'Telecommunications Engineering' => 'Telecommunication systems and networks',
+                        'Network Resource Management & Organization' => 'Network administration and resource allocation',
+                        'Wireless Sensor Networks' => 'Wireless networking and sensor technologies',
+                        'Industrial Electronics, Drives & Instrumentation' => 'Industrial control systems and instrumentation',
                     ];
-                    echo $descriptions[$course['title']] ?? 'Explore this course to enhance your knowledge';
+                    echo $descriptions[$course['title']] ?? 'Explore this course to enhance your knowledge in Computer Science and Engineering';
                     ?>
                 </p>
                 
                 <div class="course-actions">
                     <a href="<?= $link ?>" class="btn">View Files</a>
-                    <!-- Removed Give Feedback button -->
                 </div>
             </div>
         <?php endforeach; ?>
