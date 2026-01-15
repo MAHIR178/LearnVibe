@@ -624,8 +624,8 @@ function displayResults(results) {
     
     if (results.length === 0) {
         const noResults = document.createElement('div');
-        noResults.className = 'no-results';
-        noResults.textContent = 'No courses found';
+        //noResults.className = 'no-results';
+        //noResults.textContent = 'No courses found';
         searchResults.appendChild(noResults);
     } else {
         // Limit to top 10 results
