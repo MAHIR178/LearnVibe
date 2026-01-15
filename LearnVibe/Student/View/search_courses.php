@@ -5,7 +5,8 @@ session_start();
 // Include or define the courses array
 $all_courses = [
     // Semester 1
-    ['slug' => 'differential-calculus', 'title' => 'Differential Calculus & Co-ordinate Geometry'],
+    ['slug' => 'differential-calculus', 'title' => 'Differential Calculus & Co-ordinate Geometry',
+    'nicknames' => ['mat1','mat1']],
     ['slug' => 'physics-1', 'title' => 'Physics 1'],
     ['slug' => 'physics-1-lab', 'title' => 'Physics 1 Lab'],
     ['slug' => 'english-reading', 'title' => 'English Reading Skills & Public Speaking'],
@@ -19,7 +20,11 @@ $all_courses = [
     ['slug' => 'object-oriented-programming-1', 'title' => 'Object Oriented Programming 1'],
     ['slug' => 'physics-2', 'title' => 'Physics 2'],
     ['slug' => 'physics-2-lab', 'title' => 'Physics 2 Lab'],
-    ['slug' => 'english-writing', 'title' => 'English Writing Skills & Communications'],
+   [
+        'slug' => 'english-writing', 
+        'title' => 'English Writing Skills & Communications',
+        'nicknames' => ['english 2', 'eng 2', 'technical writing']
+    ],
     ['slug' => 'electrical-circuits', 'title' => 'Introduction to Electrical Circuits'],
     ['slug' => 'electrical-circuits-lab', 'title' => 'Introduction to Electrical Circuits Lab'],
     
@@ -379,20 +384,43 @@ if (isset($_GET['search_query']) && !empty($_GET['search_query'])) {
     foreach ($all_courses as $course) {
         $title = $course['title'];
         $title_lower = strtolower($title);
-        
-        // NEW IMPROVED SEARCH LOGIC:
-        // 1. Check if title STARTS WITH the search query (case-insensitive)
-        // 2. OR contains the search query anywhere in title
-        // 3. Sort by exact match first, then partial match
+        $nicknames = isset($course['nicknames']) ? $course['nicknames'] : [];
         
         $match_type = 0; // 0 = no match, 1 = starts with, 2 = contains
+        $match_position = PHP_INT_MAX;
         
+        // 1. Check in TITLE (official name)
         if (strpos($title_lower, $search_lower) === 0) {
-            // Course title STARTS WITH the search text
             $match_type = 1;
+            $match_position = 0;
         } elseif (strpos($title_lower, $search_lower) !== false) {
-            // Course title CONTAINS the search text
             $match_type = 2;
+            $match_position = strpos($title_lower, $search_lower);
+        }
+        
+        // 2. Check in NICKNAMES
+        foreach ($nicknames as $nickname) {
+            $nickname_lower = strtolower($nickname);
+            
+            // Check if nickname exactly matches or starts with
+            if ($nickname_lower === $search_lower) {
+                // Exact nickname match - highest priority
+                $match_type = 1;
+                $match_position = -1; // Even before title start matches
+                break;
+            } elseif (strpos($nickname_lower, $search_lower) === 0) {
+                // Nickname starts with search
+                if ($match_type !== 1 || $match_position > 0) {
+                    $match_type = 1;
+                    $match_position = 0;
+                }
+            } elseif (strpos($nickname_lower, $search_lower) !== false) {
+                // Nickname contains search
+                if ($match_type === 0) {
+                    $match_type = 2;
+                    $match_position = strpos($nickname_lower, $search_lower);
+                }
+            }
         }
         
         if ($match_type > 0) {
@@ -402,30 +430,41 @@ if (isset($_GET['search_query']) && !empty($_GET['search_query'])) {
                 'slug' => $course['slug'],
                 'title' => $title,
                 'description' => substr($description, 0, 100) . '...',
-                'match_type' => $match_type, // 1 = starts with, 2 = contains
-                'position' => strpos($title_lower, $search_lower) // Position of match
+                'match_type' => $match_type,
+                'match_position' => $match_position,
+                'matched_by' => 'nickname' // Track what matched
             ];
         }
     }
     
-    // Sort results: exact start matches first, then other matches
+    // Sort results:
+    // 1. Exact nickname matches first
+    // 2. Title starts with match
+    // 3. Nickname starts with match  
+    // 4. Contains matches
     usort($results, function($a, $b) {
-        // First sort by match type (starts with first)
+        // Sort by match type (lower is better)
+        if ($a['match_position'] === -1 && $b['match_position'] !== -1) return -1;
+        if ($b['match_position'] === -1 && $a['match_position'] !== -1) return 1;
+        
         if ($a['match_type'] != $b['match_type']) {
             return $a['match_type'] - $b['match_type'];
         }
-        // Then sort by position of match
-        if ($a['position'] != $b['position']) {
-            return $a['position'] - $b['position'];
+        
+        // Then by position
+        if ($a['match_position'] != $b['match_position']) {
+            return $a['match_position'] - $b['match_position'];
         }
-        // Then sort alphabetically
+        
+        // Then alphabetically
         return strcmp($a['title'], $b['title']);
     });
     
-    // Remove temporary fields before sending response
+    // Clean up response
     foreach ($results as &$result) {
         unset($result['match_type']);
-        unset($result['position']);
+        unset($result['match_position']);
+        unset($result['matched_by']);
     }
     
     // Return JSON response
