@@ -80,67 +80,7 @@ $all_courses = [
     ['slug' => 'engineering-ethics', 'title' => 'Engineering Ethics'],
     ['slug' => 'compiler-design', 'title' => 'Compiler Design'],
     
-    // Semester 7
-    ['slug' => 'computer-graphics', 'title' => 'Computer Graphics'],
-    ['slug' => 'research-methodology', 'title' => 'Research Methodology'],
-    ['slug' => 'engineering-management', 'title' => 'Engineering Management'],
     
-    // Semester 8
-    ['slug' => 'thesis', 'title' => 'Thesis'],
-    ['slug' => 'internship', 'title' => 'Internship'],
-    
-    // Major in Information Systems
-    ['slug' => 'advance-database', 'title' => 'Advance Database Management System'],
-    ['slug' => 'management-information-system', 'title' => 'Management Information System'],
-    ['slug' => 'enterprise-resource-planning', 'title' => 'Enterprise Resource Planning'],
-    ['slug' => 'data-warehouse-mining', 'title' => 'Data Warehouse and Data Mining'],
-    ['slug' => 'human-computer-interaction', 'title' => 'Human Computer Interaction'],
-    ['slug' => 'business-intelligence', 'title' => 'Business Intelligence and Decision Support Systems'],
-    ['slug' => 'introduction-data-science', 'title' => 'Introduction to Data Science'],
-    ['slug' => 'cyber-laws', 'title' => 'Cyber Laws & Information Security'],
-    ['slug' => 'digital-marketing', 'title' => 'Digital Marketing'],
-    ['slug' => 'e-commerce', 'title' => 'E-Commerce, E-Governance & E-Series'],
-    
-    // Major in Software Engineering
-    ['slug' => 'software-development-pm', 'title' => 'Software Development Project Management'],
-    ['slug' => 'software-requirement-engineering', 'title' => 'Software Requirement Engineering'],
-    ['slug' => 'software-quality-testing', 'title' => 'Software Quality and Testing'],
-    ['slug' => 'programming-python', 'title' => 'Programming in Python'],
-    ['slug' => 'virtual-reality', 'title' => 'Virtual Reality Systems Design'],
-    ['slug' => 'advanced-java', 'title' => 'Advanced Programming with Java'],
-    ['slug' => 'advanced-dotnet', 'title' => 'Advanced Programming with .NET'],
-    ['slug' => 'advanced-web-tech', 'title' => 'Advanced Programming in Web Technology'],
-    ['slug' => 'mobile-app-development', 'title' => 'Mobile Application Development'],
-    ['slug' => 'software-architecture', 'title' => 'Software Architecture and Design Patterns'],
-    
-    // Major in Computational Theory
-    ['slug' => 'computer-science-math', 'title' => 'Computer Science Mathematics'],
-    ['slug' => 'graph-theory', 'title' => 'Basic Graph Theory'],
-    ['slug' => 'advanced-algorithms', 'title' => 'Advanced Algorithm Techniques'],
-    ['slug' => 'natural-language-processing', 'title' => 'Natural Language Processing'],
-    ['slug' => 'linear-programming', 'title' => 'Linear Programming'],
-    ['slug' => 'parallel-computing', 'title' => 'Parallel Computing'],
-    ['slug' => 'machine-learning', 'title' => 'Machine Learning'],
-    
-    // Major in Computer Engineering
-    ['slug' => 'basic-mechanical-engineering', 'title' => 'Basic Mechanical Engineering'],
-    ['slug' => 'digital-signal-processing', 'title' => 'Digital Signal Processing'],
-    ['slug' => 'vlsi-circuit-design', 'title' => 'VLSI Circuit Design'],
-    ['slug' => 'signals-linear-system', 'title' => 'Signals & Linear System'],
-    ['slug' => 'digital-system-design', 'title' => 'Digital System Design'],
-    ['slug' => 'image-processing', 'title' => 'Image Processing'],
-    ['slug' => 'multimedia-systems', 'title' => 'Multimedia Systems'],
-    ['slug' => 'simulation-modeling', 'title' => 'Simulation & Modeling'],
-    ['slug' => 'advanced-computer-networks', 'title' => 'Advanced Computer Networks'],
-    ['slug' => 'computer-vision', 'title' => 'Computer Vision and Pattern Recognition'],
-    ['slug' => 'network-security', 'title' => 'Network Security'],
-    ['slug' => 'advanced-operating-system', 'title' => 'Advanced Operating System'],
-    ['slug' => 'digital-design-system', 'title' => 'Digital Design with System [Verilog, VHDL & FPGAs]'],
-    ['slug' => 'robotics-engineering', 'title' => 'Robotics Engineering'],
-    ['slug' => 'telecommunications', 'title' => 'Telecommunications Engineering'],
-    ['slug' => 'network-resource-management', 'title' => 'Network Resource Management & Organization'],
-    ['slug' => 'wireless-sensor-networks', 'title' => 'Wireless Sensor Networks'],
-    ['slug' => 'industrial-electronics', 'title' => 'Industrial Electronics, Drives & Instrumentation'],
 ];
 
 // Define course descriptions
@@ -203,67 +143,7 @@ $course_descriptions = [
     'Engineering Ethics' => 'Professional ethics and social responsibility for engineers',
     'Compiler Design' => 'Compiler construction techniques and optimization',
     
-    // Semester 7
-    'Computer Graphics' => '2D/3D graphics, rendering techniques, and visualization',
-    'Research Methodology' => 'Research design, data collection, and academic writing',
-    'Engineering Management' => 'Project management, ethics, and professional practice',
     
-    // Semester 8
-    'Thesis' => 'Final year research project and dissertation',
-    'Internship' => 'Industry experience and practical training',
-    
-    // Major in Information Systems
-    'Advance Database Management System' => 'Advanced SQL, indexing, transactions, and distributed databases',
-    'Management Information System' => 'Information systems for business decision making',
-    'Enterprise Resource Planning' => 'ERP systems and business process integration',
-    'Data Warehouse and Data Mining' => 'Data storage, retrieval, and pattern discovery',
-    'Human Computer Interaction' => 'User interface design and usability principles',
-    'Business Intelligence and Decision Support Systems' => 'Data analytics for business intelligence',
-    'Introduction to Data Science' => 'Data analysis, visualization, and predictive modeling',
-    'Cyber Laws & Information Security' => 'Legal aspects and security measures in cyberspace',
-    'Digital Marketing' => 'Online marketing strategies and e-commerce',
-    'E-Commerce, E-Governance & E-Series' => 'Electronic business models and governance',
-    
-    // Major in Software Engineering
-    'Software Development Project Management' => 'Planning, scheduling, and controlling software projects',
-    'Software Requirement Engineering' => 'Elicitation, analysis, and specification of software requirements',
-    'Software Quality and Testing' => 'Testing methodologies and quality assurance',
-    'Programming in Python' => 'Python programming for data analysis and applications',
-    'Virtual Reality Systems Design' => 'VR technologies and immersive environment design',
-    'Advanced Programming with Java' => 'Advanced Java programming and frameworks',
-    'Advanced Programming with .NET' => '.NET framework and C# programming',
-    'Advanced Programming in Web Technology' => 'Advanced web development with modern frameworks',
-    'Mobile Application Development' => 'iOS and Android app development',
-    'Software Architecture and Design Patterns' => 'Software design principles and architectural patterns',
-    
-    // Major in Computational Theory
-    'Computer Science Mathematics' => 'Advanced mathematical concepts for computer science',
-    'Basic Graph Theory' => 'Graph theory and its applications in computing',
-    'Advanced Algorithm Techniques' => 'Complex algorithm design and analysis',
-    'Natural Language Processing' => 'Computational linguistics and language processing',
-    'Linear Programming' => 'Optimization techniques and linear models',
-    'Parallel Computing' => 'Parallel algorithms and distributed systems',
-    'Machine Learning' => 'Supervised and unsupervised learning algorithms',
-    
-    // Major in Computer Engineering
-    'Basic Mechanical Engineering' => 'Fundamentals of mechanical systems and design',
-    'Digital Signal Processing' => 'Signal processing algorithms and applications',
-    'VLSI Circuit Design' => 'Very Large Scale Integration circuit design',
-    'Signals & Linear System' => 'Signal analysis and linear system theory',
-    'Digital System Design' => 'Advanced digital circuit and system design',
-    'Image Processing' => 'Digital image analysis and processing techniques',
-    'Multimedia Systems' => 'Audio, video, and multimedia technologies',
-    'Simulation & Modeling' => 'Computer simulation and modeling techniques',
-    'Advanced Computer Networks' => 'Advanced networking concepts and protocols',
-    'Computer Vision and Pattern Recognition' => 'Image recognition and computer vision algorithms',
-    'Network Security' => 'Cryptography, firewalls, and security protocols',
-    'Advanced Operating System' => 'Advanced operating system concepts and design',
-    'Digital Design with System [Verilog, VHDL & FPGAs]' => 'Hardware description languages and FPGA design',
-    'Robotics Engineering' => 'Robotics systems and automation',
-    'Telecommunications Engineering' => 'Telecommunication systems and networks',
-    'Network Resource Management & Organization' => 'Network administration and resource allocation',
-    'Wireless Sensor Networks' => 'Wireless networking and sensor technologies',
-    'Industrial Electronics, Drives & Instrumentation' => 'Industrial control systems and instrumentation',
 ];
 
 // 🔴 CHECK FOR AJAX REQUEST FIRST - IMPORTANT!
@@ -454,67 +334,7 @@ if (isset($_GET['search_query']) && !empty($_GET['search_query'])) {
                         'Engineering Ethics' => 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
                         'Compiler Design' => 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
                         
-                        // Semester 7
-                        'Computer Graphics' => 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Research Methodology' => 'https://images.unsplash.com/photo-1554475900-0a0350bad5d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Engineering Management' => 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
                         
-                        // Semester 8
-                        'Thesis' => 'https://images.unsplash.com/photo-1554475900-0a0350bad5d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Internship' => 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        
-                        // Major in Information Systems
-                        'Advance Database Management System' => 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Management Information System' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Enterprise Resource Planning' => 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Data Warehouse and Data Mining' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Human Computer Interaction' => 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Business Intelligence and Decision Support Systems' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Introduction to Data Science' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Cyber Laws & Information Security' => 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Digital Marketing' => 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'E-Commerce, E-Governance & E-Series' => 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        
-                        // Major in Software Engineering
-                        'Software Development Project Management' => 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Software Requirement Engineering' => 'https://images.unsplash.com/photo-1526498460520-4c246339dccb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Software Quality and Testing' => 'https://images.unsplash.com/photo-1526498460520-4c246339dccb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Programming in Python' => 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Virtual Reality Systems Design' => 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Advanced Programming with Java' => 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Advanced Programming with .NET' => 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Advanced Programming in Web Technology' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Mobile Application Development' => 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Software Architecture and Design Patterns' => 'https://images.unsplash.com/photo-1526498460520-4c246339dccb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        
-                        // Major in Computational Theory
-                        'Computer Science Mathematics' => 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Basic Graph Theory' => 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Advanced Algorithm Techniques' => 'https://images.unsplash.com/photo-1580894894513-541e068a3e2b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Natural Language Processing' => 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Linear Programming' => 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Parallel Computing' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Machine Learning' => 'https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        
-                        // Major in Computer Engineering
-                        'Basic Mechanical Engineering' => 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Digital Signal Processing' => 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'VLSI Circuit Design' => 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Signals & Linear System' => 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Digital System Design' => 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Image Processing' => 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Multimedia Systems' => 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Simulation & Modeling' => 'https://images.unsplash.com/photo-1554475900-0a0350bad5d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Advanced Computer Networks' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Computer Vision and Pattern Recognition' => 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Network Security' => 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Advanced Operating System' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Digital Design with System [Verilog, VHDL & FPGAs]' => 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Robotics Engineering' => 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Telecommunications Engineering' => 'https://images.unsplash.com/photo-1581276879432-15e50529f34b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Network Resource Management & Organization' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Wireless Sensor Networks' => 'https://images.unsplash.com/photo-1581276879432-15e50529f34b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                        'Industrial Electronics, Drives & Instrumentation' => 'https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
                     ];
                     $image_url = $images[$course['title']] ?? 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80';
                     ?>
