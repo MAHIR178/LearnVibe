@@ -7,10 +7,8 @@ if (empty($_SESSION["isLoggedIn"])) {
     exit;
 }
 
-$courseTitle = $_GET["course"] ?? "";
-$courseTitle = trim($courseTitle);
-
-if ($courseTitle === "") {
+$courseParam = trim($_GET["course"] ?? "");
+if ($courseParam === "") {
     header("Location: ../../Student/View/s_dashboard.php");
     exit;
 }
@@ -18,7 +16,34 @@ if ($courseTitle === "") {
 $db  = new DatabaseConnection();
 $con = $db->openConnection();
 
-$res = $db->getCourseFilesByTitle($con, $courseTitle);
+/*
+  1) If user sent slug, get the correct course title.
+  2) If not found, treat it as title directly.
+*/
+$courseTitle = $courseParam;
+
+$stmt = $con->prepare("SELECT course_title FROM course_files WHERE course_slug = ? LIMIT 1");
+$stmt->bind_param("s", $courseParam);
+$stmt->execute();
+$r = $stmt->get_result();
+if ($r && $r->num_rows > 0) {
+    $courseTitle = $r->fetch_assoc()["course_title"];
+}
+$stmt->close();
+
+/* 3) Load ONLY real uploaded files (skip empty placeholder rows) */
+$stmt2 = $con->prepare("
+    SELECT original_name, file_type, file_path, uploaded_at
+    FROM course_files
+    WHERE course_title = ?
+      AND file_path <> ''
+      AND original_name <> ''
+      AND uploaded_by <> 0
+    ORDER BY uploaded_at DESC
+");
+$stmt2->bind_param("s", $courseTitle);
+$stmt2->execute();
+$res = $stmt2->get_result();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,9 +57,8 @@ $res = $db->getCourseFilesByTitle($con, $courseTitle);
 <body>
 
 <div class="top-bar">
-    <input type="text" placeholder="Search">
     <div class="top-links">
-        <a href="../../Student/View/s_dashboard.php">Back</a>
+        <a href="javascript:history.back()">Back</a>
         <a href="Logout.php">Logout</a>
     </div>
 </div>
@@ -47,9 +71,25 @@ $res = $db->getCourseFilesByTitle($con, $courseTitle);
     <?php else: ?>
         <ul class="file-list">
             <?php while($f = $res->fetch_assoc()): ?>
+                <?php
+                    $filePath = $f["file_path"]; // usually "uploads/xxx"
+                    // ✅ uploads folder is in Controller (because uploadvalid.php is in Controller)
+                    if (strpos($filePath, "uploads/") === 0) {
+                        $filePath = "../Controller/" . $filePath;
+                    }
+                ?>
                 <li class="file-item">
-                    <?php echo htmlspecialchars($f["original_name"]); ?>
-                    <a class="download-btn" href="<?php echo htmlspecialchars($f["file_path"]); ?>" download>Download</a>
+                    <div>
+                        <b><?php echo htmlspecialchars($f["original_name"]); ?></b>
+                        <div style="font-size:12px;color:#666;">
+                            <?php echo htmlspecialchars($f["file_type"]); ?> |
+                            <?php echo htmlspecialchars($f["uploaded_at"]); ?>
+                        </div>
+                    </div>
+
+                    <a class="download-btn" href="<?php echo htmlspecialchars($filePath); ?>" download>
+                        Download
+                    </a>
                 </li>
             <?php endwhile; ?>
         </ul>
@@ -58,4 +98,7 @@ $res = $db->getCourseFilesByTitle($con, $courseTitle);
 
 </body>
 </html>
-
+<?php
+$stmt2->close();
+$db->closeConnection($con);
+?>
