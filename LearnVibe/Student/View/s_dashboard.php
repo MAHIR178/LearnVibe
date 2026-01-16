@@ -182,73 +182,20 @@ if (isset($_GET['search_query']) && !empty($_GET['search_query'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Dashboard | LearnVibe</title>
     <link rel="stylesheet" href="s_dashboard.css">
-    <style>
-        /* Add search dropdown styles */
-        .search-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .search-results {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border: 1px solid #ccc;
-            border-radius: 0 0 6px 6px;
-            max-height: 300px;
-            overflow-y: auto;
-            z-index: 2000;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .search-result-item {
-            padding: 10px 12px;
-            border-bottom: 1px solid #eee;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .search-result-item:last-child {
-            border-bottom: none;
-        }
-
-        .search-result-item:hover {
-            background-color: #f0f0f0;
-        }
-
-        .search-result-item h4 {
-            margin: 0 0 5px 0;
-            color: #2b82f5;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .search-result-item p {
-            margin: 0;
-            color: #666;
-            font-size: 12px;
-            line-height: 1.3;
-        }
-
-        .no-results {
-            padding: 12px;
-            text-align: center;
-            color: #666;
-            font-style: italic;
-        }
-    </style>
+    <!-- Add this line to link your new CSS file -->
+    <link rel="stylesheet" href="search_courses.css">
 </head>
 <body>
 
 <!-- TOP BAR -->
+<!-- TOP BAR -->
 <div class="top-bar">
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search courses...">
+        <!-- Add the 'search-input' class to the input -->
+        <input type="text" id="searchInput" class="search-input" placeholder="Search courses...">
         <div class="search-results" id="searchResults"></div>
     </div>
+    
     <div class="top-links">
         <!-- Feedback Button in top bar -->
         <a href="feedback.php" class="feedback-btn">Feedback</a>
