@@ -16,7 +16,7 @@
 <div class="signup-card">
   <h2>Student Sign Up</h2>
 
-  <?php if (!empty($_GET["error"])): ?>
+  <?php if (!empty($_POST["error"])): ?>
     <div class="error-box"><?php echo htmlspecialchars($_GET["error"]); ?></div>
   <?php elseif (!empty($_GET["success"])): ?>
     <div class="success-box"><?php echo htmlspecialchars($_GET["success"]); ?></div>
