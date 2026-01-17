@@ -27,14 +27,19 @@ unset($_SESSION["upload_error"]);
     <link rel="stylesheet" href="../../Student/View/s_dashboard.css">
     <link rel="stylesheet" href="Upload.css">
 </head>
+
+
 <body>
 
 <!-- TOP BAR -->
 <div class="top-bar">
-    <input type="text" placeholder="Search">
+
+
     
     <a class="myuploadbutton" href="../Controller/Myuploads.php">Uploaded-Files</a>
     <br><br>
+    <a class="feedbackbutton" href="../Controller/i_feedback.php">Feedback</a>
+
 
     <div class="top-links">
         <div class="profile">
@@ -61,9 +66,7 @@ unset($_SESSION["upload_error"]);
         <div class="form-row">
   <label>Course</label>
   <select name="course" required>
-    <option value="">-- Select --</option>
-
-    <!-- Semester 1 -->
+    <option value="">Select Course</option>
     <option>Differential Calculus &amp; Co-ordinate Geometry</option>
     <option>Physics 1</option>
     <option>Physics 1 Lab</option>
@@ -71,8 +74,6 @@ unset($_SESSION["upload_error"]);
     <option>Introduction to Computer Studies</option>
     <option>Introduction to Programming</option>
     <option>Introduction to Programming Lab</option>
-
-    <!-- Semester 2 -->
     <option>Discrete Mathematics</option>
     <option>Integral Calculus &amp; Ordinary Differential Equations</option>
     <option>Object Oriented Programming 1</option>
@@ -81,8 +82,6 @@ unset($_SESSION["upload_error"]);
     <option>English Writing Skills &amp; Communications</option>
     <option>Introduction to Electrical Circuits</option>
     <option>Introduction to Electrical Circuits Lab</option>
-
-    <!-- Semester 3 -->
     <option>Chemistry</option>
     <option>Complex Variable, Laplace &amp; Z-Transformation</option>
     <option>Introduction to Database</option>
@@ -92,8 +91,6 @@ unset($_SESSION["upload_error"]);
     <option>Data Structure</option>
     <option>Data Structure Lab</option>
     <option>Computer Aided Design &amp; Drafting</option>
-
-    <!-- Semester 4 -->
     <option>Algorithms</option>
     <option>Matrices, Vectors, Fourier Analysis</option>
     <option>Object Oriented Programming 2</option>
@@ -102,8 +99,6 @@ unset($_SESSION["upload_error"]);
     <option>Digital Logic and Circuits</option>
     <option>Digital Logic and Circuits Lab</option>
     <option>Computational Statistics and Probability</option>
-
-    <!-- Semester 5 -->
     <option>Theory of Computation</option>
     <option>Principles of Economics</option>
     <option>Business Communication</option>
@@ -111,8 +106,6 @@ unset($_SESSION["upload_error"]);
     <option>Data Communication</option>
     <option>Microprocessor and Embedded Systems</option>
     <option>Software Engineering</option>
-
-    <!-- Semester 6 -->
     <option>Artificial Intelligence and Expert System</option>
     <option>Computer Networks</option>
     <option>Computer Organization and Architecture</option>
@@ -124,16 +117,15 @@ unset($_SESSION["upload_error"]);
 </div>
 
 
-        <div class="form-row">
-            <label>File Type</label>
-            <select name="file_type" required>
-                <option value="">-- Select --</option>
-                <option>PDF</option>
-                <option>Video</option>
-                <option>Image</option>
-                <option>Document</option>
-                <option>ZIP</option>
-            </select>
+ <div class="form-row">
+  <label>File Type</label>
+   <select name="file_type" required>
+  <option value="">Select File type</option>
+  <option>PDF</option>
+  <option>PPTX</option>
+  <option>Document</option>
+</select>
+
         </div>
 
         <div class="form-row">
