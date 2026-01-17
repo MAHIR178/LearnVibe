@@ -126,6 +126,67 @@ $course_descriptions = [
     'Compiler Design' => 'Basic compiler concepts.',
 ];
 
+// Course Images
+$course_images = [
+    // Semester 1
+    'Differential Calculus & Co-ordinate Geometry' => 'https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Physics 1' => 'https://img.freepik.com/premium-vector/vector-hand-drawing-physics-education-doodle-icon-idea-set_602351-720.jpg?semt=ais_hybrid&w=740&q=80',
+    'Physics 1 Lab' => 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'English Reading Skills & Public Speaking' => 'https://cdn-icons-png.flaticon.com/512/5526/5526264.png',
+    'Introduction to Computer Studies' => 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Introduction to Programming' => 'https://miro.medium.com/1*mDKusLBkGKBWW4aycK4PCA.png',
+    'Introduction to Programming Lab' => 'https://mir-s3-cdn-cf.behance.net/project_modules/fs/5e2115104733947.5f69c10ec4243.jpg',
+    
+    // Semester 2
+    'Discrete Mathematics' => 'https://ivyleaguecenter.org/wp-content/uploads/2015/03/discrete-math.jpg',
+    'Integral Calculus & Ordinary Differential Equations' => 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Object Oriented Programming 1' => 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Physics 2' => 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Physics 2 Lab' => 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'English Writing Skills & Communications' => 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Introduction to Electrical Circuits' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0N60W2ilWUgIrCjCbgjpk9GeDxbSIihiQdQ&s',
+    'Introduction to Electrical Circuits Lab' => 'https://www.wonderfulpcb.com/wp-content/uploads/2025/03/Electronic-Devices-Circuit-Components.jpg',
+    
+    // Semester 3
+    'Chemistry' => 'https://img.freepik.com/free-vector/hand-drawn-chemistry-background_23-2148164901.jpg',
+    'Complex Variable, Laplace & Z-Transformation' => 'https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Introduction to Database' => 'https://bs-uploads.toptal.io/blackfish-uploads/components/open_graph_image/10698762/og_image/optimized/0712-Bad_Practices_in_Database_Design_-_Are_You_Making_These_Mistakes_Dan_Social-754bc73011e057dc76e55a44a954e0c3.png',
+    'Electronic Devices Lab' => 'https://southelectronicpcb.com/wp-content/uploads/2024/07/image-165-1024x726.png',
+    'Principles of Accounting' => 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Electronic Devices' => 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Data Structure' => 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Data Structure Lab' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-Ji69HYeNqt2YPsYqeR_61Vzx3YcQpVT8cg&s',
+    'Computer Aided Design & Drafting' => 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    
+    // Semester 4
+    'Algorithms' => 'https://images.unsplash.com/photo-1580894894513-541e068a3e2b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Matrices, Vectors, Fourier Analysis' => 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Object Oriented Programming 2' => 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Object Oriented Analysis and Design' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Bangladesh Studies' => 'https://static.vecteezy.com/system/resources/thumbnails/012/953/887/small/bangladesh-map-artwork-vector.jpg',
+    'Digital Logic and Circuits' => 'https://cburch.com/books/logic/circ-xor.png',
+    'Digital Logic and Circuits Lab' => 'https://cburch.com/books/logic/circ-xor.png',
+    'Computational Statistics and Probability' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    
+    // Semester 5
+    'Theory of Computation' => 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Principles of Economics' => 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Business Communication' => 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Numerical Methods for Science and Engineering' => 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Data Communication' => 'https://images.unsplash.com/photo-1581276879432-15e50529f34b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Microprocessor and Embedded Systems' => 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Software Engineering' => 'https://images.unsplash.com/photo-1526498460520-4c246339dccb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    
+    // Semester 6
+    'Artificial Intelligence and Expert System' => 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Computer Networks' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Computer Organization and Architecture' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Operating System' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Web Technologies' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Engineering Ethics' => 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'Compiler Design' => 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+];
+
 // -------------------------
 // Load uploaded files (latest 3 per course + count)
 // -------------------------
@@ -243,9 +304,9 @@ if (isset($_GET['search_query'])) {
             $link = "../../Instructor/View/course_files.php?course=" . urlencode($course['slug']);
             $files = $courseFiles[$courseTitle] ?? [];
             $count = (int)($courseCounts[$courseTitle] ?? 0);
-
-            // simple default image (same for all, keep code beginner)
-            $image_url = "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80";
+            
+            // Get course-specific image or use default
+            $image_url = $course_images[$courseTitle] ?? "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80";
         ?>
             <div class="course">
                 <a href="<?= $link ?>">
