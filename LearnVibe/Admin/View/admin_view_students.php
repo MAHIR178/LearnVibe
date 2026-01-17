@@ -88,7 +88,7 @@ if (!$result) {
 
     <!-- EDIT BUTTON -->
     <form method="post"
-          action="admin_edit_student.php"
+          action="admin_edit_students.php"
           style="display:inline;">
         <input type="hidden"
                name="id"

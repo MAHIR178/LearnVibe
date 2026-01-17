@@ -19,7 +19,7 @@ class DatabaseConnection{
         return $connection;
     }
      // Check if email already exists
-    function isEmailExist($connection, $email){
+function isEmailExist($connection, $email){
         $sql = "SELECT id FROM users WHERE email = ? LIMIT 1";
         $stmt = $connection->prepare($sql);
         if(!$stmt){
@@ -35,7 +35,7 @@ class DatabaseConnection{
         return $exists; // true/false
     }
     // Insert Student user
-    function createStudent($connection, $full_name, $email, $contact, $university, $department, $year, $password){
+function createStudent($connection, $full_name, $email, $contact, $university, $department, $year, $password){
         $role = "student";
 
         $sql = "INSERT INTO users
@@ -57,7 +57,7 @@ class DatabaseConnection{
     }
 
     // Insert Instructor user
-    function createInstructor($connection, $full_name, $email, $contact, $university, $department, $expertise, $password){
+function createInstructor($connection, $full_name, $email, $contact, $university, $department, $expertise, $password){
         $role = "instructor";
 
         $sql = "INSERT INTO users
@@ -225,7 +225,7 @@ function updateUserProfileWithPassword($connection, $email, $full_name, $contact
     return $ok;
 }
     // Get all students
-    function getAllStudents($connection){
+function getAllStudents($connection){
 
         $sql = "SELECT id, full_name, email, contact_number,
                        university_name, department, year,
@@ -240,7 +240,7 @@ function updateUserProfileWithPassword($connection, $email, $full_name, $contact
     }
 
     // Get all instructors
-    function getAllInstructors($connection){
+function getAllInstructors($connection){
 
         $sql = "SELECT id, full_name, email, contact_number,
                        university_name, department, year, expertise,
@@ -253,7 +253,7 @@ function updateUserProfileWithPassword($connection, $email, $full_name, $contact
         return $result;
     }
     // Delete student by Admin
-    function deleteStudent($connection, $id)
+function deleteStudent($connection, $id)
       {
         $sql = "DELETE FROM users WHERE id = ? AND role = 'student'";
         $stmt = $connection->prepare($sql);
@@ -268,7 +268,7 @@ function updateUserProfileWithPassword($connection, $email, $full_name, $contact
         return $ok;
 }
     // Delete instructor by Admin
-    function deleteInstructor($connection, $id)
+function deleteInstructor($connection, $id)
     {
         $sql = "DELETE FROM users WHERE id = ? AND role = 'instructor'";
         $stmt = $connection->prepare($sql);
@@ -314,14 +314,14 @@ function getInstructorFiles($connection, $uploaded_by){
 }
 
 
-    function getAllCourseFiles($connection){
+function getAllCourseFiles($connection){
         $sql = "SELECT course_title, file_type, original_name, file_path, uploaded_at
                 FROM course_files
                 ORDER BY id DESC";
         return $connection->query($sql);
     }
 
-    function getCourseFilesByTitle($connection, $course_title){
+function getCourseFilesByTitle($connection, $course_title){
         $sql = "SELECT id, file_type, original_name, file_path, uploaded_at
                 FROM course_files
                 WHERE course_title = ?
@@ -338,7 +338,95 @@ function getInstructorFiles($connection, $uploaded_by){
         
         return $result;
     }
- 
+function getStudentById($connection, $student_id)
+   {
+    $sql = "SELECT * FROM users WHERE id = ? AND role = 'student'";
+    $stmt = $connection->prepare($sql);
+
+    if (!$stmt) {
+        return false;
+    }
+
+    $stmt->bind_param("i", $student_id);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $student = $result->fetch_assoc();
+
+    $stmt->close();
+    return $student;
+}
+
+
+    // Update student profile by ID
+function updateStudentById($connection, $student_id, $full_name, $contact_number, $university_name, $department, $year){
+        $sql = "UPDATE users SET
+                    full_name = ?,
+                    contact_number = ?,
+                    university_name = ?,
+                    department = ?,
+                    year = ?
+                WHERE id = ? AND role = 'student'";
+
+        $stmt = $connection->prepare($sql);
+        if(!$stmt){
+            die("Prepare failed: " . $connection->error);
+        }
+
+        $stmt->bind_param("sssssi", $full_name, $contact_number, $university_name, $department, $year, $student_id);
+        $ok = $stmt->execute();
+        $stmt->close();
+        return $ok;
+    }
+
+    // Get instructor by ID
+function getInstructorById($connection, $instructor_id){
+        $sql = "SELECT id, full_name, email, contact_number,
+                       university_name, department, expertise,
+                       created_at, role
+                FROM users
+                WHERE id = ? AND role = 'instructor'
+                LIMIT 1";
+
+        $stmt = $connection->prepare($sql);
+        if(!$stmt){
+            die("Prepare failed: " . $connection->error);
+        }
+
+        $stmt->bind_param("i", $instructor_id);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $instructor = null;
+
+        if($result && $result->num_rows > 0){
+            $instructor = $result->fetch_assoc();
+        }
+
+        $stmt->close();
+        return $instructor;
+    }
+
+    // Update instructor profile by ID
+function updateInstructorById($connection, $instructor_id, $full_name, $contact_number, $university_name, $department, $expertise){
+        $sql = "UPDATE users SET
+                    full_name = ?,
+                    contact_number = ?,
+                    university_name = ?,
+                    department = ?,
+                    expertise = ?
+                WHERE id = ? AND role = 'instructor'";
+
+        $stmt = $connection->prepare($sql);
+        if(!$stmt){
+            die("Prepare failed: " . $connection->error);
+        }
+
+        $stmt->bind_param("sssssi", $full_name, $contact_number, $university_name, $department, $expertise, $instructor_id);
+        $ok = $stmt->execute();
+        $stmt->close();
+        return $ok;
+    }
 
     function closeConnection($connection){
         $connection->close();

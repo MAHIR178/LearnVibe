@@ -89,7 +89,7 @@ if (!$result) {
         <td>
 
     <!-- EDIT BUTTON -->
-    <form method="post" action="admin_edit_instructor.php">
+    <form method="post" action="admin_edit_instructors.php">
         <input type="hidden"name="id" value="<?php echo $instructors[$i]['id']; ?>">
         <button type="submit"class="btn edit-btn"> Edit </button>
     </form>

@@ -2,77 +2,45 @@
 session_start();
 include '../../Admin/Model/Database.php';
 
+$user = null;
+$show_form = false;
+$message = null;
+$message_type = null;
+$error = null;
+
 if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
-    header("Location: ../../Instructor/View/Login.php");
+    header("Location: student_login.php");
     exit;
 }
 
+// Fetch current user data for displaying in form
 $user_email = $_SESSION['email'];
-
 $db = new DatabaseConnection();
 $conn = $db->openConnection();
 
-$show_form = false;
-
-// Handle form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_changes'])) {
-
-    $full_name = trim($_POST['full_name'] ?? "");
-    $contact_number = trim($_POST['contact_number'] ?? "");
-    $university_name = trim($_POST['university_name'] ?? "");
-    $department = trim($_POST['department'] ?? "");
-    $year = trim($_POST['year'] ?? "");
-    $expertise = trim($_POST['expertise'] ?? "");
-    $password = trim($_POST['password'] ?? "");
-
-    // Update (with or without password)
-    if ($password !== "") {
-        $ok = $db->updateUserProfileWithPassword(
-            $conn,
-            $user_email,
-            $full_name,
-            $contact_number,
-            $university_name,
-            $department,
-            $year,
-            $expertise,
-            $password
-        );
-    } else {
-        $ok = $db->updateUserProfile(
-            $conn,
-            $user_email,
-            $full_name,
-            $contact_number,
-            $university_name,
-            $department,
-            $year,
-            $expertise
-        );
-    }
-
-    if ($ok) {
-        $message = "Profile updated successfully!";
-        $message_type = "success";
-        $_SESSION['full_name'] = $full_name;
-    } else {
-        $error = "Error updating profile.";
-    }
-}
-
-// Fetch current user data (for form)
 $user = $db->getUserByEmail($conn, $user_email);
+$db->closeConnection($conn);
 
 if ($user) {
     $show_form = true;
 } else {
     $error = "User not found.";
-    $show_form = false;
 }
 
-$db->closeConnection($conn);
-?>
+// Check for messages from validation controller
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    $message_type = $_SESSION['message_type'] ?? 'info';
+    unset($_SESSION['message']);
+    unset($_SESSION['message_type']);
+}
 
+// Check for errors from validation controller
+if (isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+    unset($_SESSION['error']);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -102,8 +70,8 @@ $db->closeConnection($conn);
             <button onclick="window.location.href='s_dashboard.php'" class="cancel-button" style="width: 100%; margin-top: 20px;">
                 Back to Dashboard
             </button>
-        <?php elseif ($show_form && isset($user)): ?>
-            <form method="POST" class="edit-form">
+        <?php elseif ($show_form ==true && isset($user)): ?>
+            <form method="POST" action="../Controller/profile_edit_validation.php" class="edit-form">
                 <!-- Full Name -->
                 <div class="form-group">
                     <label class="form-label">Full Name *</label>
