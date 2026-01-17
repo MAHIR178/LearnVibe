@@ -4,6 +4,32 @@
     margin: 24px auto; 
     overflow-x:auto; 
 }
+
+/* Table header with back and add buttons */
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table-header .back {
+    margin: 0;
+}
+
+.table-header .add-btn {
+    background-color: rgb(43, 130, 245);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.table-header .add-btn:hover {
+    background-color: rgb(30, 100, 200);
+}
+
  table { 
     width: 100%; 
     border-collapse: collapse; 
@@ -23,7 +49,8 @@ th {
     margin:12px 0; 
     color:#2563eb; 
     text-decoration:none; }
-    
+/* ===== ACTION BUTTONS ===== */
+
 td form {
     display: inline-block;
     margin: 0;
@@ -57,6 +84,15 @@ td form {
 
 .delete-btn:hover {
     background-color: #c0392b;
+}
+.add-btn {
+    display: inline-block; 
+    margin-bottom: 20px; 
+    padding: 10px 20px; 
+    background: rgb(43, 130, 245); 
+    color: white; 
+    text-decoration: none; 
+    border-radius: 3px;
 }
 
 /* Actions column alignment */

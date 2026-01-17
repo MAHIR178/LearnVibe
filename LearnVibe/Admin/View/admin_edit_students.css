@@ -124,6 +124,13 @@
             border-radius: 3px;
             text-align: center;
         }
+        .field-error {
+            color: #e74c3c;
+            font-size: 13px;
+            margin-top: 4px;
+            display: block;
+       }
+
 
         .message.success {
             background-color: #d4edda;

@@ -49,7 +49,10 @@ if (!$result) {
 
 <div class="container">
     <div class="table-wrap">
-        <a href="admin_dashboard.php" class="back">← Back to Dashboard</a>
+        <div class="table-header">
+            <a href="admin_dashboard.php" class="back">← Back to Dashboard</a>
+            <a href="admin_add_student.php" class="btn add-btn">+ Add Student</a>
+        </div>
 
         <?php if ($error != '') { ?>
             <div class="card">
