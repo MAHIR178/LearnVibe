@@ -151,8 +151,7 @@ if (isset($_SESSION['error'])) {
                     <button type="submit" name="save_changes" class="save-button">
                         Save Changes
                     </button>
-                    <button type="button" onclick="window.location.href='s_dashboard.php'" class="cancel-button">
-                        Back
+                    
                     </button>
                 </div>
             </form>
