@@ -202,6 +202,7 @@
 }
 
 /* Add to s_dashboard.css */
+/* Search results styling */
 .search-container {
     position: relative;
     display: inline-block;
@@ -223,10 +224,14 @@
 }
 
 .search-result-item {
-    padding: 10px 12px;
+    padding: 12px 15px;
     border-bottom: 1px solid #eee;
     cursor: pointer;
     transition: background 0.2s;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
 }
 
 .search-result-item:last-child {
@@ -234,7 +239,8 @@
 }
 
 .search-result-item:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f8ff;
+    color: #2b82f5;
 }
 
 .search-result-item h4 {

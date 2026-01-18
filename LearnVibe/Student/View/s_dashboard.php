@@ -227,6 +227,8 @@ if ($pdo) {
 // AJAX SEARCH (same file)
 // URL: thisfile.php?search_query=phy
 // -------------------------
+// AJAX SEARCH (same file)
+// URL: thisfile.php?search_query=phy
 if (isset($_GET['search_query'])) {
     $q = strtolower(trim($_GET['search_query']));
     $results = [];
@@ -262,6 +264,7 @@ if (isset($_GET['search_query'])) {
 
     <link rel="stylesheet" href="s_dashboard.css">
     <link rel="stylesheet" href="search_courses.css">
+    <script src="/LearnVibe/LearnVibe/Student/Controller/JS/s_search.js" defer></script>
 
     <style>
       /* small simple style for files list inside card */
@@ -361,57 +364,6 @@ document.addEventListener('click', function(e) {
 });
 </script>
 
-<!-- SIMPLE AJAX SEARCH (same file) -->
-<script>
-const searchInput = document.getElementById("searchInput");
-const searchResults = document.getElementById("searchResults");
-let timer = null;
-
-const SEARCH_URL = "<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>";
-
-searchInput.addEventListener("input", () => {
-  clearTimeout(timer);
-
-  const q = searchInput.value.trim();
-  if (q === "") {
-    searchResults.style.display = "none";
-    searchResults.innerHTML = "";
-    return;
-  }
-
-  timer = setTimeout(() => {
-    fetch(SEARCH_URL + "?search_query=" + encodeURIComponent(q))
-      .then(r => r.json())
-      .then(data => {
-        searchResults.innerHTML = "";
-
-        data.forEach(course => {
-          const div = document.createElement("div");
-          div.className = "search-result-item";
-          div.textContent = course.title + " (Files: " + course.files + ")";
-
-          div.onclick = () => {
-            window.location.href = "../../Instructor/View/course_files.php?course=" + encodeURIComponent(course.slug);
-          };
-
-          searchResults.appendChild(div);
-        });
-
-        searchResults.style.display = data.length ? "block" : "none";
-      })
-      .catch(() => {
-        searchResults.style.display = "none";
-      });
-  }, 250);
-});
-
-// hide results when clicking outside
-document.addEventListener("click", (e) => {
-  if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-    searchResults.style.display = "none";
-  }
-});
-</script>
 
 </body>
 </html>
