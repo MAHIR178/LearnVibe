@@ -7,7 +7,7 @@ if (!isset($_SESSION['email'])) {
     exit;
 }
 
-// Define all courses in one place (same as in s_dashboard.php)
+// Define all courses
 $all_courses = [
     ['slug' => 'differential-calculus', 'title' => 'Differential Calculus & Co-ordinate Geometry'],
     ['slug' => 'physics-1', 'title' => 'Physics 1'],
@@ -57,7 +57,7 @@ $all_courses = [
     ['slug' => 'compiler-design', 'title' => 'Compiler Design'],
 ];
 
-// Handle search request (for AJAX)
+// Handle search request
 if (isset($_GET['search_query'])) {
     $search_query = trim($_GET['search_query']);
     $results = [];
@@ -69,7 +69,6 @@ if (isset($_GET['search_query'])) {
             $title = $course['title'];
             $title_lower = strtolower($title);
             
-            // Check if title contains search query
             if (strpos($title_lower, $search_lower) !== false) {
                 $results[] = [
                     'slug' => $course['slug'],
@@ -79,7 +78,6 @@ if (isset($_GET['search_query'])) {
         }
     }
     
-    // Return results as JSON
     header('Content-Type: application/json');
     echo json_encode($results);
     exit;
@@ -95,24 +93,14 @@ if (isset($_GET['search_query'])) {
 <body class="search-page">
     <div class="header">
         <h1>Search Courses</h1>
-        <p>Find any course by typing its name</p>
+        <p>Type course name to search</p>
     </div>
     
     <div class="container">
         <div class="search-section">
+            <!-- Simple instructions -->
             <div class="search-info">
-                <p>Type to search for any course by its title</p>
-                
-                <div class="examples">
-                    <h3>Try these examples:</h3>
-                    <div class="example-tags">
-                        <span class="example-tag">physics</span>
-                        <span class="example-tag">programming</span>
-                        <span class="example-tag">database</span>
-                        <span class="example-tag">algorithms</span>
-                        <span class="example-tag">calculus</span>
-                    </div>
-                </div>
+                <p>Type any course name in the search box below</p>
             </div>
             
             <div class="center-search">
