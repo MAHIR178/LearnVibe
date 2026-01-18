@@ -8,10 +8,8 @@ if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
 }
 
 $user_email = $_SESSION['email'];
-
 $db = new DatabaseConnection();
 $conn = $db->openConnection();
-
 
 $user = $db->getUserProfileByEmail($conn, $user_email);
 
@@ -34,8 +32,7 @@ if (isset($_SESSION["role"]) && $_SESSION["role"] === "instructor") {
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Profile View</title>
     <link rel="stylesheet" href="profile_view.css">
     <style>
