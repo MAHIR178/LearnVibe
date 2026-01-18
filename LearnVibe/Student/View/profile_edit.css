@@ -1,6 +1,8 @@
-/* profile_edit.css - Simple edit form styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
 
-/* Basic overlay */
 .edit-overlay {
     position: fixed;
     top: 0;
@@ -14,7 +16,6 @@
     z-index: 2000;
 }
 
-/* Edit form container */
 .edit-container {
     background: white;
     width: 90%;
@@ -23,24 +24,7 @@
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
-body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        
-.password-note {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
-            font-style: italic;
-        }
-        
-.readonly-input {
-            background-color: #f5f5f5;
-            cursor: not-allowed;
-        }
 
-/* Header */
 .edit-header {
     text-align: center;
     color: rgb(43, 130, 245);
@@ -50,26 +34,21 @@ body {
     border-bottom: 1px solid #ddd;
 }
 
-/* Form grid */
 .edit-form {
     display: grid;
     grid-template-columns: 1fr;
     gap: 15px;
 }
-
-/* Form groups */
 .form-group {
     display: flex;
     flex-direction: column;
 }
-
 .form-label {
     font-weight: bold;
     color: #666;
     font-size: 14px;
     margin-bottom: 5px;
 }
-
 .form-input {
     padding: 8px;
     border: 1px solid #ddd;
@@ -82,14 +61,28 @@ body {
     border-color: rgb(43, 130, 245);
 }
 
-/* Button container */
+.readonly-input {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.password-note {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+    font-style: italic;
+}
+
 .button-container {
     display: flex;
     gap: 10px;
     margin-top: 20px;
 }
 
-/* Buttons */
+.back-button-full {
+    width: 100%;
+    margin-top: 20px;
+}
 .save-button {
     flex: 1;
     padding: 10px;
@@ -100,7 +93,6 @@ body {
     font-size: 16px;
     cursor: pointer;
 }
-
 .cancel-button {
     flex: 1;
     padding: 10px;
@@ -112,9 +104,6 @@ body {
     cursor: pointer;
 }
 
-
-
-/* Message styles */
 .message {
     padding: 10px;
     margin-bottom: 15px;
@@ -135,7 +124,6 @@ body {
     border: 1px solid #f5c6cb;
 }
 
-/* Mobile responsive */
 @media (max-width: 768px) {
     .edit-container {
         width: 95%;
