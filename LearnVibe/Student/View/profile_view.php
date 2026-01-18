@@ -20,6 +20,14 @@ $db->closeConnection($conn);
 if (!$user) {
     $error = "User not found.";
 }
+
+$backPage = "s_dashboard.php"; // default
+
+if (isset($_SESSION["role"]) && $_SESSION["role"] === "instructor") {
+    $backPage = "../../Instructor/View/i_dashboard.php";   // adjust path if needed
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -102,9 +110,9 @@ if (!$user) {
                
             </div>
             
-            <!-- <button onclick="window.location.href='s_dashboard.php'" class="back-button">
+             <button type="button" class="cancel-button" onclick="window.location.href='<?= $backPage ?>'">
                 Back
-            </button>-->
+            </button>
         </div>
     </div>
 <?php endif; ?>

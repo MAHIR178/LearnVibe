@@ -40,6 +40,11 @@ if (isset($_SESSION['error'])) {
     $error = $_SESSION['error'];
     unset($_SESSION['error']);
 }
+    $backPage = "s_dashboard.php"; // default
+
+if (isset($_SESSION["role"]) && $_SESSION["role"] === "instructor") {
+    $backPage = "../../Instructor/View/i_dashboard.php";   // adjust path if needed
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -151,7 +156,8 @@ if (isset($_SESSION['error'])) {
                     <button type="submit" name="save_changes" class="save-button">
                         Save Changes
                     </button>
-                    
+                    <button type="button" class="cancel-button" onclick="window.location.href='<?= $backPage ?>'">
+                        Cancel
                     </button>
                 </div>
             </form>
