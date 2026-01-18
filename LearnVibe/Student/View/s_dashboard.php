@@ -163,7 +163,7 @@ if (!$conn->connect_error) {
             ORDER BY uploaded_at DESC";
 
     $result = $conn->query($sql);
-    
+
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $title = $row['course_title'] ?? '';
@@ -190,12 +190,6 @@ if (!$conn->connect_error) {
     }
 }
 
-// -------------------------
-// AJAX SEARCH (same file)
-// URL: thisfile.php?search_query=phy
-// -------------------------
-// AJAX SEARCH (same file)
-// URL: thisfile.php?search_query=phy
 if (isset($_GET['search_query'])) {
     $q = strtolower(trim($_GET['search_query']));
     $results = [];
@@ -226,35 +220,11 @@ if (isset($_GET['search_query'])) {
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Dashboard | LearnVibe</title>
-
     <link rel="stylesheet" href="s_dashboard.css">
     <link rel="stylesheet" href="search_courses.css">
     <script src="/LearnVibe/LearnVibe/Student/Controller/JS/search_courses.js" defer></script>
 
-    <style>
-        /* small simple style for files list inside card */
-        .course-files {
-            margin-top: 10px;
-            font-size: 12px;
-        }
-
-        .course-files ul {
-            margin: 6px 0 0 18px;
-        }
-
-        .course-files li {
-            margin: 3px 0;
-        }
-
-        .file-count {
-            font-size: 12px;
-            color: #555;
-            margin-top: 6px;
-        }
-    </style>
 </head>
 
 <body>
@@ -270,7 +240,7 @@ if (isset($_GET['search_query'])) {
             <a href="feedback.php" class="feedback-btn">Feedback</a>
 
             <div class="profile">
-                <a href="#" id="profile-btn">My Profile ▼</a>
+                <a href="#" id="profile-btn">My Profile</a>
                 <div class="profile-menu" id="profile-menu">
                     <a href="profile_view.php">View</a>
                     <a href="profile_edit.php">Edit</a>
@@ -290,10 +260,8 @@ if (isset($_GET['search_query'])) {
                 $link = "../../Instructor/View/course_files.php?course=" . urlencode($course['slug']);
                 $files = $courseFiles[$courseTitle] ?? [];
                 $count = (int) ($courseCounts[$courseTitle] ?? 0);
-
-                // Get course-specific image or use default
-                $image_url = $course_images[$courseTitle] ?? "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80";
-                ?>
+                $image_url = $course_images[$courseTitle]
+                    ?>
                 <div class="course">
                     <a href="<?= $link ?>">
                         <img src="<?= $image_url ?>" alt="<?= htmlspecialchars($courseTitle) ?>">
