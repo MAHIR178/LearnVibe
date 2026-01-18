@@ -264,7 +264,7 @@ if (isset($_GET['search_query'])) {
 
     <link rel="stylesheet" href="s_dashboard.css">
     <link rel="stylesheet" href="search_courses.css">
-    <script src="/LearnVibe/LearnVibe/Student/Controller/JS/s_search.js" defer></script>
+    <script src="/LearnVibe/LearnVibe/Student/Controller/JS/search_courses.js" defer></script>
 
     <style>
       /* small simple style for files list inside card */

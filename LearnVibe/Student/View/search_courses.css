@@ -85,3 +85,161 @@
     max-height: 50vh;
   }
 }
+
+/* Search Courses Page Styles */
+
+/* General page styles */
+.search-page {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+    min-height: 100vh;
+}
+
+.search-page .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.search-page .header {
+    background: #2b82f5;
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.search-page .header h1 {
+    margin: 0 0 10px 0;
+    font-size: 2.5rem;
+}
+
+.search-page .header p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.search-page .search-section {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin: 30px 0;
+}
+
+.search-page .search-info {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.search-page .search-info p {
+    margin: 10px 0;
+}
+
+.search-page .back-link {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 20px;
+    background: #2b82f5;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.search-page .back-link:hover {
+    background: #1a6bc7;
+    text-decoration: none;
+}
+
+.search-page .center-search {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-page .search-input.large {
+    width: 600px;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+}
+
+.search-page .search-input.large:focus {
+    outline: none;
+    border-color: #2b82f5;
+    box-shadow: 0 0 0 3px rgba(43, 130, 245, 0.1);
+}
+
+/* Examples section */
+.search-page .examples {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid #2b82f5;
+}
+
+.search-page .examples h3 {
+    margin-top: 0;
+    color: #2b82f5;
+}
+
+.search-page .example-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.search-page .example-tag {
+    background: #e3f2fd;
+    color: #2b82f5;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    border: 1px solid #bbdefb;
+}
+
+/* Responsive for search page */
+@media screen and (max-width: 768px) {
+    .search-page .container {
+        padding: 10px;
+    }
+    
+    .search-page .search-section {
+        padding: 20px;
+    }
+    
+    .search-page .search-input.large {
+        width: 100%;
+    }
+    
+    .search-page .header h1 {
+        font-size: 2rem;
+    }
+    
+    .search-page .header p {
+        font-size: 1rem;
+    }
+}
+
+/* Highlight for nickname matches */
+.search-result-item.nickname-match {
+    border-left: 4px solid #28a745;
+}
+
+.search-result-item.nickname-match h4::after {
+    content: " (nickname match)";
+    color: #28a745;
+    font-size: 12px;
+    font-weight: normal;
+    margin-left: 5px;
+}
