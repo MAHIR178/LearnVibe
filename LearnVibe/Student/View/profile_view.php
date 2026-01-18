@@ -112,7 +112,7 @@ if (isset($_SESSION["role"]) && $_SESSION["role"] === "instructor") {
 
                 </div>
 
-                <button type="button" class="cancel-button" onclick="window.location.href='<?= $backPage ?>'">
+                <button type="button" class="back-button" onclick="window.location.href='<?= $backPage ?>'">
                     Back
                 </button>
             </div>
