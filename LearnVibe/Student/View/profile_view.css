@@ -1,3 +1,8 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
 .profile-overlay {
     position: fixed;
     top: 0;
@@ -11,7 +16,6 @@
     z-index: 2000;
 }
 
-/* Profile box */
 .profile-container {
     background: white;
     width: 90%;
@@ -21,7 +25,6 @@
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
-/* Header */
 .profile-header {
     text-align: center;
     color: rgb(43, 130, 245);
@@ -31,7 +34,6 @@
     border-bottom: 1px solid #ddd;
 }
 
-/* Info grid */
 .profile-info {
     display: grid;
     grid-template-columns: 1fr;
@@ -57,22 +59,19 @@
     border-left: 3px solid rgb(43, 130, 245);
 }
 
-/* Back button */
 .back-button {
     display: block;
     width: 100%;
     padding: 10px;
     background: rgb(43, 130, 245);
-    /*color: white;*/
     border: none;
     border-radius: 3px;
     font-size: 16px;
     cursor: pointer;
     margin-top: 20px;
+    color: white; /* ✅ Button text is white */
 }
 
-
-/* Mobile responsive */
 @media (max-width: 768px) {
     .profile-container {
         width: 95%;
