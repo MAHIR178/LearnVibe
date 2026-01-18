@@ -1,88 +1,82 @@
 <?php
-// Student/View/feedback.php
 session_start();
-
-/* ✅ Only logged-in STUDENTS can access this page */
-if (!isset($_SESSION['email']) || empty($_SESSION['email']) || ($_SESSION['role'] ?? '') !== 'student') {
-    // If instructor/other tries, block and send them away
-    header("Location: s_dashboard.php"); // change if you want a login page
+if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'student') {
+    header("Location: s_dashboard.php"); 
     exit;
 }
-
+$conn = new mysqli("localhost", "root", "", "learnvibe");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 $user_email = $_SESSION['email'];
+$error = "";
+$courses = [];
+$sql = "SELECT id FROM users WHERE email = '$user_email'";
+$result = $conn->query($sql);
+$user = $result->fetch_assoc();
 
-/* DB connection */
-try {
-    $pdo = new PDO("mysql:host=localhost;dbname=learnvibe;charset=utf8mb4", "root", "");
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+if (!$user) {
+    $error = "User not found!";
+} else {
+    $user_id = $user['id'];
+    $sql = "SELECT DISTINCT course_slug, course_title FROM course_files WHERE course_slug != '' ORDER BY course_title";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $courses[] = $row;
+        }
+    }
 }
 
-/* Get user ID */
-$stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
-$stmt->execute([$user_email]);
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
-$user_id = (int)($user['id'] ?? 0);
-
-if ($user_id === 0) {
-    $_SESSION['error'] = "User not found!";
-    header("Location: s_dashboard.php");
-    exit;
-}
-
-/* Course dropdown (only valid courses) */
-$courses_stmt = $pdo->query("
-    SELECT DISTINCT course_slug, course_title
-    FROM course_files
-    WHERE course_slug <> ''
-    ORDER BY course_title ASC
-");
-$courses = $courses_stmt->fetchAll(PDO::FETCH_ASSOC);
-
-/* Handle form submit */
+// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $course_slug = trim($_POST['course'] ?? '');
-    $rating      = (int)($_POST['rating'] ?? 0);
-    $comment     = trim($_POST['comment'] ?? '');
-
-    if ($course_slug === '') {
+    $course_slug = $_POST['course'];
+    $rating = $_POST['rating'];
+    $comment = $_POST['comment'];
+    if (empty($course_slug)) {
         $error = "Please select a course.";
-    } elseif ($rating < 1 || $rating > 5) {
-        $error = "Please select a rating (1 to 5).";
+    } elseif (empty($rating)) {
+        $error = "Please select a rating.";
     } else {
-        try {
-            // Check existing feedback by this student for this course
-            $check = $pdo->prepare("SELECT id FROM feedback WHERE user_id = ? AND course_slug = ?");
-            $check->execute([$user_id, $course_slug]);
-            $existing = $check->fetch(PDO::FETCH_ASSOC);
-
-            if ($existing) {
-                // Update
-                $up = $pdo->prepare("UPDATE feedback SET rating = ?, comment = ? WHERE id = ?");
-                $up->execute([$rating, $comment, $existing['id']]);
+        // Check if feedback already exists
+        $check_sql = "SELECT id FROM feedback WHERE user_id = $user_id AND course_slug = '$course_slug'";
+        $check_result = $conn->query($check_sql);
+        
+        if ($check_result->num_rows > 0) {
+            // Update existing feedback
+            $row = $check_result->fetch_assoc();
+            $feedback_id = $row['id'];
+            $update_sql = "UPDATE feedback SET rating = $rating, comment = '$comment' WHERE id = $feedback_id";
+            
+            if ($conn->query($update_sql)) {
                 $_SESSION['success'] = "Feedback updated successfully!";
             } else {
-                // Insert
-                $ins = $pdo->prepare("INSERT INTO feedback (user_id, course_slug, rating, comment) VALUES (?, ?, ?, ?)");
-                $ins->execute([$user_id, $course_slug, $rating, $comment]);
-                $_SESSION['success'] = "Feedback submitted successfully!";
+                $error = "Error updating feedback.";
             }
-
+        } else {
+            // Insert new feedback
+            $insert_sql = "INSERT INTO feedback (user_id, course_slug, rating, comment) VALUES ($user_id, '$course_slug', $rating, '$comment')";
+            
+            if ($conn->query($insert_sql)) {
+                $_SESSION['success'] = "Feedback submitted successfully!";
+            } else {
+                $error = "Error submitting feedback.";
+            }
+        }
+        
+        if (empty($error)) {
             header("Location: s_dashboard.php");
             exit;
-        } catch (PDOException $e) {
-            $error = "Error: " . $e->getMessage();
         }
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Give Feedback | LearnVibe</title>
+    <title>Give Feedback</title>
     <link rel="stylesheet" href="feedback.css">
 </head>
 <body>
@@ -90,29 +84,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="feedback-header">
             <h1>Give Feedback</h1>
         </div>
-
+        
         <div class="feedback-form-container">
-            <?php if (isset($error)): ?>
-                <div class="alert error"><?= htmlspecialchars($error) ?></div>
+            <?php if ($error): ?>
+                <div class="alert error"><?php echo $error; ?></div>
             <?php endif; ?>
-
+            
             <form method="POST" action="">
+                <!-- Course Selection -->
                 <div class="form-group">
-                    <label for="course">Course *</label>
+                    <label for="course">Course</label>
                     <select name="course" id="course" required>
-                        <option value="">-- Select --</option>
+                        <option value="">-- Select Course --</option>
                         <?php foreach ($courses as $course): ?>
-                            <option value="<?= htmlspecialchars($course['course_slug']) ?>">
-                                <?= htmlspecialchars($course['course_title']) ?>
+                            <option value="<?php echo $course['course_slug']; ?>">
+                                <?php echo $course['course_title']; ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-
+                
+                <!-- Rating Selection -->
                 <div class="form-group">
-                    <label for="rating">Rating *</label>
+                    <label for="rating">Rating</label>
                     <select name="rating" id="rating" required>
-                        <option value="">-- Select --</option>
+                        <option value="">-- Select Rating --</option>
                         <option value="1">1 - Poor</option>
                         <option value="2">2 - Fair</option>
                         <option value="3">3 - Good</option>
@@ -120,14 +116,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <option value="5">5 - Excellent</option>
                     </select>
                 </div>
-
+           
                 <div class="form-group">
                     <label for="comment">Comments</label>
-                    <textarea name="comment" id="comment" rows="4" placeholder="Write here..."></textarea>
+                    <textarea name="comment" id="comment" rows="4" placeholder="Write your feedback here..."></textarea>
                 </div>
-
+        
                 <div class="form-buttons">
-                    <button type="submit" class="btn-submit">Submit</button>
+                    <button type="submit" class="btn-submit">Submit Feedback</button>
                     <a href="s_dashboard.php" class="btn-cancel">Cancel</a>
                 </div>
             </form>
