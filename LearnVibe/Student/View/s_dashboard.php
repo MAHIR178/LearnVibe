@@ -159,6 +159,7 @@ $courseCounts = [];
 if (!$conn->connect_error) {
     $sql = "SELECT course_title, file_path, file_type, uploaded_at
             FROM course_files
+            WHERE file_path IS NOT NULL AND file_path != ''
             ORDER BY uploaded_at DESC";
 
     $result = $conn->query($sql);
@@ -166,22 +167,29 @@ if (!$conn->connect_error) {
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $title = $row['course_title'] ?? '';
-
-            if ($title === '')
+            
+            if ($title === '' || empty($row['file_path'])) {
                 continue;
+            }
 
-            if (!isset($courseCounts[$title]))
+            if (!isset($courseCounts[$title])) {
                 $courseCounts[$title] = 0;
+            }
             $courseCounts[$title]++;
 
-            if (!isset($courseFiles[$title]))
+            if (!isset($courseFiles[$title])) {
                 $courseFiles[$title] = [];
+            }
             $courseFiles[$title][] = $row; 
         }
         $result->free();
-    } else {
-        $courseFiles = [];
-        $courseCounts = [];
+    }
+}
+
+foreach ($all_courses as $course) {
+    $courseTitle = $course['title'];
+    if (!isset($courseCounts[$courseTitle])) {
+        $courseCounts[$courseTitle] = 0;
     }
 }
 
