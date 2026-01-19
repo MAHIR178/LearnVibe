@@ -1,38 +1,29 @@
-// SIMPLE VERSION: search_courses.js
-// This makes the search work without page reload
-
-// Wait for page to load
 document.addEventListener('DOMContentLoaded', startSearch);
 
 function startSearch() {
-    // Get the search input box
     const searchInput = document.getElementById("searchInput");
     const resultsDiv = document.getElementById("searchResults");
     
-    // Check if elements exist
     if (!searchInput || !resultsDiv) return;
     
-    // When user types
     searchInput.addEventListener("input", handleSearch);
     
     function handleSearch() {
         const searchText = searchInput.value.trim();
         
-        // If empty, hide results
         if (!searchText) {
             resultsDiv.style.display = "none";
             return;
         }
         
-        // Wait a bit before searching
+        // Wait before searching
         setTimeout(() => searchCourses(searchText), 300);
     }
     
     function searchCourses(query) {
-        // Build the URL
         const url = window.location.pathname + "?search_query=" + encodeURIComponent(query);
         
-        // Send AJAX request
+        // AJAX request
         fetch(url)
             .then(response => response.json())
             .then(showResults)
@@ -42,7 +33,6 @@ function startSearch() {
     }
     
     function showResults(courses) {
-        // Clear old results
         resultsDiv.innerHTML = "";
         
         if (courses.length === 0) {
