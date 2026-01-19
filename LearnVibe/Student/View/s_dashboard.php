@@ -8,7 +8,6 @@ if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
 $conn = new mysqli("localhost", "root", "", "learnvibe");
 
 $all_courses = [
-
     ['slug' => 'differential-calculus', 'title' => 'Differential Calculus & Co-ordinate Geometry'],
     ['slug' => 'physics-1', 'title' => 'Physics 1'],
     ['slug' => 'physics-1-lab', 'title' => 'Physics 1 Lab'],
@@ -154,8 +153,8 @@ $course_images = [
     'Compiler Design' => 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
 ];
 
-$courseFiles = [];     // title => [files...]
-$courseCounts = [];    // title => count
+$courseFiles = [];     
+$courseCounts = [];   
 
 if (!$conn->connect_error) {
     $sql = "SELECT course_title, file_path, file_type, uploaded_at
@@ -171,19 +170,15 @@ if (!$conn->connect_error) {
             if ($title === '')
                 continue;
 
-            // count
             if (!isset($courseCounts[$title]))
                 $courseCounts[$title] = 0;
             $courseCounts[$title]++;
 
-            // latest 3 only
             if (!isset($courseFiles[$title]))
                 $courseFiles[$title] = [];
-            if (count($courseFiles[$title]) < 3) {
-                $courseFiles[$title][] = $row;
-            }
+            $courseFiles[$title][] = $row; 
         }
-        $result->free(); // Free result set
+        $result->free();
     } else {
         $courseFiles = [];
         $courseCounts = [];
@@ -223,8 +218,6 @@ if (isset($_GET['search_query'])) {
     <title>Course Dashboard | LearnVibe</title>
     <link rel="stylesheet" href="s_dashboard.css">
     <link rel="stylesheet" href="search_courses.css">
-    <script src="/LearnVibe/LearnVibe/Student/Controller/JS/search_courses.js" defer></script>
-
 </head>
 
 <body>
@@ -277,8 +270,6 @@ if (isset($_GET['search_query'])) {
 
                     <div class="file-count">Total files uploaded: <?= $count ?></div>
 
-
-
                     <div class="course-actions">
                         <a href="<?= $link ?>" class="btn">View Files</a>
                     </div>
@@ -315,6 +306,53 @@ if (isset($_GET['search_query'])) {
         });
     </script>
 
+    <!-- Search functionality -->
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim();
+            
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+            
+            fetch(`s_dashboard.php?search_query=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length === 0) {
+                        searchResults.innerHTML = '<div class="no-results">No courses found</div>';
+                        searchResults.style.display = 'block';
+                        return;
+                    }
+                    
+                    let html = '';
+                    data.forEach(course => {
+                        html += `
+                            <div class="search-result-item" onclick="goToCourse('${course.slug}')">
+                                <h4>${course.title}</h4>
+                                <p>${course.description}</p>
+                            </div>
+                        `;
+                    });
+                    
+                    searchResults.innerHTML = html;
+                    searchResults.style.display = 'block';
+                });
+        });
+        
+        document.addEventListener('click', function(event) {
+            if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
+                searchResults.style.display = 'none';
+            }
+        });
+        
+        function goToCourse(slug) {
+            window.location.href = `../../Instructor/View/course_files.php?course=${slug}`;
+        }
+    </script>
 
 </body>
 
