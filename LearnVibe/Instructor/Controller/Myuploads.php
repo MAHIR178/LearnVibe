@@ -27,7 +27,7 @@ $res = $db->getInstructorFiles($con, $uploadedBy);
 
 <hr>
 
-<!-- ✅ Search box -->
+
 <input
     type="text"
     id="searchBox"
@@ -53,7 +53,7 @@ $res = $db->getInstructorFiles($con, $uploadedBy);
     <?php else: ?>
         <?php while($row = $res->fetch_assoc()): ?>
             <?php
-                // ✅ actual uploaded file name
+              
                 $realName = $row["original_name"]
                             ?? ($row["file_name"] ?? basename($row["file_path"] ?? ""));
             ?>

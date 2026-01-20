@@ -16,10 +16,7 @@ if ($courseParam === "") {
 $db  = new DatabaseConnection();
 $con = $db->openConnection();
 
-/*
-  1) If user sent slug, get the correct course title.
-  2) If not found, treat it as title directly.
-*/
+
 $courseTitle = $courseParam;
 
 $stmt = $con->prepare("SELECT course_title FROM course_files WHERE course_slug = ? LIMIT 1");
@@ -31,7 +28,7 @@ if ($r && $r->num_rows > 0) {
 }
 $stmt->close();
 
-/* 3) Load ONLY real uploaded files (skip empty placeholder rows) */
+
 $stmt2 = $con->prepare("
     SELECT original_name, file_type, file_path, uploaded_at
     FROM course_files
@@ -72,8 +69,8 @@ $res = $stmt2->get_result();
         <ul class="file-list">
             <?php while($f = $res->fetch_assoc()): ?>
                 <?php
-                    $filePath = $f["file_path"]; // usually "uploads/xxx"
-                    // ✅ uploads folder is in Controller (because uploadvalid.php is in Controller)
+                    $filePath = $f["file_path"]; 
+                   
                     if (strpos($filePath, "uploads/") === 0) {
                         $filePath = "../Controller/" . $filePath;
                     }
