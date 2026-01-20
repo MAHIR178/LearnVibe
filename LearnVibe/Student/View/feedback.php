@@ -1,4 +1,5 @@
 <?php
+// Student/View/feedback.php
 session_start();
 if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'student') {
     header("Location: s_dashboard.php"); 
@@ -24,39 +25,16 @@ if (!$user) {
     $courses = $studentModel->getStudentCourses();
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $course_slug = $_POST['course'];
-    $rating = $_POST['rating'];
-    $comment = $_POST['comment'];
-    
-    if (empty($course_slug)) {
-        $error = "Please select a course.";
-    } elseif (empty($rating)) {
-        $error = "Please select a rating.";
-    } else {
-        $check = $feedbackModel->checkFeedbackExists($user_id, $course_slug);
-        
-        if ($check['exists']) {
-            $success = $feedbackModel->updateFeedback($check['id'], $rating, $comment);
-            if ($success) {
-                $_SESSION['success'] = "Feedback updated successfully!";
-            } else {
-                $error = "Error updating feedback.";
-            }
-        } else {
-            $success = $feedbackModel->submitFeedback($user_id, $course_slug, $rating, $comment);
-            if ($success) {
-                $_SESSION['success'] = "Feedback submitted successfully!";
-            } else {
-                $error = "Error submitting feedback.";
-            }
-        }
-        
-        if (empty($error)) {
-            header("Location: s_dashboard.php");
-            exit;
-        }
-    }
+// Display success message if redirected from controller
+if (isset($_SESSION['feedback_success'])) {
+    $success = $_SESSION['feedback_success'];
+    unset($_SESSION['feedback_success']);
+}
+
+// Display error message if redirected from controller
+if (isset($_SESSION['feedback_error'])) {
+    $error = $_SESSION['feedback_error'];
+    unset($_SESSION['feedback_error']);
 }
 ?>
 <!DOCTYPE html>
@@ -72,19 +50,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         
         <div class="feedback-form-container">
+            <?php if (isset($success)): ?>
+                <div class="alert success"><?php echo $success; ?></div>
+            <?php endif; ?>
+            
             <?php if ($error): ?>
                 <div class="alert error"><?php echo $error; ?></div>
             <?php endif; ?>
             
-            <form method="POST" action="">
+            <form method="POST" action="../Controller/feedback_validation.php">
                 <!-- Course Selection -->
                 <div class="form-group">
                     <label for="course">Course</label>
                     <select name="course" id="course" required>
                         <option value="">-- Select Course --</option>
                         <?php foreach ($courses as $course): ?>
-                            <option value="<?php echo $course['course_slug']; ?>">
-                                <?php echo $course['course_title']; ?>
+                            <option value="<?php echo htmlspecialchars($course['course_slug']); ?>">
+                                <?php echo htmlspecialchars($course['course_title']); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
