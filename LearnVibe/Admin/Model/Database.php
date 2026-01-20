@@ -434,7 +434,7 @@ function updateInstructorById($connection, $instructor_id, $full_name, $contact_
  function getAllFeedbackForInstructor($con)
 {
     
-    $sql1 = "
+    $sql = "
         SELECT
             c.course_title,
             u.full_name,
@@ -452,28 +452,11 @@ function updateInstructorById($connection, $instructor_id, $full_name, $contact_
         ORDER BY f.created_at DESC
     ";
 
-    $res = mysqli_query($con, $sql1);
+    $res = mysqli_query($con, $sql);
 
     
     if (!$res) {
-        $sql2 = "
-            SELECT
-                c.course_title,
-                u.full_name,
-                u.email,
-                f.rating,
-                f.comment,
-                '-' AS created_at
-            FROM feedback f
-            LEFT JOIN users u ON u.id = f.user_id
-            LEFT JOIN (
-                SELECT course_slug, MAX(course_title) AS course_title
-                FROM course_files
-                GROUP BY course_slug
-            ) c ON c.course_slug = f.course_slug
-            ORDER BY f.id DESC
-        ";
-        $res = mysqli_query($con, $sql2);
+        die("Database query failed: " . mysqli_error($con));
     }
 
     return $res;
