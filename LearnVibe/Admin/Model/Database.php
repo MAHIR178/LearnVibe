@@ -431,9 +431,53 @@ function updateInstructorById($connection, $instructor_id, $full_name, $contact_
     function closeConnection($connection){
         $connection->close();
     }
+
+ function getAllFeedbackForInstructor($con)
+{
+    // Try query with created_at (if your table has it)
+    $sql1 = "
+        SELECT
+            c.course_title,
+            u.full_name,
+            u.email,
+            f.rating,
+            f.comment,
+            f.created_at
+        FROM feedback f
+        LEFT JOIN users u ON u.id = f.user_id
+        LEFT JOIN (
+            SELECT course_slug, MAX(course_title) AS course_title
+            FROM course_files
+            GROUP BY course_slug
+        ) c ON c.course_slug = f.course_slug
+        ORDER BY f.created_at DESC
+    ";
+
+    $res = mysqli_query($con, $sql1);
+
+    // If created_at column doesn't exist, fallback
+    if (!$res) {
+        $sql2 = "
+            SELECT
+                c.course_title,
+                u.full_name,
+                u.email,
+                f.rating,
+                f.comment,
+                '-' AS created_at
+            FROM feedback f
+            LEFT JOIN users u ON u.id = f.user_id
+            LEFT JOIN (
+                SELECT course_slug, MAX(course_title) AS course_title
+                FROM course_files
+                GROUP BY course_slug
+            ) c ON c.course_slug = f.course_slug
+            ORDER BY f.id DESC
+        ";
+        $res = mysqli_query($con, $sql2);
+    }
+
+    return $res;
 }
-
-
-
-
+}
 ?>

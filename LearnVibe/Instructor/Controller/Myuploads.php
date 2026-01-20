@@ -23,7 +23,8 @@ $res = $db->getInstructorFiles($con, $uploadedBy);
 <body>
 
 <h2>My Uploaded Files</h2>
-<a href="../View/i_dashboard.php">Dashboard</a>
+<button type="button" onclick="window.location.href='../View/i_dashboard.php'">Dashboard</button>
+
 <hr>
 
 <!-- ✅ Search box -->
