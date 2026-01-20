@@ -284,7 +284,7 @@ function deleteInstructor($connection, $id)
     }
 
 
-    // insert file with instructor id
+   
 function addCourseFile($connection, $course_title, $file_type, $original_name, $file_path, $uploaded_by){
     $sql = "INSERT INTO course_files (course_slug, course_title, file_type, original_name, file_path, uploaded_by)
             VALUES (?, ?, ?, ?, ?, ?)";
@@ -298,7 +298,7 @@ function addCourseFile($connection, $course_title, $file_type, $original_name, $
     return $ok;
 }
 
-// get ONLY files uploaded by this instructor
+
 function getInstructorFiles($connection, $uploaded_by){
     $sql = "SELECT id, course_title, file_type, original_name, file_path, uploaded_at
             FROM course_files
@@ -358,7 +358,7 @@ function getStudentById($connection, $student_id)
 }
 
 
-    // Update student profile by ID
+    
 function updateStudentById($connection, $student_id, $full_name, $contact_number, $university_name, $department, $year){
         $sql = "UPDATE users SET
                     full_name = ?,
@@ -379,7 +379,7 @@ function updateStudentById($connection, $student_id, $full_name, $contact_number
         return $ok;
     }
 
-    // Get instructor by ID
+   
 function getInstructorById($connection, $instructor_id){
         $sql = "SELECT id, full_name, email, contact_number,
                        university_name, department, expertise,
@@ -407,7 +407,6 @@ function getInstructorById($connection, $instructor_id){
         return $instructor;
     }
 
-    // Update instructor profile by ID
 function updateInstructorById($connection, $instructor_id, $full_name, $contact_number, $university_name, $department, $expertise){
         $sql = "UPDATE users SET
                     full_name = ?,
@@ -434,7 +433,7 @@ function updateInstructorById($connection, $instructor_id, $full_name, $contact_
 
  function getAllFeedbackForInstructor($con)
 {
-    // Try query with created_at (if your table has it)
+    
     $sql1 = "
         SELECT
             c.course_title,
@@ -455,7 +454,7 @@ function updateInstructorById($connection, $instructor_id, $full_name, $contact_
 
     $res = mysqli_query($con, $sql1);
 
-    // If created_at column doesn't exist, fallback
+    
     if (!$res) {
         $sql2 = "
             SELECT
