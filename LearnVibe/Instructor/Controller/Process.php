@@ -11,11 +11,11 @@ function clean($v){ return trim($v ?? ""); }
 $errors  = [];
 $success = "";
 
-// detect which form submitted (student or instructor)
+
 $isStudent    = isset($_POST["student_email"]);
 $isInstructor = isset($_POST["instructor_email"]);
 
-// ✅ redirect pages (CHANGE PATHS if your files are in different folders)
+
 $studentRedirect    = "../../Student/View/student_signup.php";
 $instructorRedirect = "../View/instructor_signup.php";
 
@@ -40,7 +40,7 @@ if ($isStudent) {
         $errors[] = "Passwords do not match.";
     }
 
-    // ✅ FIXED function name: isEmailExists
+   
     if (empty($errors) && $db->isEmailExist($conn, $email)) {
         $errors[] = "An account already exists with this email.";
     }
@@ -51,7 +51,7 @@ if ($isStudent) {
         else $errors[] = "Account creation failed.";
     }
 
-/* ---------- INSTRUCTOR ---------- */
+
 } elseif ($isInstructor) {
 
     $full_name  = clean($_POST["instructor_name"]);
@@ -67,7 +67,6 @@ if ($isStudent) {
         $errors[] = "Passwords do not match.";
     }
 
-    // ✅ FIXED function name: isEmailExists
     if (empty($errors) && $db->isEmailExist($conn, $email)) {
         $errors[] = "An account already exists with this email.";
     }
@@ -84,7 +83,7 @@ if ($isStudent) {
 
 $db->closeConnection($conn);
 
-// redirect back with message
+
 if (!empty($errors)) {
     header("Location: " . $redirectPage . "?error=" . urlencode($errors[0]));
     exit;

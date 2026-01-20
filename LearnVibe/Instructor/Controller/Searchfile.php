@@ -24,10 +24,10 @@ if ($res && $res->num_rows > 0) {
         $path   = $row["file_path"] ?? "";
         $date   = $row["uploaded_at"] ?? "";
 
-        // ✅ actual uploaded filename (best -> fallback)
+       
         $realName = $row["original_name"] ?? ($row["file_name"] ?? basename($path));
 
-        // ✅ search in BOTH course + file name
+      
         $hay = strtolower($course . " " . $realName);
 
         if ($q !== "" && strpos($hay, $q) === false) {

@@ -2,7 +2,7 @@
 session_start();
 require_once '../../Admin/Model/Database.php';
 
-// If already logged in → redirect
+
 if (!empty($_SESSION["isLoggedIn"])) {
     $role = $_SESSION["role"] ?? null;
 
@@ -39,13 +39,11 @@ $db->closeConnection($conn);
 if ($user) {
     $role = $user["role"] ?? null;
 
-    // Only allow instructors to log in from the instructor login page
     if ($role !== "instructor") {
         header("Location: ../View/instructor_login.php?error=" . urlencode("This account is not an instructor account. Please use the student login.") . "&email=" . urlencode($email));
         exit;
     }
 
-    // proceed with instructor login
     $_SESSION["isLoggedIn"] = true;
     $_SESSION["user_id"]    = $user["id"];
     $_SESSION["role"]       = $role;
@@ -57,6 +55,6 @@ if ($user) {
     exit;
 }
 
-// Invalid login
+
 header("Location: ../View/instructor_login.php?error=" . urlencode("Invalid email or password.") . "&email=" . urlencode($email));
 exit;

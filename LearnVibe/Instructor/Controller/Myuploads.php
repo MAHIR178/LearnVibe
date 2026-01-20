@@ -92,6 +92,6 @@ function searchMyFiles() {
 
 </body>
 </html>
-<?php
+<?php 
 $db->closeConnection($con);
 ?>
