@@ -35,6 +35,7 @@ $showName = $name;
 <?php if (isset($_GET["upload"]) && $_GET["upload"] === "success"): ?>
 <script>
     alert("File uploaded successfully!");
+     window.location.href = "i_dashboard.php";
 </script>
 <?php endif; ?>
 
