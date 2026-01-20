@@ -4,61 +4,48 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'student') {
     header("Location: s_dashboard.php"); 
     exit;
 }
-$conn = new mysqli("localhost", "root", "", "learnvibe");
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-$user_email = $_SESSION['email'];
+
+require_once __DIR__ . '/../Model/StudentModel.php';
+require_once __DIR__ . '/../Model/FeedbackModel.php';
+
 $error = "";
 $courses = [];
-$sql = "SELECT id FROM users WHERE email = '$user_email'";
-$result = $conn->query($sql);
-$user = $result->fetch_assoc();
+
+$studentModel = new StudentModel();
+$feedbackModel = new FeedbackModel();
+
+$user_email = $_SESSION['email'];
+$user = $studentModel->getStudentByEmail($user_email);
 
 if (!$user) {
     $error = "User not found!";
 } else {
     $user_id = $user['id'];
-    $sql = "SELECT DISTINCT course_slug, course_title FROM course_files WHERE course_slug != '' ORDER BY course_title";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $courses[] = $row;
-        }
-    }
+    $courses = $studentModel->getStudentCourses();
 }
 
-// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $course_slug = $_POST['course'];
     $rating = $_POST['rating'];
     $comment = $_POST['comment'];
+    
     if (empty($course_slug)) {
         $error = "Please select a course.";
     } elseif (empty($rating)) {
         $error = "Please select a rating.";
     } else {
-        // Check if feedback already exists
-        $check_sql = "SELECT id FROM feedback WHERE user_id = $user_id AND course_slug = '$course_slug'";
-        $check_result = $conn->query($check_sql);
+        $check = $feedbackModel->checkFeedbackExists($user_id, $course_slug);
         
-        if ($check_result->num_rows > 0) {
-            // Update existing feedback
-            $row = $check_result->fetch_assoc();
-            $feedback_id = $row['id'];
-            $update_sql = "UPDATE feedback SET rating = $rating, comment = '$comment' WHERE id = $feedback_id";
-            
-            if ($conn->query($update_sql)) {
+        if ($check['exists']) {
+            $success = $feedbackModel->updateFeedback($check['id'], $rating, $comment);
+            if ($success) {
                 $_SESSION['success'] = "Feedback updated successfully!";
             } else {
                 $error = "Error updating feedback.";
             }
         } else {
-            // Insert new feedback
-            $insert_sql = "INSERT INTO feedback (user_id, course_slug, rating, comment) VALUES ($user_id, '$course_slug', $rating, '$comment')";
-            
-            if ($conn->query($insert_sql)) {
+            $success = $feedbackModel->submitFeedback($user_id, $course_slug, $rating, $comment);
+            if ($success) {
                 $_SESSION['success'] = "Feedback submitted successfully!";
             } else {
                 $error = "Error submitting feedback.";
@@ -72,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

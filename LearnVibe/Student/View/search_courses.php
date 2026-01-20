@@ -4,8 +4,14 @@ if (!isset($_SESSION['email'])) {
     header("Location: ../../Instructor/View/instructor_login.php");
     exit;
 }
-$courseData = include '../Config/courses.php';
+
+require_once __DIR__ . '/../Model/StudentModel.php';
+
+$courseData = require __DIR__ . '/../Config/courses.php';
 $all_courses = $courseData['courses'];
+
+$studentModel = new StudentModel();
+$courseCounts = $studentModel->getCourseFilesCount();
 
 if (isset($_GET['search_query'])) {
     $search_query = trim($_GET['search_query']);
@@ -21,7 +27,8 @@ if (isset($_GET['search_query'])) {
             if (strpos($title_lower, $search_lower) !== false) {
                 $results[] = [
                     'slug' => $course['slug'],
-                    'title' => $title
+                    'title' => $title,
+                    'files' => (int) ($courseCounts[$title] ?? 0)
                 ];
             }
         }

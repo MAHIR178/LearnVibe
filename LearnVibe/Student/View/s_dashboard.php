@@ -5,45 +5,18 @@ if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
     header("Location: ../../Instructor/View/instructor_login.php");
     exit;
 }
-$courseData = include '../Config/courses.php';
+
+
+require_once __DIR__ . '/../Model/StudentModel.php';
+
+$courseData = require __DIR__ . '/../Config/courses.php';
 $all_courses = $courseData['courses'];
 $course_descriptions = $courseData['descriptions'];
 $course_images = $courseData['images'];
 
-$conn = new mysqli("localhost", "root", "", "learnvibe");
-
+$studentModel = new StudentModel();
 $courseFiles = [];
-$courseCounts = [];
-
-if (!$conn->connect_error) {
-    $sql = "SELECT course_title, file_path, file_type, uploaded_at
-            FROM course_files
-            WHERE file_path IS NOT NULL AND file_path != ''
-            ORDER BY uploaded_at DESC";
-
-    $result = $conn->query($sql);
-
-    if ($result && $result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $title = $row['course_title'] ?? '';
-            
-            if ($title === '' || empty($row['file_path'])) {
-                continue;
-            }
-
-            if (!isset($courseCounts[$title])) {
-                $courseCounts[$title] = 0;
-            }
-            $courseCounts[$title]++;
-
-            if (!isset($courseFiles[$title])) {
-                $courseFiles[$title] = [];
-            }
-            $courseFiles[$title][] = $row; 
-        }
-        $result->free();
-    }
-}
+$courseCounts = $studentModel->getCourseFilesCount();
 
 foreach ($all_courses as $course) {
     $courseTitle = $course['title'];
@@ -80,15 +53,12 @@ if (isset($_GET['search_query'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Course Dashboard | LearnVibe</title>
     <link rel="stylesheet" href="s_dashboard.css">
     <link rel="stylesheet" href="search_courses.css">
 </head>
-
 <body>
-
     <!-- TOP BAR -->
     <div class="top-bar">
         <div class="search-container">
@@ -114,14 +84,12 @@ if (isset($_GET['search_query'])) {
     <!-- MAIN CONTENT -->
     <div class="container">
         <div class="grid">
-
             <?php foreach ($all_courses as $course):
                 $courseTitle = $course['title'];
                 $link = "../../Instructor/View/course_files.php?course=" . urlencode($course['slug']);
-                $files = $courseFiles[$courseTitle] ?? [];
                 $count = (int) ($courseCounts[$courseTitle] ?? 0);
-                $image_url = $course_images[$courseTitle]
-                    ?>
+                $image_url = $course_images[$courseTitle];
+                ?>
                 <div class="course">
                     <a href="<?= $link ?>">
                         <img src="<?= $image_url ?>" alt="<?= htmlspecialchars($courseTitle) ?>">
@@ -142,7 +110,6 @@ if (isset($_GET['search_query'])) {
                     </div>
                 </div>
             <?php endforeach; ?>
-
         </div>
     </div>
 
@@ -219,7 +186,5 @@ if (isset($_GET['search_query'])) {
             window.location.href = `../../Instructor/View/course_files.php?course=${slug}`;
         }
     </script>
-
 </body>
-
 </html>
