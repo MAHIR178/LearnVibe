@@ -1,5 +1,4 @@
 <?php
-// Student/View/feedback.php
 session_start();
 if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'student') {
     header("Location: s_dashboard.php"); 
@@ -25,13 +24,11 @@ if (!$user) {
     $courses = $studentModel->getStudentCourses();
 }
 
-// Display success message if redirected from controller
 if (isset($_SESSION['feedback_success'])) {
     $success = $_SESSION['feedback_success'];
     unset($_SESSION['feedback_success']);
 }
 
-// Display error message if redirected from controller
 if (isset($_SESSION['feedback_error'])) {
     $error = $_SESSION['feedback_error'];
     unset($_SESSION['feedback_error']);

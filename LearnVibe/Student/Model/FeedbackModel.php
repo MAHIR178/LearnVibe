@@ -3,16 +3,12 @@ class FeedbackModel
 {
     private $db;
 
-    // Constructor: Initialize database connection
     function __construct()
     {
         require_once dirname(__DIR__) . '/../Admin/Model/Database.php';
         $this->db = new DatabaseConnection();
     }
 
-    // -------------------------
-    // CHECK IF FEEDBACK EXISTS
-    // -------------------------
     function checkFeedbackExists($user_id, $course_slug)
     {
         $conn = $this->db->openConnection();
@@ -50,9 +46,6 @@ class FeedbackModel
         ];
     }
 
-    // -------------------------
-    // SUBMIT NEW FEEDBACK
-    // -------------------------
     function submitFeedback($user_id, $course_slug, $rating, $comment)
     {
         $conn = $this->db->openConnection();
@@ -71,12 +64,10 @@ class FeedbackModel
         $stmt->close();
         $this->db->closeConnection($conn);
 
-        return $success; // returns true on success, false on failure
+        return $success; 
     }
 
-    // -------------------------
-    // UPDATE EXISTING FEEDBACK
-    // -------------------------
+  
     function updateFeedback($feedback_id, $rating, $comment)
     {
         $conn = $this->db->openConnection();
@@ -96,12 +87,8 @@ class FeedbackModel
         $stmt->close();
         $this->db->closeConnection($conn);
 
-        return $success; // returns true on success, false on failure
-    }
+        return $success; 
 
-    // -------------------------
-    // GET FEEDBACK BY USER
-    // -------------------------
     function getFeedbackByUser($user_id)
     {
         $conn = $this->db->openConnection();
@@ -131,7 +118,7 @@ class FeedbackModel
         $stmt->close();
         $this->db->closeConnection($conn);
 
-        return $feedback; // returns array of user's feedback
+        return $feedback; 
     }
 }
 ?>

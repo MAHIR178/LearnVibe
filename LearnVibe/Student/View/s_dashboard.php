@@ -14,7 +14,6 @@ $course_descriptions = $courseData['descriptions'];
 $course_images = $courseData['images'];
 
 $studentModel = new StudentModel();
-$courseFiles = [];
 $courseCounts = $studentModel->getCourseFilesCount();
 
 foreach ($all_courses as $course) {
@@ -24,7 +23,6 @@ foreach ($all_courses as $course) {
     }
 }
 
-// Handle AJAX search request
 if (isset($_GET['search_query'])) {
     $q = strtolower(trim($_GET['search_query']));
     $results = [];
@@ -123,7 +121,6 @@ if (isset($_GET['search_query'])) {
         </p>
     </div>
 
-    <!-- Profile dropdown -->
     <script>
         const profileBtn = document.getElementById('profile-btn');
         const profileMenu = document.getElementById('profile-menu');
@@ -140,108 +137,48 @@ if (isset($_GET['search_query'])) {
         });
     </script>
 
-    <!-- Search functionality - XMLHttpRequest way -->
     <script>
         const searchInput = document.getElementById('searchInput');
         const searchResults = document.getElementById('searchResults');
-        let searchTimer = null;
-        let xhr = null;
         
         searchInput.addEventListener('input', function() {
             const query = this.value.trim();
-            
-            // Clear previous timer
-            if (searchTimer) {
-                clearTimeout(searchTimer);
-            }
-            
-            // Clear previous XHR request
-            if (xhr && xhr.readyState !== 4) {
-                xhr.abort();
-            }
             
             if (query.length < 2) {
                 searchResults.style.display = 'none';
                 return;
             }
             
-            // Debounce search (wait 300ms after typing stops)
-            searchTimer = setTimeout(function() {
-                performSearch(query);
-            }, 300);
-        });
-        
-        function performSearch(query) {
-            // Create XMLHttpRequest object
-            xhr = new XMLHttpRequest();
-            
-            // Setup the request
+            const xhr = new XMLHttpRequest();
             xhr.open('GET', 's_dashboard.php?search_query=' + encodeURIComponent(query), true);
             
-            // Set up callback function
             xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        try {
-                            const data = JSON.parse(xhr.responseText);
-                            displaySearchResults(data);
-                        } catch (e) {
-                            console.error('Error parsing JSON:', e);
-                            searchResults.innerHTML = '<div class="no-results">Error loading results</div>';
-                            searchResults.style.display = 'block';
-                        }
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+                    
+                    if (data.length === 0) {
+                        searchResults.innerHTML = '<div class="no-results">No courses found</div>';
                     } else {
-                        // Handle error
-                        searchResults.innerHTML = '<div class="no-results">Error loading search results</div>';
-                        searchResults.style.display = 'block';
+                        let html = '';
+                        data.forEach(course => {
+                            html += `
+                                <div class="search-result-item" onclick="window.location.href='../../Instructor/View/course_files.php?course=${course.slug}'">
+                                    <h4>${course.title}</h4>
+                                </div>
+                            `;
+                        });
+                        searchResults.innerHTML = html;
                     }
+                    searchResults.style.display = 'block';
                 }
             };
             
-        
-            // Send the request
             xhr.send();
-        }
+        });
         
-        function displaySearchResults(data) {
-            if (data.length === 0) {
-                searchResults.innerHTML = '<div class="no-results">No courses found</div>';
-                searchResults.style.display = 'block';
-                return;
-            }
-            
-            let html = '';
-            for (let i = 0; i < data.length; i++) {
-                const course = data[i];
-                html += `
-                    <div class="search-result-item" onclick="goToCourse('${course.slug}')">
-                        <h4>${course.title}</h4>      
-                    </div>
-                `;
-            }
-            
-            searchResults.innerHTML = html;
-            searchResults.style.display = 'block';
-        }
-        
-        // Hide results when clicking elsewhere
         document.addEventListener('click', function(event) {
             if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
                 searchResults.style.display = 'none';
-            }
-        });
-        
-        function goToCourse(slug) {
-            window.location.href = `../../Instructor/View/course_files.php?course=${slug}`;
-        }
-        
-        // Optional: Handle Enter key to go to first result
-        searchInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                const firstResult = searchResults.querySelector('.search-result-item');
-                if (firstResult) {
-                    firstResult.click();
-                }
             }
         });
     </script>

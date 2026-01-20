@@ -41,9 +41,8 @@ function startSearch() {
             courses.forEach(course => {
                 const div = document.createElement("div");
                 div.className = "search-result-item";
-                div.textContent = course.title; // Just show title
+                div.textContent = course.title; 
                 
-                // Make clickable
                 div.onclick = () => {
                     window.location.href = 
                         "../../Instructor/View/course_files.php?course=" + 
@@ -58,7 +57,7 @@ function startSearch() {
         resultsDiv.style.display = "block";
     }
     
-    // Hide results when clicking elsewhere
+
     document.addEventListener("click", (e) => {
         if (!searchInput.contains(e.target) && !resultsDiv.contains(e.target)) {
             resultsDiv.style.display = "none";
