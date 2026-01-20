@@ -113,7 +113,7 @@ if (!$result) {
 </div>
 
 <div class="footer">
-    <p>© 2025 Course Project | Admin Panel</p>
+    <p>© 2025 Learnvibe | Admin Panel</p>
 </div>
 </body>
 </html>

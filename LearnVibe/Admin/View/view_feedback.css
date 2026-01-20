@@ -1,0 +1,138 @@
+ .table-wrap { 
+    width: 100%; 
+    max-width: 1100px; 
+    margin: 24px auto; 
+    overflow-x:auto; 
+}
+
+/* Table header with back and add buttons */
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table-header .back {
+    margin: 0;
+}
+
+.table-header .add-btn {
+    background-color: rgb(43, 130, 245);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+.table-title {
+    margin-left: 40%;
+    margin-bottom: 20px;
+}
+
+.table-header .add-btn:hover {
+    background-color: rgb(30, 100, 200);
+}
+
+ table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    background:#fff; 
+    border-radius:8px; 
+    overflow:hidden; }
+th, td { 
+    padding: 10px 12px; 
+    border-bottom:1px solid #eef2f6; 
+    text-align:left; 
+    font-size:14px; }
+th { 
+    background:#f7fafc; 
+    font-weight:600; }
+.back { 
+    display:inline-block; 
+    margin:12px 0; 
+    color:#2563eb; 
+    text-decoration:none; }
+/* ===== ACTION BUTTONS ===== */
+
+td form {
+    display: inline-block;
+    margin: 0;
+}
+
+.btn {
+    padding: 6px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 6px 12px;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Message styles */
+.message {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.message.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+
+.btn {
+    padding: 6px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* DELETE */
+.delete-btn {
+    background-color: #e74c3c;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Actions column alignment */
+table th:last-child,
+table td:last-child {
+    text-align: center;
+    width: 170px;
+}

@@ -44,16 +44,16 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
         </div>
 
         <div class="card">
-            <h3>Courses</h3>
-            <p>View & manage courses</p>
-            <a href="#">Open</a>
+            <h3>Feedback</h3>
+            <p>View & manage feedback</p>
+            <a href="../Controller/admin_view_feedback.php">Open</a>
         </div>
     </div>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-    <p>© 2025 Course Project | Admin Panel</p>
+    <p>© 2025 Learnvibe | Admin Panel</p>
 </div>
 </body>
 </html>

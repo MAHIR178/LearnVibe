@@ -283,6 +283,50 @@ function deleteInstructor($connection, $id)
         return $ok;
     }
 
+function deleteFeedbackById($connection, $feedback_id){
+        $sql = "DELETE FROM feedback WHERE id = ?";
+        $stmt = $connection->prepare($sql);
+        if (!$stmt) {
+            return false;
+        }
+
+        $stmt->bind_param("i", $feedback_id);
+        $ok = $stmt->execute();
+        $stmt->close();
+
+        return $ok;
+    }
+
+function getAllFeedbackById($conn)
+{
+    $sql = "
+        SELECT
+            f.id,
+            c.course_title,
+            u.full_name,
+            u.email,
+            f.rating,
+            f.comment,
+            f.created_at
+        FROM feedback f
+        LEFT JOIN users u ON u.id = f.user_id
+        LEFT JOIN (
+            SELECT course_slug, MAX(course_title) AS course_title
+            FROM course_files
+            GROUP BY course_slug
+        ) c ON c.course_slug = f.course_slug
+        ORDER BY f.created_at DESC
+    ";
+
+    $res = mysqli_query($conn, $sql);
+
+    if (!$res) {
+        die('Database query failed: ' . mysqli_error($conn));
+    }
+
+    return $res;
+}
+
 
    
 function addCourseFile($connection, $course_title, $file_type, $original_name, $file_path, $uploaded_by){
