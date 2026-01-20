@@ -1,5 +1,14 @@
 
 
+  .welcome-msg{
+    margin-top: 70px;   
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: yellowgreen;
+  }
+
+
 .form-box{
     max-width: 650px;
     margin: 120px auto 40px;
@@ -47,6 +56,7 @@
 
 .btn-primary{
     background: rgb(43, 130, 245);
+    width: 100%;
     color:#fff;
 }
 
