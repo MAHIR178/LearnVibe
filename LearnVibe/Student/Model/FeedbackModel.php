@@ -67,7 +67,6 @@ class FeedbackModel
         return $success; 
     }
 
-  
     function updateFeedback($feedback_id, $rating, $comment)
     {
         $conn = $this->db->openConnection();
@@ -88,6 +87,7 @@ class FeedbackModel
         $this->db->closeConnection($conn);
 
         return $success; 
+    } 
 
     function getFeedbackByUser($user_id)
     {

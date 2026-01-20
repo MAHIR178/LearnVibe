@@ -1,20 +1,18 @@
 <?php
-// Student/Model/StudentModel.php
+
 
 class StudentModel
 {
     private $db;
 
-    // Constructor: Initialize database connection
+
     function __construct()
     {
         require_once dirname(__DIR__) . '/../Admin/Model/Database.php';
         $this->db = new DatabaseConnection();
     }
 
-    // -------------------------
-    // GET STUDENT BY EMAIL
-    // -------------------------
+
     function getStudentByEmail($email)
     {
         $conn = $this->db->openConnection();
@@ -42,12 +40,10 @@ class StudentModel
         $stmt->close();
         $this->db->closeConnection($conn);
 
-        return $student; // returns student data or null
+        return $student; 
     }
 
-    // -------------------------
-    // GET ALL COURSES FOR STUDENT
-    // -------------------------
+  
     function getStudentCourses()
     {
         $conn = $this->db->openConnection();
