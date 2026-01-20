@@ -134,7 +134,7 @@ if ($_SESSION["role"] === "instructor") {
                     
                     <!-- Buttons -->
                     <div class="button-container">
-                        <button type="submit" name="save_changes" class="save-button">
+                        <button type="submit" name="save_changes" class="save-button" onclick="window.location.href='i_dashboard.php'">
                             Save Changes
                         </button>
                         <button type="button" class="back-button" onclick="window.location.href='<?php echo $backPage; ?>'">

@@ -79,9 +79,15 @@ body {
     margin-top: 20px;
 }
 
-.back-button-full {
-    width: 100%;
-    margin-top: 20px;
+.back-button {
+    flex: 1;
+    padding: 10px;
+    background: #666;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
 }
 .save-button {
     flex: 1;
