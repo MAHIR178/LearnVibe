@@ -103,9 +103,7 @@ class StudentModel
         return $counts; // returns associative array [course_title => count]
     }
 
-    // -------------------------
-    // GET COURSE FILES BY TITLE
-    // -------------------------
+    
     function getCourseFiles($course_title)
     {
         $conn = $this->db->openConnection();
@@ -138,9 +136,7 @@ class StudentModel
         return $files; // returns array of files
     }
 
-    // -------------------------
-    // SEARCH COURSES
-    // -------------------------
+    
     function searchCourses($search_query)
     {
         $conn = $this->db->openConnection();
